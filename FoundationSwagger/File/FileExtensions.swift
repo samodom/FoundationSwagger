@@ -19,4 +19,6 @@ public let DocumentsDirectoryPath: String = {
 /**
   URL to the 'Documents' directory
 */
-public let DocumentsDirectoryURL: NSURL = { NSURL(fileURLWithPath:DocumentsDirectoryPath, isDirectory: true)! }()
+public let DocumentsDirectoryURL: NSURL = {
+    NSURL(fileURLWithPath:DocumentsDirectoryPath, isDirectory: true)!
+    }()
