@@ -87,7 +87,7 @@
 		0A3BB9BC19EB78010075B32A /* FoundationSwagger */ = {
 			isa = PBXGroup;
 			children = (
-				0A3BB9DB19EB786A0075B32A /* Collections */,
+				0A3BB9DB19EB786A0075B32A /* Collection */,
 				0A3784D21A100D280003C7F3 /* File */,
 				0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */,
 				0A3BB9BD19EB78010075B32A /* Supporting Files */,
@@ -129,12 +129,12 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		0A3BB9DB19EB786A0075B32A /* Collections */ = {
+		0A3BB9DB19EB786A0075B32A /* Collection */ = {
 			isa = PBXGroup;
 			children = (
 				0A3BB9DD19EB786A0075B32A /* Stack.swift */,
 			);
-			path = Collections;
+			path = Collection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
