@@ -27,3 +27,13 @@ public func +(date: NSDate, interval: NSTimeInterval) -> NSDate {
 public func -(date: NSDate, interval: NSTimeInterval) -> NSDate {
     return date.dateByAddingTimeInterval(-interval)
 }
+
+/**
+    Overloaded subtraction operator for calculating the time interval between two dates.
+    @param          lhs NSDate from which to subtract another date.
+    @param          rhs NSDate to subtract from the first date.
+    @return         The time interval produced by calling `lhs.timeIntervalSinceDate(rhs)`.
+*/
+public func -(lhs: NSDate, rhs: NSDate) -> NSTimeInterval {
+    return lhs.timeIntervalSinceDate(rhs)
+}
