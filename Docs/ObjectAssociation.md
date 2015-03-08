@@ -55,6 +55,7 @@ extension MySwiftClass: ObjectAssociable {
 
 
 Sample usage:
+
 ```swift
 struct Keys {
     static var Key1 = "Key 1"
