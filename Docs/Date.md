@@ -43,3 +43,22 @@ now <= now      //  true
 now > now       //  false
 now >= now      //  true
 ```
+
+
+### Date Intervals
+
+Ranges of dates can be created with closed or half-open intervals:
+
+```swift
+let upToNow = earlier ... now
+let nowOrLater = now ..< later
+```
+
+Built-in intervals include:
+
+| Function | Produces Interval |
+|:--------:|:-----------------:|
+| `NSDate.allOfTime()` | `NSDate.distantPast() ... NSDate.distantFuture()` |
+| `NSDate.never()` | `NSDate.distantPast() ..< NSDate.distantPast()` |
+| `now.before()` | `NSDate.distantPast() ..< now` |
+| `now.after()` | `now ... NSDate.distantFuture()` |

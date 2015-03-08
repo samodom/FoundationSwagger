@@ -6,3 +6,4 @@ FoundationSwagger Changelog
  - Added NSDate operators for adding/subtracting time intervals
  - Added NSDate operator for producing the interval between two dates
  - Added NSDate operators for comparing dates
+ - Added NSDate intervals, including built-in intervals
