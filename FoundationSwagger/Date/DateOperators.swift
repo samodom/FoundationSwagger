@@ -37,3 +37,22 @@ public func -(date: NSDate, interval: NSTimeInterval) -> NSDate {
 public func -(lhs: NSDate, rhs: NSDate) -> NSTimeInterval {
     return lhs.timeIntervalSinceDate(rhs)
 }
+
+/**
+    Equatability and comparability of NSDate values.
+*/
+extension NSDate: Equatable, Comparable {
+
+}
+
+public func ==(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.isEqualToDate(rhs)
+}
+
+public func <(lhs: NSDate, rhs: NSDate) -> Bool {
+    if lhs == rhs {
+        return false
+    }
+
+    return lhs == lhs.earlierDate(rhs)
+}
