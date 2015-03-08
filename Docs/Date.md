@@ -62,3 +62,15 @@ Built-in intervals include:
 | `NSDate.never()` | `NSDate.distantPast() ..< NSDate.distantPast()` |
 | `now.before()` | `NSDate.distantPast() ..< now` |
 | `now.after()` | `now ... NSDate.distantFuture()` |
+
+
+### Interval Inclusion
+
+Easily check whether or not a date falls within a certain date interval:
+
+```swift
+let interval = now ..< later
+now.during(interval)     //  true
+before.during(interval)  //  false
+later.during(interval)   //  false
+```

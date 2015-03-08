@@ -43,4 +43,22 @@ public extension NSDate {
         return self ... end
     }
 
+    /**
+        Indicates whether or not this date is within the specified date interval.
+        @param          interval Date interval in which to check for this date's inclusion.
+        @return         Boolean value indicating whether or not this date is within the provided interval.
+    */
+    public func during(interval: ClosedInterval<NSDate>) -> Bool {
+        return interval.contains(self)
+    }
+
+    /**
+        Indicates whether or not this date is within the specified date interval.
+        @param          interval Date interval in which to check for this date's inclusion.
+        @return         Boolean value indicating whether or not this date is within the provided interval.
+    */
+    public func during(interval: HalfOpenInterval<NSDate>) -> Bool {
+        return interval.contains(self)
+    }
+
 }
