@@ -16,6 +16,9 @@
 		0A3BB9DF19EB786A0075B32A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BB9DD19EB786A0075B32A /* Stack.swift */; };
 		0A3BB9E119EB78770075B32A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BB9DD19EB786A0075B32A /* Stack.swift */; };
 		0A4F58621A884357008783F4 /* ObjectAssociationPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F58611A884357008783F4 /* ObjectAssociationPolicyTests.swift */; };
+		0A5BCBFC1AACB3B200484777 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCBFB1AACB3B200484777 /* DateTests.swift */; };
+		0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCBFE1AACB54800484777 /* DateOperators.swift */; };
+		0A5BCC001AACB58500484777 /* DateOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCBFE1AACB54800484777 /* DateOperators.swift */; };
 		0A90C86E1A86D2E70047FE16 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */; };
 		0A90C86F1A86D2EB0047FE16 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */; };
 		0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */; };
@@ -46,6 +49,8 @@
 		0A3BB9D819EB78500075B32A /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		0A3BB9DD19EB786A0075B32A /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		0A4F58611A884357008783F4 /* ObjectAssociationPolicyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociationPolicyTests.swift; sourceTree = "<group>"; };
+		0A5BCBFB1AACB3B200484777 /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
+		0A5BCBFE1AACB54800484777 /* DateOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateOperators.swift; sourceTree = "<group>"; };
 		0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociation.swift; sourceTree = "<group>"; };
 		0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociationTests.swift; sourceTree = "<group>"; };
 		0A90C8721A883E5F0047FE16 /* ObjectAssociationPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociationPolicy.swift; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				0A3BB9DB19EB786A0075B32A /* Collection */,
+				0A5BCBFD1AACB53800484777 /* Date */,
 				0A3784D21A100D280003C7F3 /* File */,
 				0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */,
 				0A90C86C1A86D2CC0047FE16 /* Object */,
@@ -145,6 +151,7 @@
 		0A3BB9D619EB78500075B32A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				0A5BCBFB1AACB3B200484777 /* DateTests.swift */,
 				0A3784D01A100B1D0003C7F3 /* FileExtensionsTests.swift */,
 				0A4F58611A884357008783F4 /* ObjectAssociationPolicyTests.swift */,
 				0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */,
@@ -159,6 +166,14 @@
 				0A3BB9DD19EB786A0075B32A /* Stack.swift */,
 			);
 			path = Collection;
+			sourceTree = "<group>";
+		};
+		0A5BCBFD1AACB53800484777 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				0A5BCBFE1AACB54800484777 /* DateOperators.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		0A90C86C1A86D2CC0047FE16 /* Object */ = {
@@ -280,6 +295,7 @@
 				0A90C8731A883E5F0047FE16 /* ObjectAssociationPolicy.swift in Sources */,
 				0A3BB9DF19EB786A0075B32A /* Stack.swift in Sources */,
 				0A90C86E1A86D2E70047FE16 /* ObjectAssociation.swift in Sources */,
+				0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */,
 				0A3784D41A100D3A0003C7F3 /* FileExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,10 +309,12 @@
 				0A9766A51A10132D00846F8B /* FileExtensions.swift in Sources */,
 				0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */,
 				0A3BB9DA19EB78500075B32A /* StackTests.swift in Sources */,
+				0A5BCC001AACB58500484777 /* DateOperators.swift in Sources */,
 				0A1F75321A8DA8B000540548 /* ObjectAssociationShim.swift in Sources */,
 				0A4F58621A884357008783F4 /* ObjectAssociationPolicyTests.swift in Sources */,
 				0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */,
 				0A90C8741A883E620047FE16 /* ObjectAssociationPolicy.swift in Sources */,
+				0A5BCBFC1AACB3B200484777 /* DateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
