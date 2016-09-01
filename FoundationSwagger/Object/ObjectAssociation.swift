@@ -11,7 +11,7 @@ import Foundation
 /**
     Common protocol for object association with pure Swift classes or `NSObject` (and its subclasses).
 */
-public protocol ObjectAssociable {
+public protocol ObjectAssociable: class {
 
     /**
         The implementation of this method should use the Foundation function `objc_setAssociatedObject` to create an association between the implementing and provided objects using the specified key and policy.
@@ -19,20 +19,20 @@ public protocol ObjectAssociable {
         @param      withObject The object to associate with `self`.
         @param      policy The association policy to use for the association.
     */
-    func associateKey(key: UnsafePointer<Void>, withObject: AnyObject, policy: ObjectAssociationPolicy)
+    func associate(key: UnsafePointer<Void>, withObject: AnyObject, policy: objc_AssociationPolicy)
 
     /**
         The implementation of this method should use the Foundation function `objc_getAssociatedObject` to retrieve any object associated with `self` using the specified key, if any.
         @param      key The key identifying the association to retrieve.
         @return     The object associated with `self` using the specified key, if such an association exist.
     */
-    func associationForKey(key: UnsafePointer<Void>) -> AnyObject?
+    func association(forKey key: UnsafePointer<Void>) -> AnyObject?
 
     /**
         The implementation of this method should use the Foundation function `objc_setAssociatedObject` to clear an association for the specified key.
         @param      key The key identifying the association to clear.
     */
-    func clearAssociationForKey(key: UnsafePointer<Void>)
+    func clearAssociation(forKey key: UnsafePointer<Void>)
 
     /**
         The implementation of this method should use the Foundation function `objc_removeAssociatedObjects` to clear all object associations on `self`.
@@ -47,16 +47,16 @@ public protocol ObjectAssociable {
 */
 extension NSObject: ObjectAssociable {
 
-    public func associateKey(key: UnsafePointer<Void>, withObject association: AnyObject, policy: ObjectAssociationPolicy = .Assign) {
-        objc_setAssociatedObject(self, key, association, policy.rawValue)
+    public func associate(key: UnsafePointer<Void>, withObject association: AnyObject, policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_ASSIGN) {
+        objc_setAssociatedObject(self, key, association, policy)
     }
 
-    public func associationForKey(key: UnsafePointer<Void>) -> AnyObject? {
+    public func association(forKey key: UnsafePointer<Void>) -> AnyObject? {
         return objc_getAssociatedObject(self, key)
     }
 
-    public func clearAssociationForKey(key: UnsafePointer<Void>) {
-        objc_setAssociatedObject(self, key, nil, ObjectAssociationPolicy.Assign.rawValue)
+    public func clearAssociation(forKey key: UnsafePointer<Void>) {
+        objc_setAssociatedObject(self, key, nil, .OBJC_ASSOCIATION_ASSIGN)
     }
 
     public func clearAllAssociations() {

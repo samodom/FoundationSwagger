@@ -9,14 +9,14 @@
 import Foundation
 
 internal var lastAssociatedObject: AnyObject?
-internal var lastAssociationPolicy: ObjectAssociationPolicy?
+internal var lastAssociationPolicy: objc_AssociationPolicy?
 
 internal var removeAssociatedObjectsCalled = false
 internal var removeAssociatedObjectsObject: AnyObject?
 
 internal func objc_setAssociatedObject(object: AnyObject!, key: UnsafePointer<Void>, value: AnyObject!, policy: objc_AssociationPolicy) {
     lastAssociatedObject = value
-    lastAssociationPolicy = ObjectAssociationPolicy(rawValue: policy)
+    lastAssociationPolicy = policy
     Foundation.objc_setAssociatedObject(object, key, value, policy)
 }
 
