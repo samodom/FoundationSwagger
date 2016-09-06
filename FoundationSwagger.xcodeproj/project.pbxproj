@@ -17,6 +17,8 @@
 		0A3BB9DF19EB786A0075B32A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BB9DD19EB786A0075B32A /* Stack.swift */; };
 		0A3BB9E019EB78750075B32A /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BB9DC19EB786A0075B32A /* Set.swift */; };
 		0A3BB9E119EB78770075B32A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BB9DD19EB786A0075B32A /* Stack.swift */; };
+		0A5A29751A6C711A003CB7EE /* EventDrivenFiniteStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A29741A6C711A003CB7EE /* EventDrivenFiniteStateMachine.swift */; };
+		0A5A29761A6C711A003CB7EE /* EventDrivenFiniteStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A29741A6C711A003CB7EE /* EventDrivenFiniteStateMachine.swift */; };
 		0A9766A51A10132D00846F8B /* FileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3784D31A100D3A0003C7F3 /* FileExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,7 @@
 		0A3BB9D819EB78500075B32A /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		0A3BB9DC19EB786A0075B32A /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		0A3BB9DD19EB786A0075B32A /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		0A5A29741A6C711A003CB7EE /* EventDrivenFiniteStateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDrivenFiniteStateMachine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,7 @@
 				0A3BB9DB19EB786A0075B32A /* Collections */,
 				0A3784D21A100D280003C7F3 /* File */,
 				0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */,
+				0A5A29701A6C7076003CB7EE /* StateMachine */,
 				0A3BB9BD19EB78010075B32A /* Supporting Files */,
 			);
 			path = FoundationSwagger;
@@ -142,6 +146,14 @@
 				0A3BB9DD19EB786A0075B32A /* Stack.swift */,
 			);
 			path = Collections;
+			sourceTree = "<group>";
+		};
+		0A5A29701A6C7076003CB7EE /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				0A5A29741A6C711A003CB7EE /* EventDrivenFiniteStateMachine.swift */,
+			);
+			path = StateMachine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +266,7 @@
 				0A3BB9DF19EB786A0075B32A /* Stack.swift in Sources */,
 				0A3BB9DE19EB786A0075B32A /* Set.swift in Sources */,
 				0A3784D41A100D3A0003C7F3 /* FileExtensions.swift in Sources */,
+				0A5A29751A6C711A003CB7EE /* EventDrivenFiniteStateMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +278,7 @@
 				0A9766A51A10132D00846F8B /* FileExtensions.swift in Sources */,
 				0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */,
 				0A3BB9DA19EB78500075B32A /* StackTests.swift in Sources */,
+				0A5A29761A6C711A003CB7EE /* EventDrivenFiniteStateMachine.swift in Sources */,
 				0A3BB9D919EB78500075B32A /* SetTests.swift in Sources */,
 				0A3BB9E019EB78750075B32A /* Set.swift in Sources */,
 			);
