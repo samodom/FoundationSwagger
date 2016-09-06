@@ -18,6 +18,9 @@
 		0A3BB9E019EB78750075B32A /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BB9DC19EB786A0075B32A /* Set.swift */; };
 		0A3BB9E119EB78770075B32A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BB9DD19EB786A0075B32A /* Stack.swift */; };
 		0A9766A51A10132D00846F8B /* FileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3784D31A100D3A0003C7F3 /* FileExtensions.swift */; };
+		0AD6F2641A34D74000D863A2 /* UserDefaultsSubscriptingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6F2631A34D74000D863A2 /* UserDefaultsSubscriptingTests.swift */; };
+		0AD6F2661A34D83F00D863A2 /* NSUserDefaultsSubscripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6F2651A34D83F00D863A2 /* NSUserDefaultsSubscripting.swift */; };
+		0AD6F2671A34D83F00D863A2 /* NSUserDefaultsSubscripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6F2651A34D83F00D863A2 /* NSUserDefaultsSubscripting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,8 @@
 		0A3BB9D819EB78500075B32A /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		0A3BB9DC19EB786A0075B32A /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		0A3BB9DD19EB786A0075B32A /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		0AD6F2631A34D74000D863A2 /* UserDefaultsSubscriptingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsSubscriptingTests.swift; sourceTree = "<group>"; };
+		0AD6F2651A34D83F00D863A2 /* NSUserDefaultsSubscripting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsSubscripting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +101,7 @@
 				0A3784D21A100D280003C7F3 /* File */,
 				0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */,
 				0A3BB9BD19EB78010075B32A /* Supporting Files */,
+				0AD6F25F1A34D5A200D863A2 /* User Defaults */,
 			);
 			path = FoundationSwagger;
 			sourceTree = "<group>";
@@ -131,6 +137,7 @@
 				0A3784D01A100B1D0003C7F3 /* FileExtensionsTests.swift */,
 				0A3BB9D719EB78500075B32A /* SetTests.swift */,
 				0A3BB9D819EB78500075B32A /* StackTests.swift */,
+				0AD6F2631A34D74000D863A2 /* UserDefaultsSubscriptingTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -142,6 +149,14 @@
 				0A3BB9DD19EB786A0075B32A /* Stack.swift */,
 			);
 			path = Collections;
+			sourceTree = "<group>";
+		};
+		0AD6F25F1A34D5A200D863A2 /* User Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				0AD6F2651A34D83F00D863A2 /* NSUserDefaultsSubscripting.swift */,
+			);
+			path = "User Defaults";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD6F2661A34D83F00D863A2 /* NSUserDefaultsSubscripting.swift in Sources */,
 				0A3BB9DF19EB786A0075B32A /* Stack.swift in Sources */,
 				0A3BB9DE19EB786A0075B32A /* Set.swift in Sources */,
 				0A3784D41A100D3A0003C7F3 /* FileExtensions.swift in Sources */,
@@ -261,10 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD6F2671A34D83F00D863A2 /* NSUserDefaultsSubscripting.swift in Sources */,
 				0A3BB9E119EB78770075B32A /* Stack.swift in Sources */,
 				0A9766A51A10132D00846F8B /* FileExtensions.swift in Sources */,
 				0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */,
 				0A3BB9DA19EB78500075B32A /* StackTests.swift in Sources */,
+				0AD6F2641A34D74000D863A2 /* UserDefaultsSubscriptingTests.swift in Sources */,
 				0A3BB9D919EB78500075B32A /* SetTests.swift in Sources */,
 				0A3BB9E019EB78750075B32A /* Set.swift in Sources */,
 			);
