@@ -22,7 +22,6 @@
 		0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */; };
 		0A90C8731A883E5F0047FE16 /* ObjectAssociationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8721A883E5F0047FE16 /* ObjectAssociationPolicy.swift */; };
 		0A90C8741A883E620047FE16 /* ObjectAssociationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8721A883E5F0047FE16 /* ObjectAssociationPolicy.swift */; };
-		0A9766A51A10132D00846F8B /* FileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3784D31A100D3A0003C7F3 /* FileExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,7 +294,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A90C86F1A86D2EB0047FE16 /* ObjectAssociation.swift in Sources */,
-				0A9766A51A10132D00846F8B /* FileExtensions.swift in Sources */,
 				0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */,
 				0A1F75321A8DA8B000540548 /* ObjectAssociationShim.swift in Sources */,
 				0A4F58621A884357008783F4 /* ObjectAssociationPolicyTests.swift in Sources */,
