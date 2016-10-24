@@ -7,16 +7,9 @@
 //
 
 import XCTest
+import FoundationSwagger
 
 class FileExtensionsTests: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
 
     func testDocumentsDirectoryPath() {
         let expectedPath = PathToDocumentsDirectory()
@@ -25,14 +18,14 @@ class FileExtensionsTests: XCTestCase {
     }
 
     func testFileManagerHasDocumentsDirectoryURL() {
-        let expectedURL = NSURL(fileURLWithPath: PathToDocumentsDirectory(), isDirectory: true)!
+        let expectedURL = Foundation.URL(fileURLWithPath: PathToDocumentsDirectory(), isDirectory: true)
         let URL = DocumentsDirectoryURL
-        XCTAssertEqual(URL, expectedURL, "The default file manager should be used to provide a URL to the 'Documents' directory on the device")
+        XCTAssertEqual(URL as URL, expectedURL, "The default file manager should be used to provide a URL to the 'Documents' directory on the device")
     }
 
 }
 
 private func PathToDocumentsDirectory() -> String {
-    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as! [String]
+    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) 
     return paths[0]
 }

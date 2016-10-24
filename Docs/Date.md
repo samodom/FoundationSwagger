@@ -2,61 +2,32 @@ Dates
 =====
 
 
-### Operators
+### Time interval between dates
 
-Add or subtract a time interval to or from a date to produce a new date:
+Subtract one date from another date to produce the time interval between them:
 
 ```swift
 let now = NSDate()
 let later = now + 1.5
 let earlier = now - 2.4
-```
 
-
-Subtract one date from another date to produce the time interval between them:
-
-```swift
 now - earlier   //  yields the interval 2.4
 now - later     //  yields the interval -1.5
 ```
 
 
-Compare dates with equality and inequality operators:
+### Date Ranges
 
-```swift
-earlier == now  //  false
-now == now      //  true
-now == later    //  false
-
-earlier < now   //  true
-earlier <= now  //  true
-earlier > now   //  false
-earlier >= now  //  false
-
-later < now     //  false
-later <= now    //  false
-later > now     //  true
-later >= now    //  true
-
-now < now       //  false
-now <= now      //  true
-now > now       //  false
-now >= now      //  true
-```
-
-
-### Date Intervals
-
-Ranges of dates can be created with closed or half-open intervals:
+Ranges of dates can be created with closed or half-open ranges:
 
 ```swift
 let upToNow = earlier ... now
 let nowOrLater = now ..< later
 ```
 
-Built-in intervals include:
+Built-in ranges include:
 
-| Function | Produces Interval |
+| Function | Produces Range |
 |:--------:|:-----------------:|
 | `NSDate.allOfTime()` | `NSDate.distantPast() ... NSDate.distantFuture()` |
 | `NSDate.never()` | `NSDate.distantPast() ..< NSDate.distantPast()` |
@@ -64,13 +35,13 @@ Built-in intervals include:
 | `now.after()` | `now ... NSDate.distantFuture()` |
 
 
-### Interval Inclusion
+### Range Inclusion
 
-Easily check whether or not a date falls within a certain date interval:
+Easily check whether or not a date falls within a certain date range:
 
 ```swift
-let interval = now ..< later
-now.during(interval)     //  true
-before.during(interval)  //  false
-later.during(interval)   //  false
+let range = now ..< later
+now.isDuring(range)     //  true
+before.isDuring(range)  //  false
+later.isDuring(range)   //  false
 ```

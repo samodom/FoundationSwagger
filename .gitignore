@@ -1,0 +1,8 @@
+# swap files
+*~
+
+# Finder preview files
+.DS_Store
+
+# Xcode user data
+FoundationSwagger.xcodeproj/project.xcworkspace/xcuserdata/*

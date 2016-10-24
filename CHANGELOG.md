@@ -2,8 +2,8 @@ FoundationSwagger Changelog
 ===========================
 
 
-##### v0.1.1 (__DATE__)
- - Added NSDate operators for adding/subtracting time intervals
- - Added NSDate operator for producing the interval between two dates
- - Added NSDate operators for comparing dates
- - Added NSDate intervals, including built-in intervals and inclusion
+##### v0.2.0 (__DATE__)
+ - Updated for Swift 3
+ - Added Date operator for producing the time interval between two dates
+ - Added Date ranges, including built-in ranges and range inclusion
+ - Removed Stack implementation
