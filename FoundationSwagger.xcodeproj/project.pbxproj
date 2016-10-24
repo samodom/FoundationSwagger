@@ -15,10 +15,12 @@
 		0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCBFE1AACB54800484777 /* DateOperators.swift */; };
 		0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCC031AACDDA000484777 /* DateRangeTests.swift */; };
 		0A5BCC061AACDDBA00484777 /* DateRanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCC051AACDDBA00484777 /* DateRanges.swift */; };
+		0A7DC4761DBDD58800BCFC56 /* MethodProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC4751DBDD58800BCFC56 /* MethodProfileTests.swift */; };
+		0A7DC4791DBDD8F700BCFC56 /* MethodProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC4781DBDD8F700BCFC56 /* MethodProfile.swift */; };
 		0A90C86E1A86D2E70047FE16 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */; };
 		0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */; };
-		0ACADA8C1DBC01CB001F548A /* SwiftAssociationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACADA8B1DBC01CB001F548A /* SwiftAssociationTypes.swift */; };
-		0ACADA911DBC0407001F548A /* ObjectiveCAssociationTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACADA901DBC0407001F548A /* ObjectiveCAssociationTypes.m */; };
+		0ACADA8C1DBC01CB001F548A /* SampleSwiftTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACADA8B1DBC01CB001F548A /* SampleSwiftTypes.swift */; };
+		0ACADA911DBC0407001F548A /* SampleObjectiveCTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACADA901DBC0407001F548A /* SampleObjectiveCTypes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,13 +45,15 @@
 		0A5BCBFE1AACB54800484777 /* DateOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateOperators.swift; sourceTree = "<group>"; };
 		0A5BCC031AACDDA000484777 /* DateRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeTests.swift; sourceTree = "<group>"; };
 		0A5BCC051AACDDBA00484777 /* DateRanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRanges.swift; sourceTree = "<group>"; };
+		0A7DC4751DBDD58800BCFC56 /* MethodProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodProfileTests.swift; sourceTree = "<group>"; };
+		0A7DC4781DBDD8F700BCFC56 /* MethodProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodProfile.swift; sourceTree = "<group>"; };
 		0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociation.swift; sourceTree = "<group>"; };
 		0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociationTests.swift; sourceTree = "<group>"; };
 		0ABFD8841DAF28070029F590 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		0ACADA8B1DBC01CB001F548A /* SwiftAssociationTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAssociationTypes.swift; sourceTree = "<group>"; };
+		0ACADA8B1DBC01CB001F548A /* SampleSwiftTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSwiftTypes.swift; sourceTree = "<group>"; };
 		0ACADA8D1DBC03B4001F548A /* FoundationSwaggerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoundationSwaggerTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		0ACADA901DBC0407001F548A /* ObjectiveCAssociationTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCAssociationTypes.m; sourceTree = "<group>"; };
-		0ACADA921DBC0410001F548A /* ObjectiveCAssociationTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveCAssociationTypes.h; sourceTree = "<group>"; };
+		0ACADA901DBC0407001F548A /* SampleObjectiveCTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleObjectiveCTypes.m; sourceTree = "<group>"; };
+		0ACADA921DBC0410001F548A /* SampleObjectiveCTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleObjectiveCTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 				0A5BCBFD1AACB53800484777 /* Date */,
 				0A3784D21A100D280003C7F3 /* File */,
 				0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */,
+				0A7DC4771DBDD8E800BCFC56 /* MethodSwizzling */,
 				0A90C86C1A86D2CC0047FE16 /* Object */,
 				0A3BB9BD19EB78010075B32A /* Supporting Files */,
 			);
@@ -142,6 +147,7 @@
 				0A5BCC031AACDDA000484777 /* DateRangeTests.swift */,
 				0A5BCBFB1AACB3B200484777 /* DateTests.swift */,
 				0A3784D01A100B1D0003C7F3 /* FileExtensionsTests.swift */,
+				0A7DC4751DBDD58800BCFC56 /* MethodProfileTests.swift */,
 				0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */,
 			);
 			path = Tests;
@@ -154,6 +160,14 @@
 				0A5BCC051AACDDBA00484777 /* DateRanges.swift */,
 			);
 			path = Date;
+			sourceTree = "<group>";
+		};
+		0A7DC4771DBDD8E800BCFC56 /* MethodSwizzling */ = {
+			isa = PBXGroup;
+			children = (
+				0A7DC4781DBDD8F700BCFC56 /* MethodProfile.swift */,
+			);
+			path = MethodSwizzling;
 			sourceTree = "<group>";
 		};
 		0A90C86C1A86D2CC0047FE16 /* Object */ = {
@@ -176,9 +190,9 @@
 			isa = PBXGroup;
 			children = (
 				0ACADA8D1DBC03B4001F548A /* FoundationSwaggerTests-Bridging-Header.h */,
-				0ACADA921DBC0410001F548A /* ObjectiveCAssociationTypes.h */,
-				0ACADA901DBC0407001F548A /* ObjectiveCAssociationTypes.m */,
-				0ACADA8B1DBC01CB001F548A /* SwiftAssociationTypes.swift */,
+				0ACADA921DBC0410001F548A /* SampleObjectiveCTypes.h */,
+				0ACADA901DBC0407001F548A /* SampleObjectiveCTypes.m */,
+				0ACADA8B1DBC01CB001F548A /* SampleSwiftTypes.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -292,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A7DC4791DBDD8F700BCFC56 /* MethodProfile.swift in Sources */,
 				0A90C86E1A86D2E70047FE16 /* ObjectAssociation.swift in Sources */,
 				0A5BCC061AACDDBA00484777 /* DateRanges.swift in Sources */,
 				0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */,
@@ -304,9 +319,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */,
-				0ACADA8C1DBC01CB001F548A /* SwiftAssociationTypes.swift in Sources */,
+				0ACADA8C1DBC01CB001F548A /* SampleSwiftTypes.swift in Sources */,
+				0A7DC4761DBDD58800BCFC56 /* MethodProfileTests.swift in Sources */,
 				0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */,
-				0ACADA911DBC0407001F548A /* ObjectiveCAssociationTypes.m in Sources */,
+				0ACADA911DBC0407001F548A /* SampleObjectiveCTypes.m in Sources */,
 				0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */,
 				0A5BCBFC1AACB3B200484777 /* DateTests.swift in Sources */,
 			);
@@ -416,6 +432,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = FoundationSwagger/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -433,6 +450,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = FoundationSwagger/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

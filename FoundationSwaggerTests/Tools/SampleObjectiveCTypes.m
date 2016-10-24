@@ -1,12 +1,12 @@
 //
-//  ObjectiveCAssociationTypes.m
+//  SampleObjectiveCTypes.m
 //  FoundationSwagger
 //
 //  Created by Sam Odom on 10/22/16.
 //  Copyright © 2016 Swagger Soft. All rights reserved.
 //
 
-#import "ObjectiveCAssociationTypes.h"
+#import "SampleObjectiveCTypes.h"
 
 @implementation SampleObjectiveCClass
 
@@ -42,6 +42,15 @@
 
     SampleObjectiveCClass *other = object;
     return self.value == other.value;
+}
+
+
++ (NSUInteger)sampleClassMethod:(NSString *)input {
+    return 14;
+}
+
+- (NSUInteger)sampleInstanceMethod:(NSString *)input {
+    return 14;
 }
 
 @end

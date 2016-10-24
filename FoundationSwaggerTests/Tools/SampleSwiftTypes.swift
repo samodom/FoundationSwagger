@@ -1,5 +1,5 @@
 //
-//  SwiftAssociationTypes.swift
+//  SwiftSwiftTypes.swift
 //  FoundationSwagger
 //
 //  Created by Sam Odom on 10/22/16.
@@ -51,6 +51,14 @@ internal class SampleSwiftClass: Equatable, NSCopying, ObjectAssociating {
 
     @objc internal func copy(with zone: NSZone?) -> Any {
         return SampleSwiftClass(value)
+    }
+
+    @objc internal func sampleInstanceMethod(_ input: String) -> Int {
+        return 14
+    }
+
+    @objc internal class func sampleClassMethod(_ input: String) -> Int {
+        return 14
     }
 
 }
