@@ -35,17 +35,17 @@ public extension Date {
         return self ... end
     }
 
-    public func during(_ range: ClosedRange<Date>) -> Bool {
     /// Indicates whether or not this date is within the specified date range.
     /// - parameter range: Date range in which to check for this date's inclusion.
     /// - returns: A boolean value indicating whether or not this date is within the provided range.
+    public func isDuring(_ range: ClosedRange<Date>) -> Bool {
         return range.contains(self)
     }
 
-    public func during(_ range: Range<Date>) -> Bool {
     /// Indicates whether or not this date is within the specified date range.
     /// - parameter range: Date range in which to check for this date's inclusion.
     /// - returns: A boolean value indicating whether or not this date is within the provided range.
+    public func isDuring(_ range: Range<Date>) -> Bool {
         return range.contains(self)
     }
 

@@ -41,7 +41,7 @@ Easily check whether or not a date falls within a certain date range:
 
 ```swift
 let range = now ..< later
-now.during(range)     //  true
-before.during(range)  //  false
-later.during(range)   //  false
+now.isDuring(range)     //  true
+before.isDuring(range)  //  false
+later.isDuring(range)   //  false
 ```

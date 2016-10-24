@@ -81,20 +81,20 @@ class DateRangeTests: XCTestCase {
 
     func testDuringClosedRange() {
         closedRange = now ... afterDate
-        XCTAssertFalse(distantPast.during(closedRange), "The date should not be considered during the provided range")
-        XCTAssertFalse(beforeDate.during(closedRange), "The date should not be considered during the provided range")
-        XCTAssertTrue(now.during(closedRange), "The date should be considered during the provided range")
-        XCTAssertTrue(afterDate.during(closedRange), "The date should be considered during the provided range")
-        XCTAssertFalse(distantFuture.during(closedRange), "The date should not be considered during the provided range")
+        XCTAssertFalse(distantPast.isDuring(closedRange), "The date should not be considered during the provided range")
+        XCTAssertFalse(beforeDate.isDuring(closedRange), "The date should not be considered during the provided range")
+        XCTAssertTrue(now.isDuring(closedRange), "The date should be considered during the provided range")
+        XCTAssertTrue(afterDate.isDuring(closedRange), "The date should be considered during the provided range")
+        XCTAssertFalse(distantFuture.isDuring(closedRange), "The date should not be considered during the provided range")
     }
 
     func testDuringHalfOpenRange() {
         halfOpenRange = now ..< afterDate
-        XCTAssertFalse(distantPast.during(halfOpenRange), "The date should not be considered during the provided range")
-        XCTAssertFalse(beforeDate.during(halfOpenRange), "The date should not be considered during the provided range")
-        XCTAssertTrue(now.during(halfOpenRange), "The date should be considered during the provided range")
-        XCTAssertFalse(afterDate.during(halfOpenRange), "The date should not be considered during the provided range")
-        XCTAssertFalse(distantPast.during(halfOpenRange), "The date should be considered during the provided range")
+        XCTAssertFalse(distantPast.isDuring(halfOpenRange), "The date should not be considered during the provided range")
+        XCTAssertFalse(beforeDate.isDuring(halfOpenRange), "The date should not be considered during the provided range")
+        XCTAssertTrue(now.isDuring(halfOpenRange), "The date should be considered during the provided range")
+        XCTAssertFalse(afterDate.isDuring(halfOpenRange), "The date should not be considered during the provided range")
+        XCTAssertFalse(distantPast.isDuring(halfOpenRange), "The date should be considered during the provided range")
     }
 
 }
