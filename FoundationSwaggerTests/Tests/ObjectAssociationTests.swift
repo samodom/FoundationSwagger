@@ -9,7 +9,9 @@
 import XCTest
 import FoundationSwagger
 
-fileprivate let SampleKey = UnsafeRawPointer("Sample key")
+fileprivate let SampleKey1 = UnsafeRawPointer("Sample key 1")
+fileprivate let SampleKey2 = UnsafeRawPointer("Sample key 2")
+fileprivate let SampleKey3 = UnsafeRawPointer("Sample key 3")
 
 class ObjectAssociationTests: XCTestCase {
 
@@ -33,25 +35,25 @@ extension ObjectAssociationTests {
 
     func testRetrievingObjectiveCAssociationsFromObjectiveCObject() {
         let objectAssociation = SampleObjectiveCClass(42)
-        objc_setAssociatedObject(objCObject, SampleKey, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleObjectiveCClass,
+            objCObject.associationForKey(SampleKey1) as? SampleObjectiveCClass,
             objectAssociation,
             "The associated object should be retrieved with its key"
         )
 
-        objc_setAssociatedObject(objCObject, SampleKey, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey1, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                objCObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                objCObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The associated struct should be retrieved with its key"
         )
 
-        objc_setAssociatedObject(objCObject, SampleKey, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey1, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleObjectiveCEnumeration,
+            objCObject.associationForKey(SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The associated enum should be retrieved with its key"
         )
@@ -59,23 +61,23 @@ extension ObjectAssociationTests {
 
     func testRetrievingSwiftAssociationsFromObjectiveCObject() {
         let objectAssociation = SampleSwiftClass(42)
-        objc_setAssociatedObject(objCObject, SampleKey, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleSwiftClass,
+            objCObject.associationForKey(SampleKey1) as? SampleSwiftClass,
             objectAssociation,
             "The associated object should be retrieved with its key"
         )
 
-        objc_setAssociatedObject(objCObject, SampleKey, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey1, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            objCObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The associated struct should be retrieved with its key"
         )
 
-        objc_setAssociatedObject(objCObject, SampleKey, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey1, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleSwiftEnumeration,
+            objCObject.associationForKey(SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The associated enum should be retrieved with its key"
         )
@@ -83,25 +85,25 @@ extension ObjectAssociationTests {
 
     func testRetrievingObjectiveCAssociationsFromSwiftObject() {
         let objectAssociation = SampleObjectiveCClass(42)
-        objc_setAssociatedObject(swiftObject, SampleKey, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleObjectiveCClass,
+            swiftObject.associationForKey(SampleKey1) as? SampleObjectiveCClass,
             objectAssociation,
             "The associated object should be retrieved with its key"
         )
 
-        objc_setAssociatedObject(swiftObject, SampleKey, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey1, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                swiftObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                swiftObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The associated struct should be retrieved with its key"
         )
 
-        objc_setAssociatedObject(swiftObject, SampleKey, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey1, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleObjectiveCEnumeration,
+            swiftObject.associationForKey(SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The associated enum should be retrieved with its key"
         )
@@ -109,23 +111,23 @@ extension ObjectAssociationTests {
 
     func testRetrievingSwiftAssociationsFromSwiftObject() {
         let objectAssociation = SampleSwiftClass(42)
-        objc_setAssociatedObject(swiftObject, SampleKey, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleSwiftClass,
+            swiftObject.associationForKey(SampleKey1) as? SampleSwiftClass,
             objectAssociation,
             "The associated object should be retrieved with its key"
         )
 
-        objc_setAssociatedObject(swiftObject, SampleKey, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey1, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            swiftObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The associated struct should be retrieved with its key"
         )
 
-        objc_setAssociatedObject(swiftObject, SampleKey, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey1, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleSwiftEnumeration,
+            swiftObject.associationForKey(SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The associated enum should be retrieved with its key"
         )
@@ -141,9 +143,9 @@ extension ObjectAssociationTests {
     func testAssignObjectiveCAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
+            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
             XCTAssertEqual(
-                objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCClass,
+                objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCClass,
                 association,
                 "The Objective-C object should have an associated Objective-C object"
             )
@@ -157,9 +159,9 @@ extension ObjectAssociationTests {
     func testAssignObjectiveCAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
+            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
             XCTAssertEqual(
-                objc_getAssociatedObject(objCObject, SampleKey) as? SampleSwiftClass,
+                objc_getAssociatedObject(objCObject, SampleKey1) as? SampleSwiftClass,
                 association,
                 "The Objective-C object should have an associated Swift object"
             )
@@ -173,9 +175,9 @@ extension ObjectAssociationTests {
     func testAssignSwiftAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
-            XCTAssertEqual(objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCClass, association, "The Swift object should have an associated Objective-C object")
-            XCTAssertEqual(swiftObject.associationForKey(SampleKey) as? SampleObjectiveCClass, association, "The association should be retrievable using the new API")
+            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
+            XCTAssertEqual(objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass, association, "The Swift object should have an associated Objective-C object")
+            XCTAssertEqual(swiftObject.associationForKey(SampleKey1) as? SampleObjectiveCClass, association, "The association should be retrievable using the new API")
             weakReference = association
         }
 
@@ -185,9 +187,9 @@ extension ObjectAssociationTests {
     func testAssignSwiftAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
-            XCTAssertEqual(objc_getAssociatedObject(swiftObject, SampleKey) as? SampleSwiftClass, association, "The Swift object should have an associated Swift object")
-            XCTAssertEqual(swiftObject.associationForKey(SampleKey) as? SampleSwiftClass, association, "The Swift object should have an associated Swift object")
+            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
+            XCTAssertEqual(objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleSwiftClass, association, "The Swift object should have an associated Swift object")
+            XCTAssertEqual(swiftObject.associationForKey(SampleKey1) as? SampleSwiftClass, association, "The Swift object should have an associated Swift object")
             weakReference = association
         }
 
@@ -204,9 +206,9 @@ extension ObjectAssociationTests {
     func testAtomicRetainObjectiveCAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
             XCTAssertEqual(
-                objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCClass,
+                objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCClass,
                 association,
                 "The Objective-C object should have an associated Objective-C object"
             )
@@ -217,19 +219,19 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The association should be retained")
 
-        objCObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+        objCObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                objCObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                objCObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The Objective-C object should have an associated Objective-C struct"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+        objCObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The Objective-C object should have an associated Objective-C enum"
         )
@@ -239,9 +241,9 @@ extension ObjectAssociationTests {
     func testAtomicRetainObjectiveCAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
             XCTAssertEqual(
-                objCObject.associationForKey(SampleKey) as? SampleSwiftClass,
+                objCObject.associationForKey(SampleKey1) as? SampleSwiftClass,
                 association,
                 "The Objective-C object should have an associated Swift object"
             )
@@ -252,17 +254,17 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The association should be retained")
 
-        objCObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+        objCObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            objCObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The Objective-C object should have an associated Swift struct"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+        objCObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The Objective-C object should have an associated Swift enum"
         )
@@ -272,9 +274,9 @@ extension ObjectAssociationTests {
     func testAtomicRetainSwiftAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
             XCTAssertEqual(
-                objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCClass,
+                objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass,
                 association,
                 "The Swift object should have an associated Objective-C object"
             )
@@ -285,19 +287,19 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The association should be retained")
 
-        swiftObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                swiftObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                swiftObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The Swift object should have an associated Objective-C struct"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The Swift object should have an associated Objective-C enum"
         )
@@ -307,9 +309,9 @@ extension ObjectAssociationTests {
     func testAtomicRetainSwiftAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
             XCTAssertEqual(
-                swiftObject.associationForKey(SampleKey) as? SampleSwiftClass,
+                swiftObject.associationForKey(SampleKey1) as? SampleSwiftClass,
                 association,
                 "The Swift object should have an associated Swift object"
             )
@@ -320,17 +322,17 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The association should be retained")
 
-        swiftObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            swiftObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The Swift object should have an associated Swift struct"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The Swift object should have an associated Swift enum"
         )
@@ -347,9 +349,9 @@ extension ObjectAssociationTests {
     func testNonAtomicRetainObjectiveCAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             XCTAssertEqual(
-                objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCClass,
+                objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCClass,
                 association,
                 "The Objective-C object should have an associated Objective-C object"
             )
@@ -360,19 +362,19 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The association should be retained")
 
-        objCObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                objCObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                objCObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The Objective-C object should have an associated Objective-C struct"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The Objective-C object should have an associated Objective-C enum"
         )
@@ -382,9 +384,9 @@ extension ObjectAssociationTests {
     func testNonAtomicRetainObjectiveCAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             XCTAssertEqual(
-                objCObject.associationForKey(SampleKey) as? SampleSwiftClass,
+                objCObject.associationForKey(SampleKey1) as? SampleSwiftClass,
                 association,
                 "The Objective-C object should have an associated Swift object"
             )
@@ -395,17 +397,17 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The association should be retained")
 
-        objCObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            objCObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The Objective-C object should have an associated Swift struct"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The Objective-C object should have an associated Swift enum"
         )
@@ -415,9 +417,9 @@ extension ObjectAssociationTests {
     func testNonAtomicRetainSwiftAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             XCTAssertEqual(
-                objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCClass,
+                objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass,
                 association,
                 "The Swift object should have an associated Objective-C object"
             )
@@ -428,19 +430,19 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The association should be retained")
 
-        swiftObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                swiftObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                swiftObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The Swift object should have an associated Objective-C struct"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The Swift object should have an associated Objective-C enum"
         )
@@ -450,9 +452,9 @@ extension ObjectAssociationTests {
     func testNonAtomicRetainSwiftAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             XCTAssertEqual(
-                swiftObject.associationForKey(SampleKey) as? SampleSwiftClass,
+                swiftObject.associationForKey(SampleKey1) as? SampleSwiftClass,
                 association,
                 "The Swift object should have an associated Swift object"
             )
@@ -463,17 +465,17 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The association should be retained")
 
-        swiftObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            swiftObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The Swift object should have an associated Swift struct"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The Swift object should have an associated Swift enum"
         )
@@ -489,25 +491,25 @@ extension ObjectAssociationTests {
 
     func testAtomicCopyObjectiveCAssociationWithObjectiveCTypes() {
         let association = SampleObjectiveCClass(42)
-        objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
-        let reference = objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCClass
+        objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        let reference = objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCClass
         XCTAssertEqual(reference, association, "The Objective-C object should have an associated Objective-C object")
         XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
-        objCObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        objCObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                objCObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                objCObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The Objective-C object should have an associated Objective-C struct"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        objCObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The Objective-C object should have an associated Objective-C enum"
         )
@@ -516,23 +518,23 @@ extension ObjectAssociationTests {
 
     func testAtomicCopyObjectiveCAssociationWithSwiftTypes() {
         let association = SampleSwiftClass(42)
-        objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
-        let reference = objCObject.associationForKey(SampleKey) as? SampleSwiftClass
+        objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        let reference = objCObject.associationForKey(SampleKey1) as? SampleSwiftClass
         XCTAssertEqual(reference, association, "The Objective-C object should have an associated Swift object")
         XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
-        objCObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        objCObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            objCObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The Objective-C object should have an associated Swift struct"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        objCObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The Objective-C object should have an associated Swift enum"
         )
@@ -541,25 +543,25 @@ extension ObjectAssociationTests {
 
     func testAtomicCopySwiftAssociationWithObjectiveCTypes() {
         let association = SampleObjectiveCClass(42)
-        swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
-        let reference = objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCClass
+        swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        let reference = objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass
         XCTAssertEqual(reference, association, "The Swift object should have an associated Objective-C object")
         XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
-        swiftObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        swiftObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                swiftObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                swiftObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The Swift object should have an associated Objective-C struct"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        swiftObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The Swift object should have an associated Objective-C enum"
         )
@@ -568,23 +570,23 @@ extension ObjectAssociationTests {
 
     func testAtomicCopySwiftAssociationWithSwiftTypes() {
         let association = SampleSwiftClass(42)
-        swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
-        let reference = swiftObject.associationForKey(SampleKey) as? SampleSwiftClass
+        swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        let reference = swiftObject.associationForKey(SampleKey1) as? SampleSwiftClass
         XCTAssertEqual(reference, association, "The Swift object should have an associated Swift object")
         XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
-        swiftObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        swiftObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            swiftObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The Swift object should have an associated Swift struct"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The Swift object should have an associated Swift enum"
         )
@@ -600,25 +602,25 @@ extension ObjectAssociationTests {
 
     func testNonAtomicCopyObjectiveCAssociationWithObjectiveCTypes() {
         let association = SampleObjectiveCClass(42)
-        objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
-        let reference = objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCClass
+        objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        let reference = objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCClass
         XCTAssertEqual(reference, association, "The Objective-C object should have an associated Objective-C object")
         XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
-        objCObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY)
+        objCObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                objCObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                objCObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The Objective-C object should have an associated Objective-C struct"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        objCObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The Objective-C object should have an associated Objective-C enum"
         )
@@ -627,23 +629,23 @@ extension ObjectAssociationTests {
 
     func testNonAtomicCopyObjectiveCAssociationWithSwiftTypes() {
         let association = SampleSwiftClass(42)
-        objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
-        let reference = objCObject.associationForKey(SampleKey) as? SampleSwiftClass
+        objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        let reference = objCObject.associationForKey(SampleKey1) as? SampleSwiftClass
         XCTAssertEqual(reference, association, "The Objective-C object should have an associated Swift object")
         XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
-        objCObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        objCObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            objCObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The Objective-C object should have an associated Swift struct"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        objCObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The Objective-C object should have an associated Swift enum"
         )
@@ -652,25 +654,25 @@ extension ObjectAssociationTests {
 
     func testNonAtomicCopySwiftAssociationWithObjectiveCTypes() {
         let association = SampleObjectiveCClass(42)
-        swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
-        let reference = objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCClass
+        swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        let reference = objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass
         XCTAssertEqual(reference, association, "The Swift object should have an associated Objective-C object")
         XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
-        swiftObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        swiftObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                swiftObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                swiftObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The Swift object should have an associated Objective-C struct"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        swiftObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The Swift object should have an associated Objective-C enum"
         )
@@ -679,23 +681,23 @@ extension ObjectAssociationTests {
 
     func testNonAtomicCopySwiftAssociationWithSwiftTypes() {
         let association = SampleSwiftClass(42)
-        swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
-        let reference = swiftObject.associationForKey(SampleKey) as? SampleSwiftClass
+        swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        let reference = swiftObject.associationForKey(SampleKey1) as? SampleSwiftClass
         XCTAssertEqual(reference, association, "The Swift object should have an associated Swift object")
         XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
-        swiftObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        swiftObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            swiftObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The Swift object should have an associated Swift struct"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The Swift object should have an associated Swift enum"
         )
@@ -711,9 +713,9 @@ extension ObjectAssociationTests {
     func testDefaultPolicyObjectiveCAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             XCTAssertEqual(
-                objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCClass,
+                objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCClass,
                 association,
                 "The Objective-C object should have an associated Objective-C object"
             )
@@ -724,19 +726,19 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The default policy should be non-atomic retain")
 
-        objCObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                objCObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                objCObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The default policy should be non-atomic retain"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The default policy should be non-atomic retain"
         )
@@ -746,9 +748,9 @@ extension ObjectAssociationTests {
     func testDefaultPolicyObjectiveCAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            objCObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             XCTAssertEqual(
-                objCObject.associationForKey(SampleKey) as? SampleSwiftClass,
+                objCObject.associationForKey(SampleKey1) as? SampleSwiftClass,
                 association,
                 "The Objective-C object should have an associated Swift object"
             )
@@ -759,17 +761,17 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The default policy should be non-atomic retain")
 
-        objCObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objCObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            objCObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The default policy should be non-atomic retain"
         )
         //  TODO: test atomicity
 
-        objCObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(objCObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(objCObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The default policy should be non-atomic retain"
         )
@@ -779,9 +781,9 @@ extension ObjectAssociationTests {
     func testDefaultPolicySwiftAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             XCTAssertEqual(
-                objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCClass,
+                objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass,
                 association,
                 "The Swift object should have an associated Objective-C object"
             )
@@ -792,19 +794,19 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The default policy should be non-atomic retain")
 
-        swiftObject.associate(objCStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
-                swiftObject.associationForKey(SampleKey) as! SampleObjectiveCStructure,
+                swiftObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
                 objCStructAssociation
             ),
             "The default policy should be non-atomic retain"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(objCEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleObjectiveCEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
             "The default policy should be non-atomic retain"
         )
@@ -814,9 +816,9 @@ extension ObjectAssociationTests {
     func testDefaultPolicySwiftAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            swiftObject.associate(association, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             XCTAssertEqual(
-                swiftObject.associationForKey(SampleKey) as? SampleSwiftClass,
+                swiftObject.associationForKey(SampleKey1) as? SampleSwiftClass,
                 association,
                 "The Swift object should have an associated Swift object"
             )
@@ -827,21 +829,147 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The default policy should be non-atomic retain")
 
-        swiftObject.associate(swiftStructAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            swiftObject.associationForKey(SampleKey) as? SampleSwiftStructure,
+            swiftObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
             "The default policy should be non-atomic retain"
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         XCTAssertEqual(
-            objc_getAssociatedObject(swiftObject, SampleKey) as? SampleSwiftEnumeration,
+            objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
             "The default policy should be non-atomic retain"
         )
         //  TODO: test atomicity
     }
 
+}
+
+
+/// MARK: - Removing individual associations
+
+extension ObjectAssociationTests {
+
+    func testRemovingObjectiveCAssociationsWithObjectiveCTypes() {
+        let objectAssociation = SampleObjectiveCClass(42)
+        objc_setAssociatedObject(objCObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objCObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+
+        objc_setAssociatedObject(objCObject, SampleKey1, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objCObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+
+        objc_setAssociatedObject(objCObject, SampleKey1, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objCObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+    }
+
+    func testRemovingObjectiveCAssociationsWithSwiftTypes() {
+        let objectAssociation = SampleSwiftClass(42)
+        objc_setAssociatedObject(objCObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objCObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+
+        objc_setAssociatedObject(objCObject, SampleKey1, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objCObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+
+        objc_setAssociatedObject(objCObject, SampleKey1, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objCObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+    }
+
+    func testRemovingSwiftAssociationsWithObjectiveCTypes() {
+        let objectAssociation = SampleObjectiveCClass(42)
+        objc_setAssociatedObject(swiftObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+
+        objc_setAssociatedObject(swiftObject, SampleKey1, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+
+        objc_setAssociatedObject(swiftObject, SampleKey1, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+    }
+
+    func testRemovingSwiftAssociationsWithSwiftTypes() {
+        let objectAssociation = SampleSwiftClass(42)
+        objc_setAssociatedObject(swiftObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+
+        objc_setAssociatedObject(swiftObject, SampleKey1, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+
+        objc_setAssociatedObject(swiftObject, SampleKey1, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+        swiftObject.removeAssociationForKey(SampleKey1)
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+    }
+
+}
+
+
+/// MARK: - Removing individual associations
+
+extension ObjectAssociationTests {
+
+    func testRemovingAllObjectiveCAssociationsWithObjectiveCTypes() {
+        let objectAssociation = SampleObjectiveCClass(42)
+        objc_setAssociatedObject(objCObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey2, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey3, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+
+        objCObject.removeAllAssociations()
+
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey2), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey3), "All associations should have been cleared")
+    }
+
+    func testRemovingAllObjectiveCAssociationsWithSwiftTypes() {
+        let objectAssociation = SampleSwiftClass(42)
+        objc_setAssociatedObject(objCObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey2, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(objCObject, SampleKey3, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+
+        objCObject.removeAllAssociations()
+
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey2), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey3), "All associations should have been cleared")
+    }
+
+    func testRemovingAllSwiftAssociationsWithObjectiveCTypes() {
+        let objectAssociation = SampleObjectiveCClass(42)
+        objc_setAssociatedObject(swiftObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey2, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey3, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+
+        swiftObject.removeAllAssociations()
+
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey2), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey3), "All associations should have been cleared")
+    }
+
+    func testRemovingAllSwiftAssociationsWithSwiftTypes() {
+        let objectAssociation = SampleSwiftClass(42)
+        objc_setAssociatedObject(swiftObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey2, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(swiftObject, SampleKey3, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
+
+        swiftObject.removeAllAssociations()
+
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey2), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey3), "All associations should have been cleared")
+    }
+    
 }
