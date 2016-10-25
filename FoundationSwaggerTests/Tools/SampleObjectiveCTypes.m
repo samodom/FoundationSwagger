@@ -49,8 +49,17 @@
     return 14;
 }
 
++ (NSUInteger)otherClassMethod:(NSString *)input {
+    return 42;
+}
+
+
 - (NSUInteger)sampleInstanceMethod:(NSString *)input {
     return 14;
+}
+
+- (NSUInteger)otherInstanceMethod:(NSString *)input {
+    return 42;
 }
 
 @end

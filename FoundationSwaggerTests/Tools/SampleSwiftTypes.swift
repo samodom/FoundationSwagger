@@ -53,12 +53,22 @@ internal class SampleSwiftClass: Equatable, NSCopying, ObjectAssociating {
         return SampleSwiftClass(value)
     }
 
+
+    @objc internal class func sampleClassMethod(_ input: String) -> Int {
+        return 14
+    }
+
+    @objc internal class func otherClassMethod(_ input: String) -> Int {
+        return 42
+    }
+
+
     @objc internal func sampleInstanceMethod(_ input: String) -> Int {
         return 14
     }
 
-    @objc internal class func sampleClassMethod(_ input: String) -> Int {
-        return 14
+    @objc internal func otherInstanceMethod(_ input: String) -> Int {
+        return 42
     }
 
 }

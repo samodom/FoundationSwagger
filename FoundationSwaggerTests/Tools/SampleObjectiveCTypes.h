@@ -38,6 +38,9 @@ typedef enum SampleObjectiveCEnumeration: NSUInteger {
 - (_Nonnull instancetype)init:(NSUInteger)value;
 
 + (NSUInteger)sampleClassMethod:(nullable NSString *)input;
++ (NSUInteger)otherClassMethod:(nullable NSString *)input;
+
 - (NSUInteger)sampleInstanceMethod:(nullable NSString *)input;
+- (NSUInteger)otherInstanceMethod:(nullable NSString *)input;
 
 @end
