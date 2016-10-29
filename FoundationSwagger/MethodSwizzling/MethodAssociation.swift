@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct MethodAssociation {
+public class MethodAssociation {
 
     public enum MethodType {
         case `class`, instance
@@ -18,6 +18,8 @@ public struct MethodAssociation {
     public let methodType: MethodType
     public let originalSelector: Selector
     public let alternateSelector: Selector
+
+    var isSwizzled = false
 
     public init(
         forClass `class`: AnyClass,
@@ -31,4 +33,5 @@ public struct MethodAssociation {
         self.originalSelector = originalSelector
         self.alternateSelector = alternateSelector
     }
+
 }

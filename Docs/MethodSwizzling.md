@@ -6,12 +6,12 @@ Method Swizzling
 In order to swap a pair of method implementations and better keep track of their correspondence, a method-swizzling record type has been created with a simple inner type for method types:
 
 ```swift
-struct MethodAssociation {
+class MethodAssociation {
 	enum MethodType {
 		case instance, `class`
 	}
 
-	let `class`: AnyClass
+	let owningClass: AnyClass
 	let methodType: MethodType
 	let originalSelector: Selector
 	let alternateSelector: Selector
@@ -39,9 +39,4 @@ association.useAlternateMethod()
 
 /// To restore the original method implementation:
 association.useOriginalMethod()
-
-/// Or, to automatically gate the replacement and restoration in a single closure:
-association.useAlternateMethod() {
-	/// your code here
-}
 ```

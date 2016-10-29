@@ -8,6 +8,7 @@
 
 import XCTest
 import FoundationSwagger
+import SampleTypes
 
 class MethodAssociationTests: XCTestCase {
 
@@ -15,8 +16,7 @@ class MethodAssociationTests: XCTestCase {
     var alternateSelector: Selector!
 
     func testAllMethodTypes() {
-        let types = [MethodAssociation.MethodType.class, .instance]
-        types.forEach {
+        [MethodAssociation.MethodType.class, .instance].forEach {
             switch $0 {
             case .class, .instance:
                 break
@@ -25,8 +25,8 @@ class MethodAssociationTests: XCTestCase {
     }
 
     func testCreatingClassMethodAssociationForObjectiveCClass() {
-        originalSelector = #selector(SampleObjectiveCClass.sampleClassMethod(_:))
-        alternateSelector = #selector(SampleObjectiveCClass.otherClassMethod(_:))
+        originalSelector = #selector(SampleObjectiveCClass.sampleClassMethod)
+        alternateSelector = #selector(SampleObjectiveCClass.otherClassMethod)
 
         let association = MethodAssociation(
             forClass: SampleObjectiveCClass.self,
@@ -46,8 +46,8 @@ class MethodAssociationTests: XCTestCase {
     }
 
     func testCreatingClassMethodAssociationForSwiftClass() {
-        originalSelector = #selector(SampleSwiftClass.sampleClassMethod(_:))
-        alternateSelector = #selector(SampleSwiftClass.otherClassMethod(_:))
+        originalSelector = #selector(SampleSwiftClass.sampleClassMethod)
+        alternateSelector = #selector(SampleSwiftClass.otherClassMethod)
 
         let association = MethodAssociation(
             forClass: SampleSwiftClass.self,
@@ -67,8 +67,8 @@ class MethodAssociationTests: XCTestCase {
     }
 
     func testCreatingInstanceMethodAssociationForObjectiveCClass() {
-        originalSelector = #selector(SampleObjectiveCClass.sampleInstanceMethod(_:))
-        alternateSelector = #selector(SampleObjectiveCClass.otherInstanceMethod(_:))
+        originalSelector = #selector(SampleObjectiveCClass.sampleInstanceMethod)
+        alternateSelector = #selector(SampleObjectiveCClass.otherInstanceMethod)
 
         let association = MethodAssociation(
             forClass: SampleObjectiveCClass.self,
@@ -88,8 +88,8 @@ class MethodAssociationTests: XCTestCase {
     }
 
     func testCreatingInstanceMethodAssociationForSwiftClass() {
-        originalSelector = #selector(SampleSwiftClass.sampleInstanceMethod(_:))
-        alternateSelector = #selector(SampleSwiftClass.otherInstanceMethod(_:))
+        originalSelector = #selector(SampleSwiftClass.sampleInstanceMethod)
+        alternateSelector = #selector(SampleSwiftClass.otherInstanceMethod)
 
         let association = MethodAssociation(
             forClass: SampleSwiftClass.self,

@@ -15,17 +15,21 @@
 		0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCBFE1AACB54800484777 /* DateOperators.swift */; };
 		0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCC031AACDDA000484777 /* DateRangeTests.swift */; };
 		0A5BCC061AACDDBA00484777 /* DateRanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCC051AACDDBA00484777 /* DateRanges.swift */; };
+		0A7DC47B1DBED0E100BCFC56 /* MethodSwizzlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */; };
 		0A7DC47F1DBED91A00BCFC56 /* MethodAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC47E1DBED91A00BCFC56 /* MethodAssociationTests.swift */; };
 		0A7DC4811DBEDAA200BCFC56 /* MethodAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC4801DBEDAA200BCFC56 /* MethodAssociation.swift */; };
+		0A7DC4831DBEE68300BCFC56 /* MethodSwizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC4821DBEE68300BCFC56 /* MethodSwizzling.swift */; };
 		0A90C86E1A86D2E70047FE16 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */; };
 		0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */; };
 		0AB47CBE1DC537DE00B5C86A /* SampleType.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB47CBD1DC537DE00B5C86A /* SampleType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB6281DC3180700B50A55 /* CodeSource.swift */; };
 		0AEDD6A61DC52E3E005D042C /* SampleTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AEDD6A41DC52E3E005D042C /* SampleTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AEDD6AF1DC52F05005D042C /* SampleObjectiveCTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AEDD6AC1DC52F05005D042C /* SampleObjectiveCTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AEDD6B01DC52F05005D042C /* SampleObjectiveCTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEDD6AD1DC52F05005D042C /* SampleObjectiveCTypes.m */; };
 		0AEDD6B11DC52F05005D042C /* SampleSwiftTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEDD6AE1DC52F05005D042C /* SampleSwiftTypes.swift */; };
 		0AEDD6B21DC52F5B005D042C /* SampleTypes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEDD6A21DC52E3E005D042C /* SampleTypes.framework */; };
 		0AEDD6B31DC52F6C005D042C /* FoundationSwagger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3BB9BA19EB78010075B32A /* FoundationSwagger.framework */; };
+		0AEDD6B51DC52FE5005D042C /* MethodSwizzlingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEDD6B41DC52FE5005D042C /* MethodSwizzlingHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,11 +54,14 @@
 		0A5BCBFE1AACB54800484777 /* DateOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateOperators.swift; sourceTree = "<group>"; };
 		0A5BCC031AACDDA000484777 /* DateRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeTests.swift; sourceTree = "<group>"; };
 		0A5BCC051AACDDBA00484777 /* DateRanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRanges.swift; sourceTree = "<group>"; };
+		0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzlingTests.swift; sourceTree = "<group>"; };
 		0A7DC47E1DBED91A00BCFC56 /* MethodAssociationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodAssociationTests.swift; sourceTree = "<group>"; };
 		0A7DC4801DBEDAA200BCFC56 /* MethodAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodAssociation.swift; sourceTree = "<group>"; };
+		0A7DC4821DBEE68300BCFC56 /* MethodSwizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzling.swift; sourceTree = "<group>"; };
 		0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociation.swift; sourceTree = "<group>"; };
 		0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociationTests.swift; sourceTree = "<group>"; };
 		0AB47CBD1DC537DE00B5C86A /* SampleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleType.h; sourceTree = "<group>"; };
+		0ABFB6281DC3180700B50A55 /* CodeSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeSource.swift; sourceTree = "<group>"; };
 		0ABFD8841DAF28070029F590 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0AEDD6A21DC52E3E005D042C /* SampleTypes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SampleTypes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEDD6A41DC52E3E005D042C /* SampleTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleTypes.h; sourceTree = "<group>"; };
@@ -62,6 +69,7 @@
 		0AEDD6AC1DC52F05005D042C /* SampleObjectiveCTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleObjectiveCTypes.h; sourceTree = "<group>"; };
 		0AEDD6AD1DC52F05005D042C /* SampleObjectiveCTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleObjectiveCTypes.m; sourceTree = "<group>"; };
 		0AEDD6AE1DC52F05005D042C /* SampleSwiftTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSwiftTypes.swift; sourceTree = "<group>"; };
+		0AEDD6B41DC52FE5005D042C /* MethodSwizzlingHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzlingHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +175,7 @@
 				0A5BCBFB1AACB3B200484777 /* DateTests.swift */,
 				0A3784D01A100B1D0003C7F3 /* FileExtensionsTests.swift */,
 				0A7DC47E1DBED91A00BCFC56 /* MethodAssociationTests.swift */,
+				0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */,
 				0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */,
 			);
 			path = Tests;
@@ -185,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				0A7DC4801DBEDAA200BCFC56 /* MethodAssociation.swift */,
+				0A7DC4821DBEE68300BCFC56 /* MethodSwizzling.swift */,
 			);
 			path = MethodSwizzling;
 			sourceTree = "<group>";
@@ -208,6 +218,8 @@
 		0ACADA8A1DBC01B4001F548A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0ABFB6281DC3180700B50A55 /* CodeSource.swift */,
+				0AEDD6B41DC52FE5005D042C /* MethodSwizzlingHelpers.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -394,6 +406,7 @@
 				0A5BCC061AACDDBA00484777 /* DateRanges.swift in Sources */,
 				0A7DC4811DBEDAA200BCFC56 /* MethodAssociation.swift in Sources */,
 				0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */,
+				0A7DC4831DBEE68300BCFC56 /* MethodSwizzling.swift in Sources */,
 				0A3784D41A100D3A0003C7F3 /* FileExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,7 +416,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */,
+				0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */,
+				0A7DC47B1DBED0E100BCFC56 /* MethodSwizzlingTests.swift in Sources */,
 				0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */,
+				0AEDD6B51DC52FE5005D042C /* MethodSwizzlingHelpers.swift in Sources */,
 				0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */,
 				0A5BCBFC1AACB3B200484777 /* DateTests.swift in Sources */,
 				0A7DC47F1DBED91A00BCFC56 /* MethodAssociationTests.swift in Sources */,
