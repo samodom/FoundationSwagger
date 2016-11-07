@@ -1,8 +1,10 @@
 # swap files
 *~
+*.swp
 
 # Finder preview files
 .DS_Store
 
 # Xcode user data
-FoundationSwagger.xcodeproj/project.xcworkspace/xcuserdata/*
+**/xcuserdata/**
+*.xcbkptlist

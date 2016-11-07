@@ -8,6 +8,7 @@
 
 import XCTest
 import FoundationSwagger
+import SampleTypes
 
 fileprivate let SampleKey1 = UnsafeRawPointer("Sample key 1")
 fileprivate let SampleKey2 = UnsafeRawPointer("Sample key 2")

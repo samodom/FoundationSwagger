@@ -1,5 +1,5 @@
 //
-//  ObjectiveCAssociationTypes.h
+//  SampleObjectiveCTypes.h
 //  FoundationSwagger
 //
 //  Created by Sam Odom on 10/22/16.
@@ -7,6 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#import "SampleType.h"
+
+
+//  MARK: - Well-known return values
+
+FOUNDATION_EXPORT NSInteger const OriginalMethodReturnValue;
+FOUNDATION_EXPORT NSInteger const AlternateMethodReturnValue;
 
 
 //  MARK: - C Structure
@@ -25,16 +33,13 @@ typedef enum SampleObjectiveCEnumeration: NSUInteger {
     SampleObjectiveCEnumerationBeta = 42
 } SampleObjectiveCEnumeration;
 
-//BOOL SampleObjectiveCEnumerationsEqual(SampleObjectiveCEnumeration, SampleObjectiveCEnumeration);
-
 
 //  MARK: - Objective-C Class
 
-@interface SampleObjectiveCClass : NSObject
+@interface SampleObjectiveCClass: NSObject<SampleType>
 
-@property NSUInteger value;
+@property (readonly) NSInteger value;
 
-- (_Nonnull instancetype)init NS_UNAVAILABLE;
-- (_Nonnull instancetype)init:(NSUInteger)value;
+- (nonnull instancetype)init:(NSInteger)value;
 
 @end
