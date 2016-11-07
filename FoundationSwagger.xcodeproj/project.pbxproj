@@ -30,6 +30,7 @@
 		0AEDD6B21DC52F5B005D042C /* SampleTypes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEDD6A21DC52E3E005D042C /* SampleTypes.framework */; };
 		0AEDD6B31DC52F6C005D042C /* FoundationSwagger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3BB9BA19EB78010075B32A /* FoundationSwagger.framework */; };
 		0AEDD6B51DC52FE5005D042C /* MethodSwizzlingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEDD6B41DC52FE5005D042C /* MethodSwizzlingHelpers.swift */; };
+		0AF8C3DB1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8C3DA1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		0AEDD6AD1DC52F05005D042C /* SampleObjectiveCTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleObjectiveCTypes.m; sourceTree = "<group>"; };
 		0AEDD6AE1DC52F05005D042C /* SampleSwiftTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSwiftTypes.swift; sourceTree = "<group>"; };
 		0AEDD6B41DC52FE5005D042C /* MethodSwizzlingHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzlingHelpers.swift; sourceTree = "<group>"; };
+		0AF8C3DA1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzlingAssertions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 			children = (
 				0ABFB6281DC3180700B50A55 /* CodeSource.swift */,
 				0AEDD6B41DC52FE5005D042C /* MethodSwizzlingHelpers.swift */,
+				0AF8C3DA1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */,
+				0AF8C3DB1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift in Sources */,
 				0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */,
 				0A7DC47B1DBED0E100BCFC56 /* MethodSwizzlingTests.swift in Sources */,
 				0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */,

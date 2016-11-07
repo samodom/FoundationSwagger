@@ -29,13 +29,7 @@ class MethodSwizzlingTests: XCTestCase {
     //  MARK: - Objective-C class methods
 
     func testSwizzlingObjectiveCClassMethods() {
-        association = MethodAssociation(
-            forClass: SampleObjectiveCClass.self,
-            ofType: .class,
-            originalSelector: #selector(SampleObjectiveCClass.sampleClassMethod),
-            alternateSelector: #selector(SampleObjectiveCClass.otherClassMethod)
-        )
-
+        association = objectiveCClassMethodAssociation()
         loadMethodValues()
 
         //  Swizzled
@@ -56,13 +50,7 @@ class MethodSwizzlingTests: XCTestCase {
     }
 
     func testSwizzlingObjectiveCClassMethodsWithContext() {
-        association = MethodAssociation(
-            forClass: SampleObjectiveCClass.self,
-            ofType: .class,
-            originalSelector: #selector(SampleObjectiveCClass.sampleClassMethod),
-            alternateSelector: #selector(SampleObjectiveCClass.otherClassMethod)
-        )
-
+        association = objectiveCClassMethodAssociation()
         loadMethodValues()
 
         //  Swizzled
@@ -87,13 +75,7 @@ class MethodSwizzlingTests: XCTestCase {
     //  MARK: - Objective-C instance methods
 
     func testSwizzlingObjectiveCInstanceMethods() {
-        association = MethodAssociation(
-            forClass: SampleObjectiveCClass.self,
-            ofType: .instance,
-            originalSelector: #selector(SampleObjectiveCClass.sampleInstanceMethod),
-            alternateSelector: #selector(SampleObjectiveCClass.otherInstanceMethod)
-        )
-
+        association = objectiveCInstanceMethodAssociation()
         loadMethodValues()
 
         //  Swizzled
@@ -114,13 +96,7 @@ class MethodSwizzlingTests: XCTestCase {
     }
 
     func testSwizzlingObjectiveCInstanceMethodsWithContext() {
-        association = MethodAssociation(
-            forClass: SampleObjectiveCClass.self,
-            ofType: .instance,
-            originalSelector: #selector(SampleObjectiveCClass.sampleInstanceMethod),
-            alternateSelector: #selector(SampleObjectiveCClass.otherInstanceMethod)
-        )
-
+        association = objectiveCInstanceMethodAssociation()
         loadMethodValues()
 
         //  Swizzled
@@ -145,13 +121,7 @@ class MethodSwizzlingTests: XCTestCase {
     //  MARK: - Swift class methods
 
     func testSwizzlingSwiftClassMethods() {
-        association = MethodAssociation(
-            forClass: SampleSwiftClass.self,
-            ofType: .class,
-            originalSelector: #selector(SampleSwiftClass.sampleClassMethod),
-            alternateSelector: #selector(SampleSwiftClass.otherClassMethod)
-        )
-
+        association = swiftClassMethodAssociation()
         loadMethodValues()
 
         //  Swizzled
@@ -172,13 +142,7 @@ class MethodSwizzlingTests: XCTestCase {
     }
 
     func testSwizzlingSwiftClassMethodsWithContext() {
-        association = MethodAssociation(
-            forClass: SampleSwiftClass.self,
-            ofType: .class,
-            originalSelector: #selector(SampleSwiftClass.sampleClassMethod),
-            alternateSelector: #selector(SampleSwiftClass.otherClassMethod)
-        )
-
+        association = swiftClassMethodAssociation()
         loadMethodValues()
 
         //  Swizzled
@@ -203,13 +167,7 @@ class MethodSwizzlingTests: XCTestCase {
     //  MARK: - Swift instance methods
 
     func testSwizzlingSwiftInstanceMethods() {
-        association = MethodAssociation(
-            forClass: SampleSwiftClass.self,
-            ofType: .instance,
-            originalSelector: #selector(SampleSwiftClass.sampleInstanceMethod),
-            alternateSelector: #selector(SampleSwiftClass.otherInstanceMethod)
-        )
-
+        association = swiftInstanceMethodAssociation()
         loadMethodValues()
 
         //  Swizzled
@@ -230,13 +188,7 @@ class MethodSwizzlingTests: XCTestCase {
     }
 
     func testSwizzlingSwiftInstanceMethodsWithContext() {
-        association = MethodAssociation(
-            forClass: SampleSwiftClass.self,
-            ofType: .instance,
-            originalSelector: #selector(SampleSwiftClass.sampleInstanceMethod),
-            alternateSelector: #selector(SampleSwiftClass.otherInstanceMethod)
-        )
-
+        association = swiftInstanceMethodAssociation()
         loadMethodValues()
 
         //  Swizzled
@@ -261,7 +213,7 @@ class MethodSwizzlingTests: XCTestCase {
 }
 
 
-fileprivate extension MethodSwizzlingTests {
+extension MethodSwizzlingTests {
 
     func loadMethodValues() {
         switch association.owningClass.className() {
@@ -280,6 +232,42 @@ fileprivate extension MethodSwizzlingTests {
 
         alternateMethod = getMethod(ofOrigin: .alternate)
         alternateImplementation = method_getImplementation(alternateMethod)
+    }
+
+    func objectiveCClassMethodAssociation() -> MethodAssociation {
+        return MethodAssociation(
+            forClass: SampleObjectiveCClass.self,
+            ofType: .class,
+            originalSelector: #selector(SampleObjectiveCClass.sampleClassMethod),
+            alternateSelector: #selector(SampleObjectiveCClass.otherClassMethod)
+        )
+    }
+
+    func objectiveCInstanceMethodAssociation() -> MethodAssociation {
+        return MethodAssociation(
+            forClass: SampleObjectiveCClass.self,
+            ofType: .instance,
+            originalSelector: #selector(SampleObjectiveCClass.sampleInstanceMethod),
+            alternateSelector: #selector(SampleObjectiveCClass.otherInstanceMethod)
+        )
+    }
+
+    func swiftClassMethodAssociation() -> MethodAssociation {
+        return MethodAssociation(
+            forClass: SampleSwiftClass.self,
+            ofType: .class,
+            originalSelector: #selector(SampleSwiftClass.sampleClassMethod),
+            alternateSelector: #selector(SampleSwiftClass.otherClassMethod)
+        )
+    }
+
+    func swiftInstanceMethodAssociation() -> MethodAssociation {
+        return MethodAssociation(
+            forClass: SampleSwiftClass.self,
+            ofType: .instance,
+            originalSelector: #selector(SampleSwiftClass.sampleInstanceMethod),
+            alternateSelector: #selector(SampleSwiftClass.otherInstanceMethod)
+        )
     }
 
 }
