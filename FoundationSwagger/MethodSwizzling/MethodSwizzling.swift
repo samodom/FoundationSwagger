@@ -6,16 +6,20 @@
 //  Copyright © 2016 Swagger Soft. All rights reserved.
 //
 
+
+public typealias NullaryVoidClosure = () -> Void
+
+
 public extension MethodAssociation {
 
-    public func useAlternateImplementation() {
-        guard !isSwizzled else { return}
+    public func useAlternateImplementation(_ trailingClosure: NullaryVoidClosure? = nil) {
+        guard !isSwizzled else { return }
 
         swapImplementations()
     }
 
-    public func useOriginalImplementation() {
-        guard isSwizzled else { return}
+    public func useOriginalImplementation(_ trailingClosure: NullaryVoidClosure? = nil) {
+        guard isSwizzled else { return }
 
         swapImplementations()
     }

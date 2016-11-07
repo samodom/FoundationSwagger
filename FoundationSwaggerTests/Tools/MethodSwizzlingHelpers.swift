@@ -10,34 +10,31 @@
 import SampleTypes
 
 
+fileprivate typealias SwizzlingMethod = (NullaryVoidClosure?) -> Void
+
+
 //  MARK: - High-level testing methods and setup
 
 extension MethodSwizzlingTests {
 
-    func validateMethodsAreSwizzled(inFile file: String = #file, atLine line: UInt = #line) {
+    func validateMethodsAreSwizzled(
+        inFile file: String = #file,
+        atLine line: UInt = #line
+        ) {
+
+        currentCodeSource = CodeSource(file: file, line: line)
         isTestingSwizzledImplementations = true
-        association.useAlternateImplementation()
-        validateMethods(codeSource: CodeSource(file: file, line: line))
+        validateMethods()
     }
 
-    func validateMethodsAreNotSwizzled(inFile file: String = #file, atLine line: UInt = #line) {
+    func validateMethodsAreNotSwizzled(
+        inFile file: String = #file,
+        atLine line: UInt = #line
+        ) {
+
+        currentCodeSource = CodeSource(file: file, line: line)
         isTestingSwizzledImplementations = false
-        association.useOriginalImplementation()
-        validateMethods(codeSource: CodeSource(file: file, line: line))
-    }
-
-    func validateMethodsAreNotSwizzledWhenAlreadySwizzled(inFile file: String = #file, atLine line: UInt = #line) {
-        isTestingSwizzledImplementations = true
-        association.useAlternateImplementation()
-        association.useAlternateImplementation()
-        validateMethods(codeSource: CodeSource(file: file, line: line))
-    }
-
-    func validateMethodsAreNotUnswizzledWhenAlreadyUnswizzled(inFile file: String = #file, atLine line: UInt = #line) {
-        isTestingSwizzledImplementations = false
-        association.useOriginalImplementation()
-        association.useOriginalImplementation()
-        validateMethods(codeSource: CodeSource(file: file, line: line))
+        validateMethods()
     }
 
     enum SelectorOrigin: String {
@@ -55,41 +52,39 @@ extension MethodSwizzlingTests {
 
 fileprivate extension MethodSwizzlingTests {
 
-    func validateMethods(codeSource: CodeSource) {
+    func validateMethods() {
         SelectorOrigin.all.forEach {
             selectorOriginUnderTest = $0
-            validateMethodIsValid(atSource: codeSource)
-            validateImplementationIsValid(atSource: codeSource)
-            validateSampleOutputMatches(atSource: codeSource)
-            validateAssociationSwizzleState(atSource: codeSource)
+            validateMethodIsValid()
+            validateImplementationIsValid()
+            validateSampleOutputMatches()
+            validateAssociationSwizzleState()
         }
     }
 
-    private func validateMethodIsValid(atSource source: CodeSource) {
-        let current = getMethod(ofOrigin: selectorOriginUnderTest)
-
-        if current != expectedMethod {
+    private func validateMethodIsValid() {
+        if getMethod(ofOrigin: selectorOriginUnderTest) != expectedMethod {
             recordFailure(
                 withDescription: "The \(selectorOriginUnderTest) method invalid",
-                inFile: source.file,
-                atLine: source.line,
+                inFile: currentCodeSource.file,
+                atLine: currentCodeSource.line,
                 expected: true
             )
         }
     }
 
-    private func validateImplementationIsValid(atSource source: CodeSource) {
+    private func validateImplementationIsValid() {
         if currentImplementation != expectedImplementation {
             recordFailure(
                 withDescription: mismatchedImplementationFailureKey,
-                inFile: source.file,
-                atLine: source.line,
+                inFile: currentCodeSource.file,
+                atLine: currentCodeSource.line,
                 expected: true
             )
         }
     }
 
-    private func validateSampleOutputMatches(atSource source: CodeSource) {
+    private func validateSampleOutputMatches() {
         let currentOutput = executeSampleMethod()
         let expectedOutput = expectedOutputForSampleMethod
 
@@ -97,28 +92,28 @@ fileprivate extension MethodSwizzlingTests {
             let errorMessage = "The output value using the \(selectorOriginUnderTest) selector does not match the expected value: \(currentOutput) != \(expectedOutput)"
             recordFailure(
                 withDescription: errorMessage,
-                inFile: source.file,
-                atLine: source.line,
+                inFile: currentCodeSource.file,
+                atLine: currentCodeSource.line,
                 expected: true
             )
         }
     }
 
-    private func validateAssociationSwizzleState(atSource source: CodeSource) {
+    private func validateAssociationSwizzleState() {
         if association.isSwizzled != isTestingSwizzledImplementations {
             let errorMessage = "The association should \(isTestingSwizzledImplementations ? "" : "not ")be flagged as being swizzled"
             recordFailure(
                 withDescription: errorMessage,
-                inFile: source.file,
-                atLine: source.line,
+                inFile: currentCodeSource.file,
+                atLine: currentCodeSource.line,
                 expected: true
             )
         }
     }
 
     private var mismatchedImplementationFailureKey: String {
-        let expected = isTestingSwizzledImplementations ? !selectorOriginUnderTest : selectorOriginUnderTest
-        return "The \(selectorOriginUnderTest) selector should now be associated with the \(expected) method implementation"
+        let expectedOrigin = isTestingSwizzledImplementations ? !selectorOriginUnderTest : selectorOriginUnderTest
+        return "The \(selectorOriginUnderTest) selector should now be associated with the \(expectedOrigin) method implementation"
     }
 
 }

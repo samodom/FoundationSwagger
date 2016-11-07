@@ -39,4 +39,9 @@ association.useAlternateMethod()
 
 /// To restore the original method implementation:
 association.useOriginalMethod()
+
+/// Or, to automatically gate the replacement and restoration in a single closure:
+association.useAlternateMethod() {
+	/// your code here
+}
 ```
