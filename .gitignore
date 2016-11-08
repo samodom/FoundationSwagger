@@ -1,0 +1,10 @@
+# swap files
+*~
+*.swp
+
+# Finder preview files
+.DS_Store
+
+# Xcode user data
+**/xcuserdata/**
+*.xcbkptlist
