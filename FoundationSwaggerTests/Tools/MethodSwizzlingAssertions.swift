@@ -42,6 +42,12 @@ extension MethodSwizzlingTests {
         }
     }
 
+
+    var mismatchedImplementationFailureKey: String {
+        let expectedOrigin = isTestingSwizzledImplementations ? !selectorOriginUnderTest : selectorOriginUnderTest
+        return "The \(selectorOriginUnderTest) selector should now be associated with the \(expectedOrigin) method implementation"
+    }
+
 }
 
 
@@ -57,8 +63,6 @@ fileprivate extension MethodSwizzlingTests {
             validateSampleOutputMatches()
             validateAssociationSwizzleState()
         }
-
-        validateMethodAssociationStoredWithClass()
     }
 
     private func validateMethodIsValid() {
