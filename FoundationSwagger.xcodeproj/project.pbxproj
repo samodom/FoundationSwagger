@@ -10,7 +10,6 @@
 		0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3784D01A100B1D0003C7F3 /* FileExtensionsTests.swift */; };
 		0A3784D41A100D3A0003C7F3 /* FileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3784D31A100D3A0003C7F3 /* FileExtensions.swift */; };
 		0A3BB9C019EB78010075B32A /* FoundationSwagger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A3BB9C619EB78010075B32A /* FoundationSwagger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3BB9BA19EB78010075B32A /* FoundationSwagger.framework */; };
 		0A5BCBFC1AACB3B200484777 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCBFB1AACB3B200484777 /* DateTests.swift */; };
 		0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCBFE1AACB54800484777 /* DateOperators.swift */; };
 		0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCC031AACDDA000484777 /* DateRangeTests.swift */; };
@@ -27,7 +26,6 @@
 		0AEDD6AF1DC52F05005D042C /* SampleObjectiveCTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AEDD6AC1DC52F05005D042C /* SampleObjectiveCTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AEDD6B01DC52F05005D042C /* SampleObjectiveCTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEDD6AD1DC52F05005D042C /* SampleObjectiveCTypes.m */; };
 		0AEDD6B11DC52F05005D042C /* SampleSwiftTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEDD6AE1DC52F05005D042C /* SampleSwiftTypes.swift */; };
-		0AEDD6B21DC52F5B005D042C /* SampleTypes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEDD6A21DC52E3E005D042C /* SampleTypes.framework */; };
 		0AEDD6B31DC52F6C005D042C /* FoundationSwagger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3BB9BA19EB78010075B32A /* FoundationSwagger.framework */; };
 		0AEDD6B51DC52FE5005D042C /* MethodSwizzlingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEDD6B41DC52FE5005D042C /* MethodSwizzlingHelpers.swift */; };
 		0AF8C3DB1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8C3DA1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift */; };
@@ -40,6 +38,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0A3BB9B919EB78010075B32A;
 			remoteInfo = FoundationSwagger;
+		};
+		0A9027E51DDC277F00E5ED3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A3BB9B119EB78010075B32A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0AEDD6A11DC52E3E005D042C;
+			remoteInfo = SampleTypes;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -86,8 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A3BB9C619EB78010075B32A /* FoundationSwagger.framework in Frameworks */,
-				0AEDD6B21DC52F5B005D042C /* SampleTypes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +312,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0A9027E61DDC277F00E5ED3A /* PBXTargetDependency */,
 				0A3BB9C819EB78010075B32A /* PBXTargetDependency */,
 			);
 			name = FoundationSwaggerTests;
@@ -448,6 +452,11 @@
 			target = 0A3BB9B919EB78010075B32A /* FoundationSwagger */;
 			targetProxy = 0A3BB9C719EB78010075B32A /* PBXContainerItemProxy */;
 		};
+		0A9027E61DDC277F00E5ED3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0AEDD6A11DC52E3E005D042C /* SampleTypes */;
+			targetProxy = 0A9027E51DDC277F00E5ED3A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -494,7 +503,9 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -536,7 +547,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -547,7 +560,6 @@
 		0A3BB9D119EB78010075B32A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -560,14 +572,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samodom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		0A3BB9D219EB78010075B32A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -580,7 +590,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samodom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -602,7 +611,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samodom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -619,7 +627,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samodom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -648,7 +655,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -676,7 +682,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
