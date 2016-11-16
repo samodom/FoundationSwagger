@@ -12,6 +12,9 @@ public typealias NullaryVoidClosure = () -> Void
 
 public extension MethodAssociation {
 
+    /// Swizzles the original and alternate methods of the association so that the
+    /// alternate method is used when the original selector is called.
+    /// - parameter context: Closure to execute while the alternate method implementation is being used.
     public func useAlternateImplementation(context: NullaryVoidClosure? = nil) {
         guard !isSwizzled else { return }
 
@@ -19,6 +22,9 @@ public extension MethodAssociation {
         context?()
     }
 
+    /// Swizzles the original and alternate methods of the association so that the
+    /// original method is used when the original selector is called.
+    /// - parameter context: Closure to execute while the original method implementation is being used.
     public func useOriginalImplementation(context: NullaryVoidClosure? = nil) {
         guard isSwizzled else { return }
 
