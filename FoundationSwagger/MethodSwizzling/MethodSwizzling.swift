@@ -12,16 +12,18 @@ public typealias NullaryVoidClosure = () -> Void
 
 public extension MethodAssociation {
 
-    public func useAlternateImplementation(_ trailingClosure: NullaryVoidClosure? = nil) {
+    public func useAlternateImplementation(context: NullaryVoidClosure? = nil) {
         guard !isSwizzled else { return }
 
         swapImplementations()
+        context?()
     }
 
-    public func useOriginalImplementation(_ trailingClosure: NullaryVoidClosure? = nil) {
+    public func useOriginalImplementation(context: NullaryVoidClosure? = nil) {
         guard isSwizzled else { return }
 
         swapImplementations()
+        context?()
     }
 
     private func swapImplementations() {
