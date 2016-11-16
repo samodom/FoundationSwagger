@@ -26,6 +26,9 @@ class MethodSwizzlingTests: XCTestCase {
     var selectorOriginUnderTest = SelectorOrigin.original
     var currentCodeSource: CodeSource!
 
+    var executedContext = false
+
+
     //  MARK: - Objective-C class methods
 
     func testSwizzlingObjectiveCClassMethods() {
@@ -60,7 +63,10 @@ class MethodSwizzlingTests: XCTestCase {
             //  Shouldn't swizzle when swizzled
             self.association.useAlternateImplementation()
             self.validateMethodsAreSwizzled()
+            self.executedContext = true
         }
+        XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        executedContext = false
 
         //  Unswizzled
         association.useOriginalImplementation() {
@@ -69,7 +75,9 @@ class MethodSwizzlingTests: XCTestCase {
             //  Shouldn't unswizzle when unswizzled
             self.association.useOriginalImplementation()
             self.validateMethodsAreNotSwizzled()
+            self.executedContext = true
         }
+        XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
     }
 
     //  MARK: - Objective-C instance methods
@@ -106,7 +114,10 @@ class MethodSwizzlingTests: XCTestCase {
             //  Shouldn't swizzle when swizzled
             self.association.useAlternateImplementation()
             self.validateMethodsAreSwizzled()
+            self.executedContext = true
         }
+        XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        executedContext = false
 
         //  Unswizzled
         association.useOriginalImplementation() {
@@ -115,7 +126,9 @@ class MethodSwizzlingTests: XCTestCase {
             //  Shouldn't unswizzle when unswizzled
             self.association.useOriginalImplementation()
             self.validateMethodsAreNotSwizzled()
+            self.executedContext = true
         }
+        XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
     }
 
     //  MARK: - Swift class methods
@@ -152,7 +165,10 @@ class MethodSwizzlingTests: XCTestCase {
             //  Shouldn't swizzle when swizzled
             self.association.useAlternateImplementation()
             self.validateMethodsAreSwizzled()
+            self.executedContext = true
         }
+        XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        executedContext = false
 
         //  Unswizzled
         association.useOriginalImplementation() {
@@ -161,7 +177,9 @@ class MethodSwizzlingTests: XCTestCase {
             //  Shouldn't unswizzle when unswizzled
             self.association.useOriginalImplementation()
             self.validateMethodsAreNotSwizzled()
+            self.executedContext = true
         }
+        XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
     }
 
     //  MARK: - Swift instance methods
@@ -198,7 +216,10 @@ class MethodSwizzlingTests: XCTestCase {
             //  Shouldn't swizzle when swizzled
             self.association.useAlternateImplementation()
             self.validateMethodsAreSwizzled()
+            self.executedContext = true
         }
+        XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        executedContext = false
 
         //  Unswizzled
         association.useOriginalImplementation() {
@@ -207,7 +228,9 @@ class MethodSwizzlingTests: XCTestCase {
             //  Shouldn't unswizzle when unswizzled
             self.association.useOriginalImplementation()
             self.validateMethodsAreNotSwizzled()
+            self.executedContext = true
         }
+        XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
     }
 
 }
