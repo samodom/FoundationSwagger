@@ -20,7 +20,7 @@ extension ObjectAssociating {
     public func associate(
         _ value: Any,
         withKey key: UnsafeRawPointer,
-        usingPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_ASSIGN
+        usingPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN
         ) {
 
         objc_setAssociatedObject(self, key, value, policy)

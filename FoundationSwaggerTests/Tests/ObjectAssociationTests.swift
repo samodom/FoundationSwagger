@@ -714,7 +714,7 @@ extension ObjectAssociationTests {
     func testDefaultPolicyObjectiveCAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objCObject.associate(association, withKey: SampleKey1)
             XCTAssertEqual(
                 objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCClass,
                 association,
@@ -727,7 +727,7 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The default policy should be non-atomic retain")
 
-        objCObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(objCStructAssociation, withKey: SampleKey1)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
                 objCObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
@@ -737,7 +737,7 @@ extension ObjectAssociationTests {
         )
         //  TODO: test atomicity
 
-        objCObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(objCEnumAssociation, withKey: SampleKey1)
         XCTAssertEqual(
             objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
@@ -749,7 +749,7 @@ extension ObjectAssociationTests {
     func testDefaultPolicyObjectiveCAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            objCObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objCObject.associate(association, withKey: SampleKey1)
             XCTAssertEqual(
                 objCObject.associationForKey(SampleKey1) as? SampleSwiftClass,
                 association,
@@ -762,7 +762,7 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The default policy should be non-atomic retain")
 
-        objCObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(swiftStructAssociation, withKey: SampleKey1)
         XCTAssertEqual(
             objCObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
@@ -770,7 +770,7 @@ extension ObjectAssociationTests {
         )
         //  TODO: test atomicity
 
-        objCObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objCObject.associate(swiftEnumAssociation, withKey: SampleKey1)
         XCTAssertEqual(
             objc_getAssociatedObject(objCObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
@@ -782,7 +782,7 @@ extension ObjectAssociationTests {
     func testDefaultPolicySwiftAssociationWithObjectiveCTypes() {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
-            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            swiftObject.associate(association, withKey: SampleKey1)
             XCTAssertEqual(
                 objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass,
                 association,
@@ -795,7 +795,7 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The default policy should be non-atomic retain")
 
-        swiftObject.associate(objCStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(objCStructAssociation, withKey: SampleKey1)
         XCTAssertTrue(
             SampleObjectiveCStructuresEqual(
                 swiftObject.associationForKey(SampleKey1) as! SampleObjectiveCStructure,
@@ -805,7 +805,7 @@ extension ObjectAssociationTests {
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(objCEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(objCEnumAssociation, withKey: SampleKey1)
         XCTAssertEqual(
             objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCEnumeration,
             objCEnumAssociation,
@@ -817,7 +817,7 @@ extension ObjectAssociationTests {
     func testDefaultPolicySwiftAssociationWithSwiftTypes() {
         autoreleasepool {
             let association = SampleSwiftClass(42)
-            swiftObject.associate(association, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            swiftObject.associate(association, withKey: SampleKey1)
             XCTAssertEqual(
                 swiftObject.associationForKey(SampleKey1) as? SampleSwiftClass,
                 association,
@@ -830,7 +830,7 @@ extension ObjectAssociationTests {
 
         XCTAssertNotNil(weakReference, "The default policy should be non-atomic retain")
 
-        swiftObject.associate(swiftStructAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(swiftStructAssociation, withKey: SampleKey1)
         XCTAssertEqual(
             swiftObject.associationForKey(SampleKey1) as? SampleSwiftStructure,
             swiftStructAssociation,
@@ -838,7 +838,7 @@ extension ObjectAssociationTests {
         )
         //  TODO: test atomicity
 
-        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        swiftObject.associate(swiftEnumAssociation, withKey: SampleKey1)
         XCTAssertEqual(
             objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleSwiftEnumeration,
             swiftEnumAssociation,
