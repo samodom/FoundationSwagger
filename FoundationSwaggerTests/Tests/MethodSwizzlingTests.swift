@@ -28,12 +28,17 @@ class MethodSwizzlingTests: XCTestCase {
 
     var executedContext = false
 
+    override func tearDown() {
+        association.useOriginalImplementation()
+
+        super.tearDown()
+    }
+
 
     //  MARK: - Objective-C class methods
 
     func testSwizzlingObjectiveCClassMethods() {
-        association = objectiveCClassMethodAssociation()
-        loadMethodValues()
+        setUpAssociation(classType: .objectiveC, methodType: .`class`)
 
         //  Swizzled
         association.useAlternateImplementation()
@@ -53,38 +58,37 @@ class MethodSwizzlingTests: XCTestCase {
     }
 
     func testSwizzlingObjectiveCClassMethodsWithContext() {
-        association = objectiveCClassMethodAssociation()
-        loadMethodValues()
-
         //  Swizzled
-        association.useAlternateImplementation() {
-            self.validateMethodsAreSwizzled()
+        setUpAssociation(classType: .objectiveC, methodType: .`class`)
 
-            //  Shouldn't swizzle when swizzled
-            self.association.useAlternateImplementation()
-            self.validateMethodsAreSwizzled()
-            self.executedContext = true
+        association.withAlternateImplementation() {
+            executedContext = true
+            validateMethodsAreSwizzled()
         }
+
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        validateMethodsAreNotSwizzled()
         executedContext = false
 
         //  Unswizzled
-        association.useOriginalImplementation() {
-            self.validateMethodsAreNotSwizzled()
+        association.useAlternateImplementation()
 
-            //  Shouldn't unswizzle when unswizzled
-            self.association.useOriginalImplementation()
-            self.validateMethodsAreNotSwizzled()
-            self.executedContext = true
+        association.withOriginalImplementation() {
+            executedContext = true
+            validateMethodsAreNotSwizzled()
+
         }
+
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        validateMethodsAreSwizzled()
+
+        association.useOriginalImplementation()
     }
 
     //  MARK: - Objective-C instance methods
 
     func testSwizzlingObjectiveCInstanceMethods() {
-        association = objectiveCInstanceMethodAssociation()
-        loadMethodValues()
+        setUpAssociation(classType: .objectiveC, methodType: .instance)
 
         //  Swizzled
         association.useAlternateImplementation()
@@ -104,38 +108,38 @@ class MethodSwizzlingTests: XCTestCase {
     }
 
     func testSwizzlingObjectiveCInstanceMethodsWithContext() {
-        association = objectiveCInstanceMethodAssociation()
-        loadMethodValues()
-
         //  Swizzled
-        association.useAlternateImplementation() {
-            self.validateMethodsAreSwizzled()
+        setUpAssociation(classType: .objectiveC, methodType: .instance)
 
-            //  Shouldn't swizzle when swizzled
-            self.association.useAlternateImplementation()
-            self.validateMethodsAreSwizzled()
-            self.executedContext = true
+        association.withAlternateImplementation() {
+            executedContext = true
+            validateMethodsAreSwizzled()
         }
+
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        validateMethodsAreNotSwizzled()
         executedContext = false
 
         //  Unswizzled
-        association.useOriginalImplementation() {
-            self.validateMethodsAreNotSwizzled()
+        association.useAlternateImplementation()
 
-            //  Shouldn't unswizzle when unswizzled
-            self.association.useOriginalImplementation()
-            self.validateMethodsAreNotSwizzled()
-            self.executedContext = true
+        association.withOriginalImplementation() {
+            executedContext = true
+            validateMethodsAreNotSwizzled()
+
         }
+
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        validateMethodsAreSwizzled()
+        validateMethodsAreSwizzled()
+        
+        association.useOriginalImplementation()
     }
 
     //  MARK: - Swift class methods
 
     func testSwizzlingSwiftClassMethods() {
-        association = swiftClassMethodAssociation()
-        loadMethodValues()
+        setUpAssociation(classType: .swift, methodType: .`class`)
 
         //  Swizzled
         association.useAlternateImplementation()
@@ -155,38 +159,37 @@ class MethodSwizzlingTests: XCTestCase {
     }
 
     func testSwizzlingSwiftClassMethodsWithContext() {
-        association = swiftClassMethodAssociation()
-        loadMethodValues()
-
         //  Swizzled
-        association.useAlternateImplementation() {
-            self.validateMethodsAreSwizzled()
+        setUpAssociation(classType: .swift, methodType: .`class`)
 
-            //  Shouldn't swizzle when swizzled
-            self.association.useAlternateImplementation()
-            self.validateMethodsAreSwizzled()
-            self.executedContext = true
+        association.withAlternateImplementation() {
+            executedContext = true
+            validateMethodsAreSwizzled()
         }
+
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        validateMethodsAreNotSwizzled()
         executedContext = false
 
         //  Unswizzled
-        association.useOriginalImplementation() {
-            self.validateMethodsAreNotSwizzled()
+        association.useAlternateImplementation()
 
-            //  Shouldn't unswizzle when unswizzled
-            self.association.useOriginalImplementation()
-            self.validateMethodsAreNotSwizzled()
-            self.executedContext = true
+        association.withOriginalImplementation() {
+            executedContext = true
+            validateMethodsAreNotSwizzled()
+
         }
+
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        validateMethodsAreSwizzled()
+
+        association.useOriginalImplementation()
     }
 
     //  MARK: - Swift instance methods
 
     func testSwizzlingSwiftInstanceMethods() {
-        association = swiftInstanceMethodAssociation()
-        loadMethodValues()
+        setUpAssociation(classType: .swift, methodType: .instance)
 
         //  Swizzled
         association.useAlternateImplementation()
@@ -206,39 +209,87 @@ class MethodSwizzlingTests: XCTestCase {
     }
 
     func testSwizzlingSwiftInstanceMethodsWithContext() {
-        association = swiftInstanceMethodAssociation()
-        loadMethodValues()
-
         //  Swizzled
-        association.useAlternateImplementation() {
-            self.validateMethodsAreSwizzled()
+        setUpAssociation(classType: .swift, methodType: .instance)
 
-            //  Shouldn't swizzle when swizzled
-            self.association.useAlternateImplementation()
-            self.validateMethodsAreSwizzled()
-            self.executedContext = true
+        association.withAlternateImplementation() {
+            executedContext = true
+            validateMethodsAreSwizzled()
         }
+
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        validateMethodsAreNotSwizzled()
         executedContext = false
 
         //  Unswizzled
-        association.useOriginalImplementation() {
-            self.validateMethodsAreNotSwizzled()
+        association.useAlternateImplementation()
 
-            //  Shouldn't unswizzle when unswizzled
-            self.association.useOriginalImplementation()
-            self.validateMethodsAreNotSwizzled()
-            self.executedContext = true
+        association.withOriginalImplementation() {
+            executedContext = true
+            validateMethodsAreNotSwizzled()
         }
+
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
+        validateMethodsAreSwizzled()
+        
+        association.useOriginalImplementation()
+    }
+
+    //  MARK: - Mixed
+
+    func testMixedAndNestedSwizzlingSafety() {
+        setUpAssociation(classType: .objectiveC, methodType: .instance)
+
+        //  Nested unswizzled ignored
+        association.withOriginalImplementation {
+            XCTFail("This code should not execute")
+        }
+        validateMethodsAreNotSwizzled()
+
+        //  Nested swizzled ignored
+        association.useAlternateImplementation()
+        association.withAlternateImplementation() {
+            XCTFail("This code should not execute")
+        }
+        validateMethodsAreSwizzled()
+        association.useOriginalImplementation()
+
+        //  Nested unswizzled not ignored
+        association.useAlternateImplementation()
+        association.withOriginalImplementation {
+            validateMethodsAreNotSwizzled()
+        }
+        association.useOriginalImplementation()
     }
 
 }
 
 
-extension MethodSwizzlingTests {
+fileprivate extension MethodSwizzlingTests {
 
-    func loadMethodValues() {
+    fileprivate enum ClassType {
+        case objectiveC, swift
+    }
+
+    func setUpAssociation(classType: ClassType, methodType: MethodAssociation.MethodType) {
+        switch (classType, methodType) {
+        case (.objectiveC, .`class`):
+            association = objectiveCClassMethodAssociation()
+
+        case (.objectiveC, .instance):
+            association = objectiveCInstanceMethodAssociation()
+
+        case (.swift, .`class`):
+            association = swiftClassMethodAssociation()
+
+        case (.swift, .instance):
+            association = swiftInstanceMethodAssociation()
+        }
+
+        loadMethodValues()
+    }
+
+    private func loadMethodValues() {
         switch association.owningClass.className() {
         case SampleObjectiveCClass.className():
             sampleObject = SampleObjectiveCClass()
@@ -257,7 +308,7 @@ extension MethodSwizzlingTests {
         alternateImplementation = method_getImplementation(alternateMethod)
     }
 
-    func objectiveCClassMethodAssociation() -> MethodAssociation {
+    private func objectiveCClassMethodAssociation() -> MethodAssociation {
         return MethodAssociation(
             forClass: SampleObjectiveCClass.self,
             ofType: .class,
@@ -266,7 +317,7 @@ extension MethodSwizzlingTests {
         )
     }
 
-    func objectiveCInstanceMethodAssociation() -> MethodAssociation {
+    private func objectiveCInstanceMethodAssociation() -> MethodAssociation {
         return MethodAssociation(
             forClass: SampleObjectiveCClass.self,
             ofType: .instance,
@@ -275,7 +326,7 @@ extension MethodSwizzlingTests {
         )
     }
 
-    func swiftClassMethodAssociation() -> MethodAssociation {
+    private func swiftClassMethodAssociation() -> MethodAssociation {
         return MethodAssociation(
             forClass: SampleSwiftClass.self,
             ofType: .class,
@@ -284,7 +335,7 @@ extension MethodSwizzlingTests {
         )
     }
 
-    func swiftInstanceMethodAssociation() -> MethodAssociation {
+    private func swiftInstanceMethodAssociation() -> MethodAssociation {
         return MethodAssociation(
             forClass: SampleSwiftClass.self,
             ofType: .instance,

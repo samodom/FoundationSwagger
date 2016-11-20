@@ -14,25 +14,47 @@ public extension MethodAssociation {
 
     /// Swizzles the original and alternate methods of the association so that the
     /// alternate method is used when the original selector is called.
-    /// - parameter context: Closure to execute while the alternate method implementation is being used.
-    public func useAlternateImplementation(context: NullaryVoidClosure? = nil) {
+    public func useAlternateImplementation() {
         guard !isSwizzled else { return }
-
         swapImplementations()
-        context?()
     }
+
+
+    /// Swizzles the original and alternate methods of the association so that the
+    /// alternate method is used when the original selector is called.
+    /// - parameter context: Closure to execute while the alternate method implementation is being used.
+    public func withAlternateImplementation(context: NullaryVoidClosure) {
+        guard !isSwizzled else { return }
+        useAlternateImplementation()
+        context()
+        useOriginalImplementation()
+    }
+
+
+    /// Swizzles the original and alternate methods of the association so that the
+    /// original method is used when the original selector is called.
+    public func useOriginalImplementation() {
+        guard isSwizzled else { return }
+        swapImplementations()
+    }
+
 
     /// Swizzles the original and alternate methods of the association so that the
     /// original method is used when the original selector is called.
     /// - parameter context: Closure to execute while the original method implementation is being used.
-    public func useOriginalImplementation(context: NullaryVoidClosure? = nil) {
+    public func withOriginalImplementation(context: NullaryVoidClosure) {
         guard isSwizzled else { return }
-
-        swapImplementations()
-        context?()
+        useOriginalImplementation()
+        context()
+        useAlternateImplementation()
     }
 
-    private func swapImplementations() {
+}
+
+
+fileprivate extension MethodAssociation {
+
+    func swapImplementations() {
         method_exchangeImplementations(
             methodForSelector(originalSelector),
             methodForSelector(alternateSelector)
@@ -41,7 +63,7 @@ public extension MethodAssociation {
         isSwizzled = !isSwizzled
     }
 
-    private func methodForSelector(_ selector: Selector) -> Method {
+    func methodForSelector(_ selector: Selector) -> Method {
         switch methodType {
         case .class:
             return class_getClassMethod(owningClass, selector)
