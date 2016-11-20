@@ -1,6 +1,14 @@
 FoundationSwagger Changelog
 ===========================
 
+### v0.2.4 (November 19, 2016)
+ - Updated method swizzling interface
+
+
+### v0.2.3 (November 19, 2016)
+ - Correctly corrected default object association policy
+
+
 ### v0.2.2 (November 17, 2016)
  - Corrected default object association policy
 

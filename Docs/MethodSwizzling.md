@@ -21,27 +21,77 @@ class MethodAssociation {
 
 ## Swizzling
 
-In order to swizzle a method to use an alternate implementation, the idea of replacing an *original* method with a *replacement* method is codified in the API with two separate methods:
+In order to swizzle a method to use an alternate implementation, the idea of replacing an *original* method implementation with a *replacement* method implementation is codified in the API with four separate methods.
+
+
+### With top-level context
 
 ```swift
-let realSelector = #selector(UIViewController.viewWillAppear(_:))
-let mySelector = #selector(UIViewController.my_viewWillAppear(_:))
+/// To start using the alternate implementation
+/// in place of the original:
+association.useAlternateImplementation()
 
-let association = MethodAssociation(
-	forClass: UIViewController.self,
-	ofType: .instance,
-	originalSelector: realSelector,
-	alternateSelector: mySelector
-)
+/// Code executed here will use *swapped*
+/// implementations for the two selectors
 
-/// To start using replacement method in place of original:
-association.useAlternateMethod()
+/// To restore the original implementation:
+association.useOriginalImplementation()
 
-/// To restore the original method implementation:
-association.useOriginalMethod()
+/// Code executed here will use the *original*
+/// implementations of the two selectors
+```
 
-/// Or, to automatically gate the replacement and restoration in a single closure:
-association.useAlternateMethod() {
-	/// your code here
+### With nested context
+
+```swift
+/// To automatically gate the replacement and
+/// restoration in a single closure:
+association.withAlternateImplementation() {
+	/// Code executed here will use *swapped*
+	/// implementations for the two selectors
 }
+```
+
+Or while using the alternate implementation:
+
+```swift
+association.useAlternateImplementation()
+
+association.withOriginalImplementation() {
+	/// Code executed here will use the *original*
+	/// implementations of the two selectors
+}
+
+association.useOriginalImplementation()
+```
+
+### Using any combination safely
+
+```swift
+/// Any series and mixture of these methods can
+/// be used without methods being swizzled incorrectly
+association.withAlternateImplementation() {
+	/// Code executed here will use *swapped*
+	/// implementations for the two selectors
+	
+	/// This call will be ignored since the
+	/// implementations are already swapped
+	self.association.useAlternateImplementation()
+
+	self.association.withOriginalImplementation() 
+		/// Code executed here will use the *original*
+		/// implementations of the two selectors
+	}
+
+	/// Restoring the original implementation for a while
+	association.useOriginalImplementation()
+
+	/// Code executed here will use the *original*
+	/// implementations of the two selectors
+
+}
+
+/// Even though we didn't explicitly restore
+/// the original implementations, they will be
+/// restored automatically for us
 ```
