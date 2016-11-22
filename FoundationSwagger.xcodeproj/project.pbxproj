@@ -21,6 +21,8 @@
 		0A90C86E1A86D2E70047FE16 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */; };
 		0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */; };
 		0AB47CBE1DC537DE00B5C86A /* SampleType.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB47CBD1DC537DE00B5C86A /* SampleType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0ABD48CD1DE2C17B005DD470 /* TypedObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD48CC1DE2C17B005DD470 /* TypedObjectAssociationTests.swift */; };
+		0ABD48CF1DE3B07C005DD470 /* TypedAssociationAccessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD48CE1DE3B07C005DD470 /* TypedAssociationAccessors.swift */; };
 		0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB6281DC3180700B50A55 /* CodeSource.swift */; };
 		0AEDD6A61DC52E3E005D042C /* SampleTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AEDD6A41DC52E3E005D042C /* SampleTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AEDD6AF1DC52F05005D042C /* SampleObjectiveCTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AEDD6AC1DC52F05005D042C /* SampleObjectiveCTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -67,6 +69,8 @@
 		0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociation.swift; sourceTree = "<group>"; };
 		0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociationTests.swift; sourceTree = "<group>"; };
 		0AB47CBD1DC537DE00B5C86A /* SampleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleType.h; sourceTree = "<group>"; };
+		0ABD48CC1DE2C17B005DD470 /* TypedObjectAssociationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypedObjectAssociationTests.swift; sourceTree = "<group>"; };
+		0ABD48CE1DE3B07C005DD470 /* TypedAssociationAccessors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypedAssociationAccessors.swift; sourceTree = "<group>"; };
 		0ABFB6281DC3180700B50A55 /* CodeSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeSource.swift; sourceTree = "<group>"; };
 		0ABFD8841DAF28070029F590 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0AEDD6A21DC52E3E005D042C /* SampleTypes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SampleTypes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +186,7 @@
 				0A7DC47E1DBED91A00BCFC56 /* MethodAssociationTests.swift */,
 				0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */,
 				0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */,
+				0ABD48CC1DE2C17B005DD470 /* TypedObjectAssociationTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */,
+				0ABD48CE1DE3B07C005DD470 /* TypedAssociationAccessors.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -416,6 +422,7 @@
 				0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */,
 				0A7DC4831DBEE68300BCFC56 /* MethodSwizzling.swift in Sources */,
 				0A3784D41A100D3A0003C7F3 /* FileExtensions.swift in Sources */,
+				0ABD48CF1DE3B07C005DD470 /* TypedAssociationAccessors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +435,7 @@
 				0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */,
 				0A7DC47B1DBED0E100BCFC56 /* MethodSwizzlingTests.swift in Sources */,
 				0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */,
+				0ABD48CD1DE2C17B005DD470 /* TypedObjectAssociationTests.swift in Sources */,
 				0AEDD6B51DC52FE5005D042C /* MethodSwizzlingHelpers.swift in Sources */,
 				0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */,
 				0A5BCBFC1AACB3B200484777 /* DateTests.swift in Sources */,
