@@ -11,11 +11,11 @@ typealias ObjectAssociationKey = UnsafeRawPointer
 protocol ObjectAssociating {
     func associate(
         _: Any,
-        withKey: ObjectAssociationKey,
+        with: ObjectAssociationKey,
         usingPolicy: objc_AssociationPolicy
     )
-    func associationForKey(_: ObjectAssociationKey) -> Any?
-    func removeAssociationForKey(_: ObjectAssociationKey)
+    func association(for: ObjectAssociationKey) -> Any?
+    func removeAssociation(for: ObjectAssociationKey)
     func removeAllAssociations()
 }
 ```
@@ -33,15 +33,11 @@ let MyKey = ObjectAssociationKey("Key String")
 let myObject = MyClass()
 let myData = Thing()
 
-myObject.associate(
-    myData,
-    withKey: MyKey,
-    usingPolicy: .OBJC_ASSOCIATION_RETAIN
-)
+myObject.associate(myData, with: MyKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
 
-let thing = myObject.associationForKey(MyKey) as? Thing
+let thing = myObject.association(for: MyKey) as? Thing
 
-myObject.removeAssociationForKey(MyKey)
+myObject.removeAssociation(for: MyKey)
 //  or myObject.removeAllAssociations()
 ```
 
@@ -52,31 +48,31 @@ For convenience several common atomic data types have pairs of accessors for ret
 
 ```swift
 /// For boolean associations
-booleanAssociation(forKey: ObjectAssociationKey) -> Bool?
-booleanAssociation(forKey: ObjectAssociationKey, defaultValue: Bool) -> Bool
+booleanAssociation(for: ObjectAssociationKey) -> Bool?
+booleanAssociation(for: ObjectAssociationKey, defaultValue: Bool) -> Bool
 
 /// For signed integer associations
-integerAssociation(forKey: ObjectAssociationKey) -> Int?
-integerAssociation(forKey: ObjectAssociationKey, defaultValue: Int) -> Int
+integerAssociation(for: ObjectAssociationKey) -> Int?
+integerAssociation(for: ObjectAssociationKey, defaultValue: Int) -> Int
 
 /// For unsigned integer associations
-unsignedIntegerAssociation(forKey: ObjectAssociationKey) -> UInt?
-unsignedIntegerAssociation(forKey: 
+unsignedIntegerAssociation(for: ObjectAssociationKey) -> UInt?
+unsignedIntegerAssociation(for: 
 ObjectAssociationKey, defaultValue: UInt) -> UInt
 
 /// For floating-point associations
-floatAssociation(forKey: ObjectAssociationKey) -> Float?
-floatAssociation(forKey: ObjectAssociationKey, defaultValue: Float) -> Float
+floatAssociation(for: ObjectAssociationKey) -> Float?
+floatAssociation(for: ObjectAssociationKey, defaultValue: Float) -> Float
 
 /// For double-precision floating-point associations
-doubleAssociation(forKey: ObjectAssociationKey) -> Double?
-doubleAssociation(forKey: ObjectAssociationKey, defaultValue: Double) -> Double
+doubleAssociation(for: ObjectAssociationKey) -> Double?
+doubleAssociation(for: ObjectAssociationKey, defaultValue: Double) -> Double
 
 /// For string associations
-stringAssociation(forKey: ObjectAssociationKey) -> String?
-stringAssociation(forKey: ObjectAssociationKey, defaultValue: String) -> String
+stringAssociation(for: ObjectAssociationKey) -> String?
+stringAssociation(for: ObjectAssociationKey, defaultValue: String) -> String
 
 /// For URL associations
-urlAssociation(forKey: ObjectAssociationKey) -> URL?
-urlAssociation(forKey: ObjectAssociationKey, defaultValue: URL) -> URL
+urlAssociation(for: ObjectAssociationKey) -> URL?
+urlAssociation(for: ObjectAssociationKey, defaultValue: URL) -> URL
 ```

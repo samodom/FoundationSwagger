@@ -24,7 +24,7 @@ public extension ObjectAssociating {
     /// - parameter policy: The association policy to use for the association.
     public func associate(
         _ value: Any,
-        withKey key: ObjectAssociationKey,
+        with key: ObjectAssociationKey,
         usingPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC
         ) {
 
@@ -33,16 +33,16 @@ public extension ObjectAssociating {
 
 
     /// Retrieves the object associated with `self` using the specified key, if any.
-    /// - parameter key: The key identifying the association to retrieve.
+    /// - parameter for: The key identifying the association to retrieve.
     /// - returns: The object or value associated with `self` using the specified key, if such an association exist.
-    public func associationForKey(_ key: ObjectAssociationKey) -> Any? {
+    public func association(for key: ObjectAssociationKey) -> Any? {
         return objc_getAssociatedObject(self, key)
     }
 
 
     /// Clears an object association for the specified key.
     /// - parameter key: The key identifying the association to clear.
-    public func removeAssociationForKey(_ key: ObjectAssociationKey) {
+    public func removeAssociation(for key: ObjectAssociationKey) {
         objc_setAssociatedObject(self, key, nil, .OBJC_ASSOCIATION_ASSIGN)
     }
 
