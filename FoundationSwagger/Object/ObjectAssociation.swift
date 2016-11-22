@@ -11,11 +11,12 @@ import Foundation
 /// Common protocol for object association with pure Swift classes or `NSObject` (and its subclasses).
 public protocol ObjectAssociating: class {}
 
-extension ObjectAssociating {
 
 /// Type alias for objectassociation keys
 public typealias ObjectAssociationKey = UnsafeRawPointer
 
+
+public extension ObjectAssociating {
 
     /// Creates an association between the implementing and provided objects using the specified key and policy.
     /// - parameter value: The object or value to associate with `self`.

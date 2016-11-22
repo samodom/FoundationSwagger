@@ -3,6 +3,7 @@ FoundationSwagger Changelog
 
 ### v0.2.5 (November 20, 2016)
  - Added `ObjectAssociationKey` typealias for `UnsafeRawPointer`
+ - Added type-specific accessors
 
 
 ### v0.2.4 (November 19, 2016)
