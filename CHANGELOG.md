@@ -1,6 +1,10 @@
 FoundationSwagger Changelog
 ===========================
 
+### v0.2.5 (November 20, 2016)
+ - Added `ObjectAssociationKey` typealias for `UnsafeRawPointer`
+
+
 ### v0.2.4 (November 19, 2016)
  - Updated method swizzling interface
 

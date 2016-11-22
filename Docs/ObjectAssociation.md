@@ -3,17 +3,19 @@ Object Association
 
 ## Protocol
 
-In order to use object instance methods instead of functions for object association, the `ObjectAssociating` protocol has been defined to provide a simple interface.  Simply extend your class to declare conformance to the protocol.
+In order to use object instance methods instead of functions for object association, the `ObjectAssociating` protocol has been defined to provide a simple interface.  Simply extend your class to declare conformance to the protocol.  Keys are unsafe raw pointers to anything.
 
 ```swift
+typealias ObjectAssociationKey = UnsafeRawPointer
+
 protocol ObjectAssociating {
     func associate(
         _: Any,
-        withKey: UnsafeRawPointer,
+        withKey: ObjectAssociationKey,
         usingPolicy: objc_AssociationPolicy
     )
-    func associationForKey(_: UnsafeRawPointer) -> Any?
-    func removeAssociationForKey(_: UnsafeRawPointer)
+    func associationForKey(_: ObjectAssociationKey) -> Any?
+    func removeAssociationForKey(_: ObjectAssociationKey)
     func removeAllAssociations()
 }
 ```
@@ -26,7 +28,7 @@ When no policy is provided, the association will be non-atomically retained matc
 ```swift
 extension MyClass: ObjectAssociating {}
 
-let MyKey = UnsafePointer("Key String")
+let MyKey = ObjectAssociationKey("Key String")
 
 let myObject = MyClass()
 let myData = Thing()
