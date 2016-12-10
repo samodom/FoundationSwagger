@@ -10,9 +10,13 @@ import XCTest
 import FoundationSwagger
 import SampleTypes
 
-fileprivate let SampleKey1 = UnsafeRawPointer("Sample key 1")
-fileprivate let SampleKey2 = UnsafeRawPointer("Sample key 2")
-fileprivate let SampleKey3 = UnsafeRawPointer("Sample key 3")
+fileprivate let SampleKeyString1 = NSUUID().uuidString.cString(using: .utf8)!
+fileprivate let SampleKeyString2 = NSUUID().uuidString.cString(using: .utf8)!
+fileprivate let SampleKeyString3 = NSUUID().uuidString.cString(using: .utf8)!
+
+fileprivate let SampleKey1 = ObjectAssociationKey(SampleKeyString1)
+fileprivate let SampleKey2 = ObjectAssociationKey(SampleKeyString2)
+fileprivate let SampleKey3 = ObjectAssociationKey(SampleKeyString3)
 
 class ObjectAssociationTests: XCTestCase {
 
