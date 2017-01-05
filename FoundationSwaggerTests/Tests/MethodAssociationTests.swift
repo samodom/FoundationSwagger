@@ -40,9 +40,12 @@ class MethodAssociationTests: XCTestCase {
             NSStringFromClass(SampleObjectiveCClass.self),
             "The association should be created with the provided class"
         )
-        XCTAssertEqual(association.methodType, .class, "The association should be created with the provided method type")
-        XCTAssertEqual(association.originalSelector, originalSelector, "The association should be created with the provided original selector")
-        XCTAssertEqual(association.alternateSelector, alternateSelector, "The association should be created with the provided alternate selector")
+        XCTAssertEqual(association.methodType, .class,
+                       "The association should be created with the provided method type")
+        XCTAssertEqual(association.originalSelector, originalSelector,
+                       "The association should be created with the provided original selector")
+        XCTAssertEqual(association.alternateSelector, alternateSelector,
+                       "The association should be created with the provided alternate selector")
     }
 
     func testCreatingClassMethodAssociationForSwiftClass() {
@@ -61,9 +64,12 @@ class MethodAssociationTests: XCTestCase {
             NSStringFromClass(SampleSwiftClass.self),
             "The association should be created with the provided class"
         )
-        XCTAssertEqual(association.methodType, .class, "The association should be created with the provided method type")
-        XCTAssertEqual(association.originalSelector, originalSelector, "The association should be created with the provided original selector")
-        XCTAssertEqual(association.alternateSelector, alternateSelector, "The association should be created with the provided alternate selector")
+        XCTAssertEqual(association.methodType, .class,
+                       "The association should be created with the provided method type")
+        XCTAssertEqual(association.originalSelector, originalSelector,
+                       "The association should be created with the provided original selector")
+        XCTAssertEqual(association.alternateSelector, alternateSelector,
+                       "The association should be created with the provided alternate selector")
     }
 
     func testCreatingInstanceMethodAssociationForObjectiveCClass() {
@@ -82,9 +88,12 @@ class MethodAssociationTests: XCTestCase {
             NSStringFromClass(SampleObjectiveCClass.self),
             "The association should be created with the provided class"
         )
-        XCTAssertEqual(association.methodType, .instance, "The association should be created with the provided method type")
-        XCTAssertEqual(association.originalSelector, originalSelector, "The association should be created with the provided original selector")
-        XCTAssertEqual(association.alternateSelector, alternateSelector, "The association should be created with the provided alternate selector")
+        XCTAssertEqual(association.methodType, .instance,
+                       "The association should be created with the provided method type")
+        XCTAssertEqual(association.originalSelector, originalSelector,
+                       "The association should be created with the provided original selector")
+        XCTAssertEqual(association.alternateSelector, alternateSelector,
+                       "The association should be created with the provided alternate selector")
     }
 
     func testCreatingInstanceMethodAssociationForSwiftClass() {
@@ -103,9 +112,12 @@ class MethodAssociationTests: XCTestCase {
             NSStringFromClass(SampleSwiftClass.self),
             "The association should be created with the provided class"
         )
-        XCTAssertEqual(association.methodType, .instance, "The association should be created with the provided method type")
-        XCTAssertEqual(association.originalSelector, originalSelector, "The association should be created with the provided original selector")
-        XCTAssertEqual(association.alternateSelector, alternateSelector, "The association should be created with the provided alternate selector")
+        XCTAssertEqual(association.methodType, .instance,
+                       "The association should be created with the provided method type")
+        XCTAssertEqual(association.originalSelector, originalSelector,
+                       "The association should be created with the provided original selector")
+        XCTAssertEqual(association.alternateSelector, alternateSelector,
+                       "The association should be created with the provided alternate selector")
     }
 
 }

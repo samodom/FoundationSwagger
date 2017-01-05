@@ -73,7 +73,8 @@ class TypedObjectAssociationTests: XCTestCase {
 
         object.associate(NSObject(), with: key)
         value = object.integerAssociation(for: key, defaultValue: -18)
-        XCTAssertEqual(value, -18, "The default value should be returned with a non-signed-integer association")
+        XCTAssertEqual(value, -18,
+                       "The default value should be returned with a non-signed-integer association")
 
         object.associate(-22, with: key)
         value = object.integerAssociation(for: key, defaultValue: -18)
@@ -102,7 +103,8 @@ class TypedObjectAssociationTests: XCTestCase {
 
         object.associate(NSObject(), with: key)
         value = object.unsignedIntegerAssociation(for: key, defaultValue: 42)
-        XCTAssertEqual(value, 42, "The default value should be returned with a non-unsigned-integer association")
+        XCTAssertEqual(value, 42,
+                       "The default value should be returned with a non-unsigned-integer association")
 
         object.associate(UInt(14), with: key)
         value = object.unsignedIntegerAssociation(for: key, defaultValue: 42)
@@ -130,11 +132,13 @@ class TypedObjectAssociationTests: XCTestCase {
         let defaultFloat = Float(99.99)
 
         var value = object.floatAssociation(for: key, defaultValue: defaultFloat)
-        XCTAssertEqual(value, defaultFloat, "The default value should be returned without an association")
+        XCTAssertEqual(value, defaultFloat,
+                       "The default value should be returned without an association")
 
         object.associate(NSObject(), with: key)
         value = object.floatAssociation(for: key, defaultValue: defaultFloat)
-        XCTAssertEqual(value, defaultFloat, "The default value should be returned with a non-float association")
+        XCTAssertEqual(value, defaultFloat,
+                       "The default value should be returned with a non-float association")
 
         object.associate(storedFloat, with: key)
         value = object.floatAssociation(for: key, defaultValue: defaultFloat)
@@ -162,11 +166,13 @@ class TypedObjectAssociationTests: XCTestCase {
         let defaultDouble = Double(99.99)
 
         var value = object.doubleAssociation(for: key, defaultValue: defaultDouble)
-        XCTAssertEqual(value, defaultDouble, "The default value should be returned without an association")
+        XCTAssertEqual(value, defaultDouble,
+                       "The default value should be returned without an association")
 
         object.associate(NSObject(), with: key)
         value = object.doubleAssociation(for: key, defaultValue: defaultDouble)
-        XCTAssertEqual(value, defaultDouble, "The default value should be returned with a non-double association")
+        XCTAssertEqual(value, defaultDouble,
+                       "The default value should be returned with a non-double association")
 
         object.associate(storedDouble, with: key)
         value = object.doubleAssociation(for: key, defaultValue: defaultDouble)
@@ -191,11 +197,13 @@ class TypedObjectAssociationTests: XCTestCase {
 
     func testDefaultStringAssociationRetrieval() {
         var value = object.stringAssociation(for: key, defaultValue: "Stewart")
-        XCTAssertEqual(value, "Stewart", "The default value should be returned without an association")
+        XCTAssertEqual(value, "Stewart",
+                       "The default value should be returned without an association")
 
         object.associate(NSObject(), with: key)
         value = object.stringAssociation(for: key, defaultValue: "Stewart")
-        XCTAssertEqual(value, "Stewart", "The default value should be returned with a non-string association")
+        XCTAssertEqual(value, "Stewart",
+                       "The default value should be returned with a non-string association")
 
         object.associate("Tony", with: key)
         value = object.stringAssociation(for: key, defaultValue: "Stewart")
@@ -223,11 +231,13 @@ class TypedObjectAssociationTests: XCTestCase {
         let defaultUrl = URL(string: "http://www.test.com")!
 
         var value = object.urlAssociation(for: key, defaultValue: defaultUrl)
-        XCTAssertEqual(value, defaultUrl, "The default value should be returned without an association")
+        XCTAssertEqual(value, defaultUrl,
+                       "The default value should be returned without an association")
 
         object.associate(NSObject(), with: key)
         value = object.urlAssociation(for: key, defaultValue: defaultUrl)
-        XCTAssertEqual(value, defaultUrl, "The default value should be returned with a non-URL association")
+        XCTAssertEqual(value, defaultUrl,
+                       "The default value should be returned with a non-URL association")
 
         let sampleUrl = URL(string: "http://www.example.com")!
         object.associate(sampleUrl, with: key)
