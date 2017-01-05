@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A048B891E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A048B881E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift */; };
 		0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3784D01A100B1D0003C7F3 /* FileExtensionsTests.swift */; };
 		0A3784D41A100D3A0003C7F3 /* FileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3784D31A100D3A0003C7F3 /* FileExtensions.swift */; };
 		0A3BB9C019EB78010075B32A /* FoundationSwagger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -14,13 +15,14 @@
 		0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCBFE1AACB54800484777 /* DateOperators.swift */; };
 		0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCC031AACDDA000484777 /* DateRangeTests.swift */; };
 		0A5BCC061AACDDBA00484777 /* DateRanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCC051AACDDBA00484777 /* DateRanges.swift */; };
-		0A7DC47B1DBED0E100BCFC56 /* MethodSwizzlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */; };
+		0A7DC47B1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC47A1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift */; };
 		0A7DC47F1DBED91A00BCFC56 /* MethodAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC47E1DBED91A00BCFC56 /* MethodAssociationTests.swift */; };
 		0A7DC4811DBEDAA200BCFC56 /* MethodAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC4801DBEDAA200BCFC56 /* MethodAssociation.swift */; };
 		0A7DC4831DBEE68300BCFC56 /* MethodSwizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC4821DBEE68300BCFC56 /* MethodSwizzling.swift */; };
 		0A90C86E1A86D2E70047FE16 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */; };
 		0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */; };
 		0AB47CBE1DC537DE00B5C86A /* SampleType.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB47CBD1DC537DE00B5C86A /* SampleType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0ABBD3E21E1B33C700F6F194 /* MethodSwizzlingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A048B861E134FF300CF003F /* MethodSwizzlingTestCase.swift */; };
 		0ABD48CD1DE2C17B005DD470 /* TypedObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD48CC1DE2C17B005DD470 /* TypedObjectAssociationTests.swift */; };
 		0ABD48CF1DE3B07C005DD470 /* TypedAssociationAccessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD48CE1DE3B07C005DD470 /* TypedAssociationAccessors.swift */; };
 		0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB6281DC3180700B50A55 /* CodeSource.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A048B861E134FF300CF003F /* MethodSwizzlingTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzlingTestCase.swift; sourceTree = "<group>"; };
+		0A048B881E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCMethodSwizzlingTests.swift; sourceTree = "<group>"; };
 		0A3784D01A100B1D0003C7F3 /* FileExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExtensionsTests.swift; sourceTree = "<group>"; };
 		0A3784D31A100D3A0003C7F3 /* FileExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExtensions.swift; sourceTree = "<group>"; };
 		0A3BB9BA19EB78010075B32A /* FoundationSwagger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FoundationSwagger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +66,7 @@
 		0A5BCBFE1AACB54800484777 /* DateOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateOperators.swift; sourceTree = "<group>"; };
 		0A5BCC031AACDDA000484777 /* DateRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeTests.swift; sourceTree = "<group>"; };
 		0A5BCC051AACDDBA00484777 /* DateRanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRanges.swift; sourceTree = "<group>"; };
-		0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzlingTests.swift; sourceTree = "<group>"; };
+		0A7DC47A1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMethodSwizzlingTests.swift; sourceTree = "<group>"; };
 		0A7DC47E1DBED91A00BCFC56 /* MethodAssociationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodAssociationTests.swift; sourceTree = "<group>"; };
 		0A7DC4801DBEDAA200BCFC56 /* MethodAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodAssociation.swift; sourceTree = "<group>"; };
 		0A7DC4821DBEE68300BCFC56 /* MethodSwizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzling.swift; sourceTree = "<group>"; };
@@ -184,8 +188,10 @@
 				0A5BCBFB1AACB3B200484777 /* DateTests.swift */,
 				0A3784D01A100B1D0003C7F3 /* FileExtensionsTests.swift */,
 				0A7DC47E1DBED91A00BCFC56 /* MethodAssociationTests.swift */,
-				0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */,
+				0A048B861E134FF300CF003F /* MethodSwizzlingTestCase.swift */,
 				0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */,
+				0A048B881E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift */,
+				0A7DC47A1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift */,
 				0ABD48CC1DE2C17B005DD470 /* TypedObjectAssociationTests.swift */,
 			);
 			path = Tests;
@@ -230,8 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				0ABFB6281DC3180700B50A55 /* CodeSource.swift */,
-				0AEDD6B41DC52FE5005D042C /* MethodSwizzlingHelpers.swift */,
 				0AF8C3DA1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift */,
+				0AEDD6B41DC52FE5005D042C /* MethodSwizzlingHelpers.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -432,8 +438,10 @@
 			files = (
 				0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */,
 				0AF8C3DB1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift in Sources */,
+				0A048B891E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift in Sources */,
 				0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */,
-				0A7DC47B1DBED0E100BCFC56 /* MethodSwizzlingTests.swift in Sources */,
+				0ABBD3E21E1B33C700F6F194 /* MethodSwizzlingTestCase.swift in Sources */,
+				0A7DC47B1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift in Sources */,
 				0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */,
 				0ABD48CD1DE2C17B005DD470 /* TypedObjectAssociationTests.swift in Sources */,
 				0AEDD6B51DC52FE5005D042C /* MethodSwizzlingHelpers.swift in Sources */,

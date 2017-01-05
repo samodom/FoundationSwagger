@@ -11,7 +11,7 @@ import SampleTypes
 
 //  MARK: - Running sample method
 
-extension MethodSwizzlingTests {
+extension MethodSwizzlingTestCase {
 
     func executeSampleMethod() -> Int {
         switch (association.methodType, selectorOriginUnderTest) {
@@ -46,33 +46,7 @@ extension MethodSwizzlingTests {
 
 //  MARK: - Method lookup
 
-extension MethodSwizzlingTests {
-
-    func getMethod(ofOrigin origin: SelectorOrigin) -> Method {
-        let selector = selectorOfOrigin(origin)
-        switch association.methodType {
-        case .class:
-            return class_getClassMethod(association.owningClass, selector)
-
-        case .instance:
-            return class_getInstanceMethod(association.owningClass, selector)
-        }
-    }
-
-    fileprivate func selectorOfOrigin(_ origin: SelectorOrigin) -> Selector {
-        switch origin {
-        case .original:
-            return association.originalSelector
-
-        case .alternate:
-            return association.alternateSelector
-        }
-    }
-    
-
-}
-
-extension MethodSwizzlingTests {
+extension MethodSwizzlingTestCase {
 
     var expectedMethod: Method {
         switch selectorOfOrigin(selectorOriginUnderTest) {
@@ -106,6 +80,27 @@ extension MethodSwizzlingTests {
         case (.original, false),
              (.alternate, true):
             return originalImplementation
+        }
+    }
+
+    func getMethod(ofOrigin origin: SelectorOrigin) -> Method {
+        let selector = selectorOfOrigin(origin)
+        switch association.methodType {
+        case .class:
+            return class_getClassMethod(association.owningClass, selector)
+
+        case .instance:
+            return class_getInstanceMethod(association.owningClass, selector)
+        }
+    }
+
+    fileprivate func selectorOfOrigin(_ origin: SelectorOrigin) -> Selector {
+        switch origin {
+        case .original:
+            return association.originalSelector
+
+        case .alternate:
+            return association.alternateSelector
         }
     }
 

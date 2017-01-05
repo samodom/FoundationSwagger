@@ -12,7 +12,7 @@ import Foundation
 
 //  MARK: - High-level testing methods and setup
 
-extension MethodSwizzlingTests {
+extension MethodSwizzlingTestCase {
 
     func validateMethodsAreSwizzled(
         inFile file: String = #file,
@@ -42,7 +42,6 @@ extension MethodSwizzlingTests {
         }
     }
 
-
     var mismatchedImplementationFailureKey: String {
         let expectedOrigin = isTestingSwizzledImplementations ? !selectorOriginUnderTest : selectorOriginUnderTest
         return "The \(selectorOriginUnderTest) selector should now be associated with the \(expectedOrigin) method implementation"
@@ -53,7 +52,7 @@ extension MethodSwizzlingTests {
 
 //  MARK: - Custom assertions
 
-fileprivate extension MethodSwizzlingTests {
+fileprivate extension MethodSwizzlingTestCase {
 
     func validateMethods() {
         SelectorOrigin.all.forEach {
@@ -116,7 +115,7 @@ fileprivate extension MethodSwizzlingTests {
     
 }
 
-private prefix func !(origin: MethodSwizzlingTests.SelectorOrigin) -> MethodSwizzlingTests.SelectorOrigin {
+private prefix func !(origin: MethodSwizzlingTestCase.SelectorOrigin) -> MethodSwizzlingTestCase.SelectorOrigin {
     switch origin {
     case .original:
         return .alternate
