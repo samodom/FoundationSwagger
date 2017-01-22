@@ -12,7 +12,7 @@ import Foundation
 public protocol ObjectAssociating: class {}
 
 
-/// Type alias for objectassociation keys
+/// Type alias for object association keys
 public typealias ObjectAssociationKey = UnsafeRawPointer
 
 
