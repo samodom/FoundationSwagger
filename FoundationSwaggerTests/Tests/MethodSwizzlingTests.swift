@@ -12,7 +12,7 @@ import SampleTypes
 
 class MethodSwizzlingTests: XCTestCase {
 
-    var association: MethodAssociation!
+    var surrogate: MethodSurrogate!
 
     var originalMethod: Method!
     var originalImplementation: IMP!
@@ -29,7 +29,7 @@ class MethodSwizzlingTests: XCTestCase {
     var executedContext = false
 
     override func tearDown() {
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
 
         super.tearDown()
     }
@@ -38,30 +38,30 @@ class MethodSwizzlingTests: XCTestCase {
     //  MARK: - Objective-C class methods
 
     func testSwizzlingObjectiveCClassMethods() {
-        setUpAssociation(classType: .objectiveC, methodType: .`class`)
+        setUpSurrogate(classType: .objectiveC, methodType: .`class`)
 
         //  Swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Shouldn't swizzle when swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
 
         //  Shouldn't unswizzle when unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
     }
 
     func testSwizzlingObjectiveCClassMethodsWithContext() {
         //  Swizzled
-        setUpAssociation(classType: .objectiveC, methodType: .`class`)
+        setUpSurrogate(classType: .objectiveC, methodType: .`class`)
 
-        association.withAlternateImplementation() {
+        surrogate.withAlternateImplementation() {
             executedContext = true
             validateMethodsAreSwizzled()
         }
@@ -71,9 +71,9 @@ class MethodSwizzlingTests: XCTestCase {
         executedContext = false
 
         //  Unswizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
 
-        association.withOriginalImplementation() {
+        surrogate.withOriginalImplementation() {
             executedContext = true
             validateMethodsAreNotSwizzled()
 
@@ -82,36 +82,36 @@ class MethodSwizzlingTests: XCTestCase {
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
         validateMethodsAreSwizzled()
 
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
     }
 
     //  MARK: - Objective-C instance methods
 
     func testSwizzlingObjectiveCInstanceMethods() {
-        setUpAssociation(classType: .objectiveC, methodType: .instance)
+        setUpSurrogate(classType: .objectiveC, methodType: .instance)
 
         //  Swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Shouldn't swizzle when swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
 
         //  Shouldn't unswizzle when unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
     }
 
     func testSwizzlingObjectiveCInstanceMethodsWithContext() {
         //  Swizzled
-        setUpAssociation(classType: .objectiveC, methodType: .instance)
+        setUpSurrogate(classType: .objectiveC, methodType: .instance)
 
-        association.withAlternateImplementation() {
+        surrogate.withAlternateImplementation() {
             executedContext = true
             validateMethodsAreSwizzled()
         }
@@ -121,9 +121,9 @@ class MethodSwizzlingTests: XCTestCase {
         executedContext = false
 
         //  Unswizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
 
-        association.withOriginalImplementation() {
+        surrogate.withOriginalImplementation() {
             executedContext = true
             validateMethodsAreNotSwizzled()
 
@@ -133,36 +133,36 @@ class MethodSwizzlingTests: XCTestCase {
         validateMethodsAreSwizzled()
         validateMethodsAreSwizzled()
         
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
     }
 
     //  MARK: - Swift class methods
 
     func testSwizzlingSwiftClassMethods() {
-        setUpAssociation(classType: .swift, methodType: .`class`)
+        setUpSurrogate(classType: .swift, methodType: .`class`)
 
         //  Swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Shouldn't swizzle when swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
 
         //  Shouldn't unswizzle when unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
     }
 
     func testSwizzlingSwiftClassMethodsWithContext() {
         //  Swizzled
-        setUpAssociation(classType: .swift, methodType: .`class`)
+        setUpSurrogate(classType: .swift, methodType: .`class`)
 
-        association.withAlternateImplementation() {
+        surrogate.withAlternateImplementation() {
             executedContext = true
             validateMethodsAreSwizzled()
         }
@@ -172,9 +172,9 @@ class MethodSwizzlingTests: XCTestCase {
         executedContext = false
 
         //  Unswizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
 
-        association.withOriginalImplementation() {
+        surrogate.withOriginalImplementation() {
             executedContext = true
             validateMethodsAreNotSwizzled()
 
@@ -183,36 +183,36 @@ class MethodSwizzlingTests: XCTestCase {
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
         validateMethodsAreSwizzled()
 
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
     }
 
     //  MARK: - Swift instance methods
 
     func testSwizzlingSwiftInstanceMethods() {
-        setUpAssociation(classType: .swift, methodType: .instance)
+        setUpSurrogate(classType: .swift, methodType: .instance)
 
         //  Swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Shouldn't swizzle when swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
 
         //  Shouldn't unswizzle when unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
     }
 
     func testSwizzlingSwiftInstanceMethodsWithContext() {
         //  Swizzled
-        setUpAssociation(classType: .swift, methodType: .instance)
+        setUpSurrogate(classType: .swift, methodType: .instance)
 
-        association.withAlternateImplementation() {
+        surrogate.withAlternateImplementation() {
             executedContext = true
             validateMethodsAreSwizzled()
         }
@@ -222,9 +222,9 @@ class MethodSwizzlingTests: XCTestCase {
         executedContext = false
 
         //  Unswizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
 
-        association.withOriginalImplementation() {
+        surrogate.withOriginalImplementation() {
             executedContext = true
             validateMethodsAreNotSwizzled()
         }
@@ -232,34 +232,34 @@ class MethodSwizzlingTests: XCTestCase {
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
         validateMethodsAreSwizzled()
         
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
     }
 
     //  MARK: - Mixed
 
     func testMixedAndNestedSwizzlingSafety() {
-        setUpAssociation(classType: .objectiveC, methodType: .instance)
+        setUpSurrogate(classType: .objectiveC, methodType: .instance)
 
         //  Nested unswizzled ignored
-        association.withOriginalImplementation {
+        surrogate.withOriginalImplementation {
             XCTFail("This code should not execute")
         }
         validateMethodsAreNotSwizzled()
 
         //  Nested swizzled ignored
-        association.useAlternateImplementation()
-        association.withAlternateImplementation() {
+        surrogate.useAlternateImplementation()
+        surrogate.withAlternateImplementation() {
             XCTFail("This code should not execute")
         }
         validateMethodsAreSwizzled()
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
 
         //  Nested unswizzled not ignored
-        association.useAlternateImplementation()
-        association.withOriginalImplementation {
+        surrogate.useAlternateImplementation()
+        surrogate.withOriginalImplementation {
             validateMethodsAreNotSwizzled()
         }
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
     }
 
 }
@@ -271,26 +271,26 @@ fileprivate extension MethodSwizzlingTests {
         case objectiveC, swift
     }
 
-    func setUpAssociation(classType: ClassType, methodType: MethodAssociation.MethodType) {
+    func setUpSurrogate(classType: ClassType, methodType: MethodSurrogate.MethodType) {
         switch (classType, methodType) {
         case (.objectiveC, .`class`):
-            association = objectiveCClassMethodAssociation()
+            surrogate = objectiveCClassMethodSurrogate()
 
         case (.objectiveC, .instance):
-            association = objectiveCInstanceMethodAssociation()
+            surrogate = objectiveCInstanceMethodSurrogate()
 
         case (.swift, .`class`):
-            association = swiftClassMethodAssociation()
+            surrogate = swiftClassMethodSurrogate()
 
         case (.swift, .instance):
-            association = swiftInstanceMethodAssociation()
+            surrogate = swiftInstanceMethodSurrogate()
         }
 
         loadMethodValues()
     }
 
     private func loadMethodValues() {
-        switch association.owningClass.className() {
+        switch surrogate.owningClass.className() {
         case SampleObjectiveCClass.className():
             sampleObject = SampleObjectiveCClass()
 
@@ -308,8 +308,8 @@ fileprivate extension MethodSwizzlingTests {
         alternateImplementation = method_getImplementation(alternateMethod)
     }
 
-    private func objectiveCClassMethodAssociation() -> MethodAssociation {
-        return MethodAssociation(
+    private func objectiveCClassMethodSurrogate() -> MethodSurrogate {
+        return MethodSurrogate(
             forClass: SampleObjectiveCClass.self,
             ofType: .class,
             originalSelector: #selector(SampleObjectiveCClass.sampleClassMethod),
@@ -317,8 +317,8 @@ fileprivate extension MethodSwizzlingTests {
         )
     }
 
-    private func objectiveCInstanceMethodAssociation() -> MethodAssociation {
-        return MethodAssociation(
+    private func objectiveCInstanceMethodSurrogate() -> MethodSurrogate {
+        return MethodSurrogate(
             forClass: SampleObjectiveCClass.self,
             ofType: .instance,
             originalSelector: #selector(SampleObjectiveCClass.sampleInstanceMethod),
@@ -326,8 +326,8 @@ fileprivate extension MethodSwizzlingTests {
         )
     }
 
-    private func swiftClassMethodAssociation() -> MethodAssociation {
-        return MethodAssociation(
+    private func swiftClassMethodSurrogate() -> MethodSurrogate {
+        return MethodSurrogate(
             forClass: SampleSwiftClass.self,
             ofType: .class,
             originalSelector: #selector(SampleSwiftClass.sampleClassMethod),
@@ -335,8 +335,8 @@ fileprivate extension MethodSwizzlingTests {
         )
     }
 
-    private func swiftInstanceMethodAssociation() -> MethodAssociation {
-        return MethodAssociation(
+    private func swiftInstanceMethodSurrogate() -> MethodSurrogate {
+        return MethodSurrogate(
             forClass: SampleSwiftClass.self,
             ofType: .instance,
             originalSelector: #selector(SampleSwiftClass.sampleInstanceMethod),

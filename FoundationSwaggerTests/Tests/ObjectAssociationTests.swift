@@ -10,9 +10,16 @@ import XCTest
 import FoundationSwagger
 import SampleTypes
 
-fileprivate let SampleKey1 = UnsafeRawPointer("Sample key 1")
-fileprivate let SampleKey2 = UnsafeRawPointer("Sample key 2")
-fileprivate let SampleKey3 = UnsafeRawPointer("Sample key 3")
+
+fileprivate let SampleKeyString1 = NSUUID().uuidString.cString(using: .utf8)!
+fileprivate let SampleKeyString2 = NSUUID().uuidString.cString(using: .utf8)!
+fileprivate let SampleKeyString3 = NSUUID().uuidString.cString(using: .utf8)!
+
+
+fileprivate let SampleKey1 = ObjectAssociationKey(SampleKeyString1)
+fileprivate let SampleKey2 = ObjectAssociationKey(SampleKeyString2)
+fileprivate let SampleKey3 = ObjectAssociationKey(SampleKeyString3)
+
 
 class ObjectAssociationTests: XCTestCase {
 
@@ -29,6 +36,7 @@ class ObjectAssociationTests: XCTestCase {
     weak var weakReference: AnyObject?
 
 }
+
 
 //  MARK: - Retrieving associations
 
@@ -177,8 +185,16 @@ extension ObjectAssociationTests {
         autoreleasepool {
             let association = SampleObjectiveCClass(42)
             swiftObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
-            XCTAssertEqual(objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass, association, "The Swift object should have an associated Objective-C object")
-            XCTAssertEqual(swiftObject.association(for: SampleKey1) as? SampleObjectiveCClass, association, "The association should be retrievable using the new API")
+            XCTAssertEqual(
+                objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass,
+                association,
+                "The Swift object should have an associated Objective-C object"
+            )
+            XCTAssertEqual(
+                swiftObject.association(for: SampleKey1) as? SampleObjectiveCClass,
+                association,
+                "The association should be retrievable using the new API"
+            )
             weakReference = association
         }
 
@@ -189,8 +205,16 @@ extension ObjectAssociationTests {
         autoreleasepool {
             let association = SampleSwiftClass(42)
             swiftObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_ASSIGN)
-            XCTAssertEqual(objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleSwiftClass, association, "The Swift object should have an associated Swift object")
-            XCTAssertEqual(swiftObject.association(for: SampleKey1) as? SampleSwiftClass, association, "The Swift object should have an associated Swift object")
+            XCTAssertEqual(
+                objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleSwiftClass,
+                association,
+                "The Swift object should have an associated Swift object"
+            )
+            XCTAssertEqual(
+                swiftObject.association(for: SampleKey1) as? SampleSwiftClass,
+                association,
+                "The Swift object should have an associated Swift object"
+            )
             weakReference = association
         }
 
@@ -494,8 +518,10 @@ extension ObjectAssociationTests {
         let association = SampleObjectiveCClass(42)
         objCObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         let reference = objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCClass
-        XCTAssertEqual(reference, association, "The Objective-C object should have an associated Objective-C object")
-        XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
+        XCTAssertEqual(reference, association,
+                       "The Objective-C object should have an associated Objective-C object")
+        XCTAssertTrue(reference !== association,
+                      "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
         objCObject.associate(objCStructAssociation, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
@@ -521,8 +547,10 @@ extension ObjectAssociationTests {
         let association = SampleSwiftClass(42)
         objCObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         let reference = objCObject.association(for: SampleKey1) as? SampleSwiftClass
-        XCTAssertEqual(reference, association, "The Objective-C object should have an associated Swift object")
-        XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
+        XCTAssertEqual(reference, association,
+                       "The Objective-C object should have an associated Swift object")
+        XCTAssertTrue(reference !== association,
+                      "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
         objCObject.associate(swiftStructAssociation, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
@@ -546,8 +574,10 @@ extension ObjectAssociationTests {
         let association = SampleObjectiveCClass(42)
         swiftObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         let reference = objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass
-        XCTAssertEqual(reference, association, "The Swift object should have an associated Objective-C object")
-        XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
+        XCTAssertEqual(reference, association,
+                       "The Swift object should have an associated Objective-C object")
+        XCTAssertTrue(reference !== association,
+                      "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
         swiftObject.associate(objCStructAssociation, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
@@ -573,8 +603,10 @@ extension ObjectAssociationTests {
         let association = SampleSwiftClass(42)
         swiftObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
         let reference = swiftObject.association(for: SampleKey1) as? SampleSwiftClass
-        XCTAssertEqual(reference, association, "The Swift object should have an associated Swift object")
-        XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
+        XCTAssertEqual(reference, association,
+                       "The Swift object should have an associated Swift object")
+        XCTAssertTrue(reference !== association,
+                      "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
         swiftObject.associate(swiftStructAssociation, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
@@ -605,8 +637,10 @@ extension ObjectAssociationTests {
         let association = SampleObjectiveCClass(42)
         objCObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         let reference = objc_getAssociatedObject(objCObject, SampleKey1) as? SampleObjectiveCClass
-        XCTAssertEqual(reference, association, "The Objective-C object should have an associated Objective-C object")
-        XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
+        XCTAssertEqual(reference, association,
+                       "The Objective-C object should have an associated Objective-C object")
+        XCTAssertTrue(reference !== association,
+                      "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
         objCObject.associate(objCStructAssociation, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY)
@@ -632,8 +666,10 @@ extension ObjectAssociationTests {
         let association = SampleSwiftClass(42)
         objCObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         let reference = objCObject.association(for: SampleKey1) as? SampleSwiftClass
-        XCTAssertEqual(reference, association, "The Objective-C object should have an associated Swift object")
-        XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
+        XCTAssertEqual(reference, association,
+                       "The Objective-C object should have an associated Swift object")
+        XCTAssertTrue(reference !== association,
+                      "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
         objCObject.associate(swiftStructAssociation, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
@@ -657,8 +693,10 @@ extension ObjectAssociationTests {
         let association = SampleObjectiveCClass(42)
         swiftObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         let reference = objc_getAssociatedObject(swiftObject, SampleKey1) as? SampleObjectiveCClass
-        XCTAssertEqual(reference, association, "The Swift object should have an associated Objective-C object")
-        XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
+        XCTAssertEqual(reference, association,
+                       "The Swift object should have an associated Objective-C object")
+        XCTAssertTrue(reference !== association,
+                      "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
         swiftObject.associate(objCStructAssociation, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
@@ -684,8 +722,10 @@ extension ObjectAssociationTests {
         let association = SampleSwiftClass(42)
         swiftObject.associate(association, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
         let reference = swiftObject.association(for: SampleKey1) as? SampleSwiftClass
-        XCTAssertEqual(reference, association, "The Swift object should have an associated Swift object")
-        XCTAssertTrue(reference !== association, "The association should be made with a copy of the original object")
+        XCTAssertEqual(reference, association,
+                       "The Swift object should have an associated Swift object")
+        XCTAssertTrue(reference !== association,
+                      "The association should be made with a copy of the original object")
         //  TODO: test atomicity
 
         swiftObject.associate(swiftStructAssociation, with: SampleKey1, usingPolicy: .OBJC_ASSOCIATION_COPY_NONATOMIC)
@@ -706,6 +746,7 @@ extension ObjectAssociationTests {
     }
 
 }
+
 
 //  MARK: - Default policy
 
@@ -858,60 +899,72 @@ extension ObjectAssociationTests {
         let objectAssociation = SampleObjectiveCClass(42)
         objc_setAssociatedObject(objCObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
         objCObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1),
+                     "The association should have been cleared")
 
         objc_setAssociatedObject(objCObject, SampleKey1, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
         objCObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1),
+                     "The association should have been cleared")
 
         objc_setAssociatedObject(objCObject, SampleKey1, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
         objCObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1),
+                     "The association should have been cleared")
     }
 
     func testRemovingObjectiveCAssociationsWithSwiftTypes() {
         let objectAssociation = SampleSwiftClass(42)
         objc_setAssociatedObject(objCObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
         objCObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1),
+                     "The association should have been cleared")
 
         objc_setAssociatedObject(objCObject, SampleKey1, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
         objCObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1),
+                     "The association should have been cleared")
 
         objc_setAssociatedObject(objCObject, SampleKey1, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
         objCObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1),
+                     "The association should have been cleared")
     }
 
     func testRemovingSwiftAssociationsWithObjectiveCTypes() {
         let objectAssociation = SampleObjectiveCClass(42)
         objc_setAssociatedObject(swiftObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
         swiftObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1),
+                     "The association should have been cleared")
 
         objc_setAssociatedObject(swiftObject, SampleKey1, objCStructAssociation, .OBJC_ASSOCIATION_RETAIN)
         swiftObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1),
+                     "The association should have been cleared")
 
         objc_setAssociatedObject(swiftObject, SampleKey1, objCEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
         swiftObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1),
+                     "The association should have been cleared")
     }
 
     func testRemovingSwiftAssociationsWithSwiftTypes() {
         let objectAssociation = SampleSwiftClass(42)
         objc_setAssociatedObject(swiftObject, SampleKey1, objectAssociation, .OBJC_ASSOCIATION_RETAIN)
         swiftObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1),
+                     "The association should have been cleared")
 
         objc_setAssociatedObject(swiftObject, SampleKey1, swiftStructAssociation, .OBJC_ASSOCIATION_RETAIN)
         swiftObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1),
+                     "The association should have been cleared")
 
         objc_setAssociatedObject(swiftObject, SampleKey1, swiftEnumAssociation, .OBJC_ASSOCIATION_RETAIN)
         swiftObject.removeAssociation(for: SampleKey1)
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "The association should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1),
+                     "The association should have been cleared")
     }
 
 }
@@ -929,9 +982,12 @@ extension ObjectAssociationTests {
 
         objCObject.removeAllAssociations()
 
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "All associations should have been cleared")
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey2), "All associations should have been cleared")
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey3), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1),
+                     "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey2),
+                     "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey3),
+                     "All associations should have been cleared")
     }
 
     func testRemovingAllObjectiveCAssociationsWithSwiftTypes() {
@@ -942,9 +998,12 @@ extension ObjectAssociationTests {
 
         objCObject.removeAllAssociations()
 
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1), "All associations should have been cleared")
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey2), "All associations should have been cleared")
-        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey3), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey1),
+                     "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey2),
+                     "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(objCObject, SampleKey3),
+                     "All associations should have been cleared")
     }
 
     func testRemovingAllSwiftAssociationsWithObjectiveCTypes() {
@@ -955,9 +1014,12 @@ extension ObjectAssociationTests {
 
         swiftObject.removeAllAssociations()
 
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "All associations should have been cleared")
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey2), "All associations should have been cleared")
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey3), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1),
+                     "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey2),
+                     "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey3),
+                     "All associations should have been cleared")
     }
 
     func testRemovingAllSwiftAssociationsWithSwiftTypes() {
@@ -968,9 +1030,12 @@ extension ObjectAssociationTests {
 
         swiftObject.removeAllAssociations()
 
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1), "All associations should have been cleared")
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey2), "All associations should have been cleared")
-        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey3), "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey1),
+                     "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey2),
+                     "All associations should have been cleared")
+        XCTAssertNil(objc_getAssociatedObject(swiftObject, SampleKey3),
+                     "All associations should have been cleared")
     }
     
 }

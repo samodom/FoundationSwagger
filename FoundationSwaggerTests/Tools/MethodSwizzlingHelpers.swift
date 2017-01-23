@@ -14,12 +14,12 @@ import SampleTypes
 extension MethodSwizzlingTests {
 
     func executeSampleMethod() -> Int {
-        switch (association.methodType, selectorOriginUnderTest) {
+        switch (surrogate.methodType, selectorOriginUnderTest) {
         case (.`class`, .original):
-            return association.owningClass.sampleClassMethod()
+            return surrogate.owningClass.sampleClassMethod()
 
         case (.`class`, .alternate):
-            return association.owningClass.otherClassMethod()
+            return surrogate.owningClass.otherClassMethod()
 
         case (.instance, .original):
             return sampleObject.sampleInstanceMethod()
@@ -50,22 +50,22 @@ extension MethodSwizzlingTests {
 
     func getMethod(ofOrigin origin: SelectorOrigin) -> Method {
         let selector = selectorOfOrigin(origin)
-        switch association.methodType {
+        switch surrogate.methodType {
         case .class:
-            return class_getClassMethod(association.owningClass, selector)
+            return class_getClassMethod(surrogate.owningClass, selector)
 
         case .instance:
-            return class_getInstanceMethod(association.owningClass, selector)
+            return class_getInstanceMethod(surrogate.owningClass, selector)
         }
     }
 
     fileprivate func selectorOfOrigin(_ origin: SelectorOrigin) -> Selector {
         switch origin {
         case .original:
-            return association.originalSelector
+            return surrogate.originalSelector
 
         case .alternate:
-            return association.alternateSelector
+            return surrogate.alternateSelector
         }
     }
     
@@ -76,10 +76,10 @@ extension MethodSwizzlingTests {
 
     var expectedMethod: Method {
         switch selectorOfOrigin(selectorOriginUnderTest) {
-        case association.originalSelector:
+        case surrogate.originalSelector:
             return originalMethod
 
-        case association.alternateSelector:
+        case surrogate.alternateSelector:
             return alternateMethod
 
         default:

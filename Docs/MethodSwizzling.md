@@ -1,12 +1,12 @@
 Method Swizzling
 ================
 
-## Method Association
+## Method Surrogate
 
 In order to swap a pair of method implementations and better keep track of their correspondence, a method-swizzling record type has been created with a simple inner type for method types:
 
 ```swift
-class MethodAssociation {
+class MethodSurrogate {
 	enum MethodType {
 		case instance, `class`
 	}
@@ -29,13 +29,13 @@ In order to swizzle a method to use an alternate implementation, the idea of rep
 ```swift
 /// To start using the alternate implementation
 /// in place of the original:
-association.useAlternateImplementation()
+surrogate.useAlternateImplementation()
 
 /// Code executed here will use *swapped*
 /// implementations for the two selectors
 
 /// To restore the original implementation:
-association.useOriginalImplementation()
+surrogate.useOriginalImplementation()
 
 /// Code executed here will use the *original*
 /// implementations of the two selectors
@@ -46,7 +46,7 @@ association.useOriginalImplementation()
 ```swift
 /// To automatically gate the replacement and
 /// restoration in a single closure:
-association.withAlternateImplementation() {
+surrogate.withAlternateImplementation() {
 	/// Code executed here will use *swapped*
 	/// implementations for the two selectors
 }
@@ -55,14 +55,14 @@ association.withAlternateImplementation() {
 Or while using the alternate implementation:
 
 ```swift
-association.useAlternateImplementation()
+surrogate.useAlternateImplementation()
 
-association.withOriginalImplementation() {
+surrogate.withOriginalImplementation() {
 	/// Code executed here will use the *original*
 	/// implementations of the two selectors
 }
 
-association.useOriginalImplementation()
+surrogate.useOriginalImplementation()
 ```
 
 ### Using any combination safely
@@ -70,21 +70,21 @@ association.useOriginalImplementation()
 ```swift
 /// Any series and mixture of these methods can
 /// be used without methods being swizzled incorrectly
-association.withAlternateImplementation() {
+surrogate.withAlternateImplementation() {
 	/// Code executed here will use *swapped*
 	/// implementations for the two selectors
 	
 	/// This call will be ignored since the
 	/// implementations are already swapped
-	self.association.useAlternateImplementation()
+	self.surrogate.useAlternateImplementation()
 
-	self.association.withOriginalImplementation() 
+	self.surrogate.withOriginalImplementation() 
 		/// Code executed here will use the *original*
 		/// implementations of the two selectors
 	}
 
 	/// Restoring the original implementation for a while
-	association.useOriginalImplementation()
+	surrogate.useOriginalImplementation()
 
 	/// Code executed here will use the *original*
 	/// implementations of the two selectors

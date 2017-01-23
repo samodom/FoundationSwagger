@@ -10,9 +10,9 @@
 public typealias NullaryVoidClosure = () -> Void
 
 
-public extension MethodAssociation {
+public extension MethodSurrogate {
 
-    /// Swizzles the original and alternate methods of the association so that the
+    /// Swizzles the original and alternate methods of the surrogate so that the
     /// alternate method is used when the original selector is called.
     public func useAlternateImplementation() {
         guard !isSwizzled else { return }
@@ -20,7 +20,7 @@ public extension MethodAssociation {
     }
 
 
-    /// Swizzles the original and alternate methods of the association so that the
+    /// Swizzles the original and alternate methods of the surrogate so that the
     /// alternate method is used when the original selector is called.
     /// - parameter context: Closure to execute while the alternate method implementation is being used.
     public func withAlternateImplementation(context: NullaryVoidClosure) {
@@ -31,7 +31,7 @@ public extension MethodAssociation {
     }
 
 
-    /// Swizzles the original and alternate methods of the association so that the
+    /// Swizzles the original and alternate methods of the surrogate so that the
     /// original method is used when the original selector is called.
     public func useOriginalImplementation() {
         guard isSwizzled else { return }
@@ -39,7 +39,7 @@ public extension MethodAssociation {
     }
 
 
-    /// Swizzles the original and alternate methods of the association so that the
+    /// Swizzles the original and alternate methods of the surrogate so that the
     /// original method is used when the original selector is called.
     /// - parameter context: Closure to execute while the original method implementation is being used.
     public func withOriginalImplementation(context: NullaryVoidClosure) {
@@ -52,7 +52,7 @@ public extension MethodAssociation {
 }
 
 
-fileprivate extension MethodAssociation {
+fileprivate extension MethodSurrogate {
 
     func swapImplementations() {
         method_exchangeImplementations(
