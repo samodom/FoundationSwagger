@@ -16,7 +16,7 @@ class MethodSurrogateTests: XCTestCase {
     var alternateSelector: Selector!
 
     func testAllMethodTypes() {
-        [MethodSurrogate.MethodType.class, .instance].forEach {
+        [MethodType.class, .instance].forEach {
             switch $0 {
             case .class, .instance:
                 break

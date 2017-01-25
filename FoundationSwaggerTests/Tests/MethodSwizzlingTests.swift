@@ -271,7 +271,7 @@ fileprivate extension MethodSwizzlingTests {
         case objectiveC, swift
     }
 
-    func setUpSurrogate(classType: ClassType, methodType: MethodSurrogate.MethodType) {
+    func setUpSurrogate(classType: ClassType, methodType: MethodType) {
         switch (classType, methodType) {
         case (.objectiveC, .`class`):
             surrogate = objectiveCClassMethodSurrogate()
