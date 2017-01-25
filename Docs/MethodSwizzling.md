@@ -3,14 +3,14 @@ Method Swizzling
 
 ## Method Surrogate
 
-In order to swap a pair of method implementations and better keep track of their correspondence, a method-swizzling record type has been created with a simple inner type for method types:
+In order to swap a pair of method implementations and better keep track of their correspondence, a method-swizzling record type has been created with a simple outer type for method types:
 
 ```swift
-class MethodSurrogate {
-	enum MethodType {
-		case instance, `class`
-	}
+enum MethodType {
+	case instance, `class`
+}
 
+class MethodSurrogate {
 	let owningClass: AnyClass
 	let methodType: MethodType
 	let originalSelector: Selector

@@ -8,14 +8,14 @@
 
 import Foundation
 
+/// Enumerated type representing the two basic types of methods that a class can define.
+public enum MethodType {
+    case `class`, instance
+}
+
+
 /// An association of two swappable (swizzlable) methods of a class
 public class MethodSurrogate {
-
-    /// Enumerated type representing the two basic types of methods on a class.
-    public enum MethodType {
-        case `class`, instance
-    }
-
 
     /// The class implementing the class or instance methods designated
     /// by the original and alternate selectors.
