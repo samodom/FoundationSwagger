@@ -1,6 +1,9 @@
 FoundationSwagger Changelog
 ===========================
 
+### v0.2.8 (January 24, 2017)
+ - Exposed `MethodType` enumerated type
+
 ### v0.2.7 (January 22, 2017)
  - Renamed `MethodAssociation` to `MethodSurrogate`
 
