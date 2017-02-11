@@ -12,51 +12,51 @@ import FoundationSwagger
 
 class FilePermissionsTests: XCTestCase {
 
+    var filePermissions: FilePermissions!
+    var maskExpectations: [FilePermissionsMask]!
     let allPossibleClassPermissions: [ClassPermissions] = {
         let values = ClassPermissions.none.rawValue ... ClassPermissions.all.rawValue
         return values.map { ClassPermissions(rawValue: $0) }
     }()
 
-    var filePermissions: FilePermissions!
-    var maskExpectations: [UInt16]!
     func testUserPermissions() {
         maskExpectations = allPossibleClassPermissions.map {
-            UInt16($0.rawValue) << 6
+            FilePermissionsMask($0.rawValue) << 6
         }
 
-        zip(allPossibleClassPermissions, maskExpectations).forEach { permission, mask in
-            filePermissions = FilePermissions(user: permission)
+        zip(allPossibleClassPermissions, maskExpectations).forEach { classPermissions, mask in
+            filePermissions = FilePermissions(user: classPermissions)
             XCTAssertEqual(filePermissions.mask, mask,
-                           "The user permission masks should all be bit-shifted left by 6 places")
+                           "The user permission values should all be bit-shifted left by 6 places")
         }
     }
 
     func testGroupPermissions() {
         maskExpectations = allPossibleClassPermissions.map {
-            UInt16($0.rawValue) << 3
+            FilePermissionsMask($0.rawValue) << 3
         }
 
-        zip(allPossibleClassPermissions, maskExpectations).forEach { permission, mask in
-            filePermissions = FilePermissions(group: permission)
+        zip(allPossibleClassPermissions, maskExpectations).forEach { classPermissions, mask in
+            filePermissions = FilePermissions(group: classPermissions)
             XCTAssertEqual(filePermissions.mask, mask,
-                           "The group permission masks should all be bit-shifted left by 3 places")
+                           "The group permission values should all be bit-shifted left by 3 places")
         }
     }
 
     func testOthersPermissions() {
         maskExpectations = allPossibleClassPermissions.map {
-            UInt16($0.rawValue)
+            FilePermissionsMask($0.rawValue)
         }
 
-        zip(allPossibleClassPermissions, maskExpectations).forEach { permission, mask in
-            filePermissions = FilePermissions(others: permission)
+        zip(allPossibleClassPermissions, maskExpectations).forEach { classPermissions, mask in
+            filePermissions = FilePermissions(others: classPermissions)
             XCTAssertEqual(filePermissions.mask, mask,
-                           "The others permission masks should be equal to its raw value")
+                           "The others permission values should be equal to their raw values")
         }
     }
 
     func testMixedPermissions() {
-        let expectedMask: UInt16 =
+        let expectedMask: FilePermissionsMask =
             7 << 6 + // user readable, writable and executable
             5 << 3 + // group readable, executable
             2 // others writable
@@ -69,6 +69,35 @@ class FilePermissionsTests: XCTestCase {
 
         XCTAssertEqual(filePermissions.mask, expectedMask,
                        "The bit mask of a mixed set of permissions should use the appropriate bit shifting")
+    }
+
+    func testCreatingBasicPermissions() {
+        let allMaskValues = FilePermissionsMask(0) ... MaximumFilePermissionsMask
+        for mask in allMaskValues {
+            let permissions = FilePermissions(mask: mask)
+            if permissions.mask != mask {
+                print("mask = \(mask), permissions = \(permissions.mask)")
+                return XCTFail("Every valid 16-bit unsigned integer should create file permissions: \(permissions.mask) != \(mask)")
+            }
+        }
+    }
+
+    func testCreatingExtendedPermissions() {
+        let allMaskValues = (MaximumFilePermissionsMask + 1) ... FilePermissionsMask.max
+        for mask in allMaskValues {
+            let permissions = FilePermissions(mask: mask)
+            if permissions.mask != mask {
+                return XCTFail("Every valid 16-bit unsigned integer should create file permissions: \(permissions.mask) != \(mask)")
+            }
+        }
+    }
+
+    func testExtendedBitsAreCopied() {
+        let extendedMask = MaximumFilePermissionsMask + 5
+        filePermissions = FilePermissions.init(mask: extendedMask)
+        let newPermissions = filePermissions!
+        XCTAssertEqual(newPermissions.mask, extendedMask,
+                       "The extra bits in an extended mask should be copied to any duplicate permissions")
     }
 
 }

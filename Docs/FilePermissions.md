@@ -1,15 +1,21 @@
 File Permissions
 ================
 
-In order to simplify the use of file permissions with Foundation, the `FilePermissions` type has been created as a more usable abstraction for POSIX file permissions.  At this point, only read, write and execute permissions are modeled for the user, group and other classes.
+In order to simplify the use of file permissions with Foundation, the `FilePermissions` type has been created as a more usable abstraction for POSIX file permissions.  At this point, only read, write and execute permissions are modeled for the user, group and other classes, but any possible mask can be created with the mask-based initializer.
+
 
 ```swift
+typealias FilePermissionsMask = UInt16
+
 struct FilePermissions {
     let user: ClassPermissions
     let group: ClassPermissions
     let others: ClassPermissions
     
-    var mask: UInt16
+    var mask: FilePermissionsMask
+    
+    init(user: ClassPermissions, group: ClassPermissions, others: ClassPermissions)
+    init(mask: FilePermissionsMask)
 }
 
 struct ClassPermissions: OptionSet {
