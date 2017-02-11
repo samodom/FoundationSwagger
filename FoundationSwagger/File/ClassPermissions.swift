@@ -41,7 +41,7 @@ public struct ClassPermissions: OptionSet {
     /// Produces only valid class permissions based on raw values of 1 through 7.
     /// Any values provided outside of that range produce empty class permission sets.
     public init(rawValue: UInt8) {
-        self.rawValue = rawValue <= 7 ? rawValue : 0
+        self.rawValue = rawValue % 8
     }
 
 
@@ -55,8 +55,5 @@ public struct ClassPermissions: OptionSet {
 
     /// Indicates whether these class permissions include the executable permission.
     public var isExecutable: Bool { return contains(.executable) }
-
-
-    var mask: UInt16 { return UInt16(rawValue) }
 
 }
