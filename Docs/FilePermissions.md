@@ -30,3 +30,13 @@ struct ClassPermissions: OptionSet {
     var isExecutable: Bool
 }
 ```
+
+
+### `FileManager` extensions
+
+Since file permissions are retrieved and modified through a dictionary of file attributes, simpler means of permission extraction and modification is enabled by the following methods on `FileManager`:
+
+```swift
+permissionsOfItem(atPath: String) throws -> FilePermissions?
+setPermissions(_: FilePermissions, ofItemAtPath: String) throws
+```
