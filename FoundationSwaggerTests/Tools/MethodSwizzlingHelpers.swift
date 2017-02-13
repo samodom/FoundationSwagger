@@ -11,7 +11,7 @@ import SampleTypes
 
 //  MARK: - Running sample method
 
-extension MethodSwizzlingTests {
+extension MethodSwizzlingTestCase {
 
     func executeSampleMethod() -> Int {
         switch (surrogate.methodType, selectorOriginUnderTest) {
@@ -44,35 +44,7 @@ extension MethodSwizzlingTests {
 }
 
 
-//  MARK: - Method lookup
-
-extension MethodSwizzlingTests {
-
-    func getMethod(ofOrigin origin: SelectorOrigin) -> Method {
-        let selector = selectorOfOrigin(origin)
-        switch surrogate.methodType {
-        case .class:
-            return class_getClassMethod(surrogate.owningClass, selector)
-
-        case .instance:
-            return class_getInstanceMethod(surrogate.owningClass, selector)
-        }
-    }
-
-    fileprivate func selectorOfOrigin(_ origin: SelectorOrigin) -> Selector {
-        switch origin {
-        case .original:
-            return surrogate.originalSelector
-
-        case .alternate:
-            return surrogate.alternateSelector
-        }
-    }
-    
-
-}
-
-extension MethodSwizzlingTests {
+extension MethodSwizzlingTestCase {
 
     var expectedMethod: Method {
         switch selectorOfOrigin(selectorOriginUnderTest) {
@@ -106,6 +78,27 @@ extension MethodSwizzlingTests {
         case (.original, false),
              (.alternate, true):
             return originalImplementation
+        }
+    }
+
+    func getMethod(ofOrigin origin: SelectorOrigin) -> Method {
+        let selector = selectorOfOrigin(origin)
+        switch surrogate.methodType {
+        case .class:
+            return class_getClassMethod(surrogate.owningClass, selector)
+
+        case .instance:
+            return class_getInstanceMethod(surrogate.owningClass, selector)
+        }
+    }
+
+    fileprivate func selectorOfOrigin(_ origin: SelectorOrigin) -> Selector {
+        switch origin {
+        case .original:
+            return surrogate.originalSelector
+
+        case .alternate:
+            return surrogate.alternateSelector
         }
     }
 

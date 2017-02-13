@@ -14,13 +14,15 @@ class FileExtensionsTests: XCTestCase {
     func testDocumentsDirectoryPath() {
         let expectedPath = PathToDocumentsDirectory()
         let path = DocumentsDirectoryPath
-        XCTAssertEqual(path, expectedPath, "The default file manager should be used to provide the path to the 'Documents' directory on the device")
+        XCTAssertEqual(path, expectedPath,
+                       "The default file manager should be used to provide the path to the 'Documents' directory on the device")
     }
 
     func testFileManagerHasDocumentsDirectoryURL() {
         let expectedURL = Foundation.URL(fileURLWithPath: PathToDocumentsDirectory(), isDirectory: true)
         let URL = DocumentsDirectoryURL
-        XCTAssertEqual(URL as URL, expectedURL, "The default file manager should be used to provide a URL to the 'Documents' directory on the device")
+        XCTAssertEqual(URL as URL, expectedURL,
+                       "The default file manager should be used to provide a URL to the 'Documents' directory on the device")
     }
 
 }

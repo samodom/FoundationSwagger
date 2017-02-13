@@ -7,7 +7,7 @@
 //
 
 
-public extension ObjectAssociating {
+public extension AssociatingObject {
 
     //  MARK: - Booleans
 
