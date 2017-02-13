@@ -1,5 +1,5 @@
 //
-//  TypedObjectAssociationTests.swift
+//  AssociatingObjectTypedAccessorTests.swift
 //  FoundationSwagger
 //
 //  Created by Sam Odom on 11/20/16.
@@ -10,7 +10,7 @@ import XCTest
 import SampleTypes
 import FoundationSwagger
 
-class TypedObjectAssociationTests: XCTestCase {
+class AssociatingObjectTypedAccessorTests: XCTestCase {
 
     let associatingObjects: [AssociatingObject] = [
         SampleObjectiveCClass(14),

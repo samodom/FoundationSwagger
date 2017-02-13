@@ -3,7 +3,7 @@ Object Association
 
 ## Protocol
 
-In order to use instance and class methods instead of free functions for object association, the `AssociatingObject` and `AssociatingClass` protocols provide a simple interface.  Simply extend your class to declare conformance to on or both of the protocols.  Keys are unsafe raw pointers to anything.
+In order to use instance and class methods instead of free functions for object association, the `AssociatingObject` and `AssociatingClass` protocols provide a simple interface.  Simply extend your class to declare conformance to one or both protocol(s).  Keys are unsafe raw pointers to anything.
 
 ```swift
 typealias ObjectAssociationKey = UnsafeRawPointer
@@ -100,6 +100,33 @@ extension AssociatingObject {
 
 	/// For URL associations
 	func urlAssociation(for: ObjectAssociationKey) -> URL?
+
+}
+```
+
+```swift
+extension AssociatingClass {
+
+	/// For boolean associations
+	static func booleanAssociation(for: ObjectAssociationKey) -> Bool?
+
+	/// For signed integer associations
+	static func integerAssociation(for: ObjectAssociationKey) -> Int?
+
+	/// For unsigned integer associations
+	static func unsignedIntegerAssociation(for: ObjectAssociationKey) -> UInt?
+
+	/// For floating-point associations
+	static func floatAssociation(for: ObjectAssociationKey) -> Float?
+
+	/// For double-precision floating-point associations
+	static func doubleAssociation(for: ObjectAssociationKey) -> Double?
+
+	/// For string associations
+	static func stringAssociation(for: ObjectAssociationKey) -> String?
+
+	/// For URL associations
+	static func urlAssociation(for: ObjectAssociationKey) -> URL?
 
 }
 ```
