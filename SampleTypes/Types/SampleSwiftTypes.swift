@@ -40,7 +40,7 @@ public func ==(lhs: SampleSwiftEnumeration, rhs: SampleSwiftEnumeration) -> Bool
 
 //  MARK: - Swift Class
 
-public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, SampleType {
+public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, AssociatingClass, SampleType {
 
     public let value: Int
 
