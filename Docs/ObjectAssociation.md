@@ -75,35 +75,31 @@ myClass.removeAssociation(for: MyKey)
 
 ## Type-specific accessors
 
-For convenience several common atomic data types have pairs of accessors for retrieving associations: one providing purely optional associations and one for retrieving assured values by providing default value associations.
+For convenience, several common atomic data types have a convenience accessor for retrieving associations in a typed manner.
 
 ```swift
-/// For boolean associations
-booleanAssociation(for: ObjectAssociationKey) -> Bool?
-booleanAssociation(for: ObjectAssociationKey, defaultValue: Bool) -> Bool
+extension AssociatingObject {
 
-/// For signed integer associations
-integerAssociation(for: ObjectAssociationKey) -> Int?
-integerAssociation(for: ObjectAssociationKey, defaultValue: Int) -> Int
+	/// For boolean associations
+	func booleanAssociation(for: ObjectAssociationKey) -> Bool?
 
-/// For unsigned integer associations
-unsignedIntegerAssociation(for: ObjectAssociationKey) -> UInt?
-unsignedIntegerAssociation(for: 
-ObjectAssociationKey, defaultValue: UInt) -> UInt
+	/// For signed integer associations
+	func integerAssociation(for: ObjectAssociationKey) -> Int?
 
-/// For floating-point associations
-floatAssociation(for: ObjectAssociationKey) -> Float?
-floatAssociation(for: ObjectAssociationKey, defaultValue: Float) -> Float
+	/// For unsigned integer associations
+	func unsignedIntegerAssociation(for: ObjectAssociationKey) -> UInt?
 
-/// For double-precision floating-point associations
-doubleAssociation(for: ObjectAssociationKey) -> Double?
-doubleAssociation(for: ObjectAssociationKey, defaultValue: Double) -> Double
+	/// For floating-point associations
+	func floatAssociation(for: ObjectAssociationKey) -> Float?
 
-/// For string associations
-stringAssociation(for: ObjectAssociationKey) -> String?
-stringAssociation(for: ObjectAssociationKey, defaultValue: String) -> String
+	/// For double-precision floating-point associations
+	func doubleAssociation(for: ObjectAssociationKey) -> Double?
 
-/// For URL associations
-urlAssociation(for: ObjectAssociationKey) -> URL?
-urlAssociation(for: ObjectAssociationKey, defaultValue: URL) -> URL
+	/// For string associations
+	func stringAssociation(for: ObjectAssociationKey) -> String?
+
+	/// For URL associations
+	func urlAssociation(for: ObjectAssociationKey) -> URL?
+
+}
 ```
