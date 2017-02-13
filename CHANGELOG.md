@@ -1,9 +1,19 @@
 FoundationSwagger Changelog
 ===========================
 
+### v0.2.8 (January 24, 2017)
+ - Exposed `MethodType` enumerated type
+
+### v0.2.7 (January 22, 2017)
+ - Renamed `MethodAssociation` to `MethodSurrogate`
+
+### v0.2.6 (November 21, 2016)
+ - Updated method-swizzling syntax
+
+
 ### v0.2.5 (November 20, 2016)
  - Added `ObjectAssociationKey` typealias for `UnsafeRawPointer`
- - Added type-specific accessors
+ - Added type-specific accessors for object association
 
 
 ### v0.2.4 (November 19, 2016)

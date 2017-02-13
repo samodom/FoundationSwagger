@@ -60,7 +60,7 @@ fileprivate extension MethodSwizzlingTestCase {
             validateMethodIsValid()
             validateImplementationIsValid()
             validateSampleOutputMatches()
-            validateAssociationSwizzleState()
+            validateSurrogateSwizzleState()
         }
     }
 
@@ -101,9 +101,9 @@ fileprivate extension MethodSwizzlingTestCase {
         }
     }
 
-    private func validateAssociationSwizzleState() {
-        if association.isSwizzled != isTestingSwizzledImplementations {
-            let errorMessage = "The association should \(isTestingSwizzledImplementations ? "" : "not ")be flagged as being swizzled"
+    private func validateSurrogateSwizzleState() {
+        if surrogate.isSwizzled != isTestingSwizzledImplementations {
+            let errorMessage = "The surrogate should \(isTestingSwizzledImplementations ? "" : "not ")be flagged as being swizzled"
             recordFailure(
                 withDescription: errorMessage,
                 inFile: currentCodeSource.file,

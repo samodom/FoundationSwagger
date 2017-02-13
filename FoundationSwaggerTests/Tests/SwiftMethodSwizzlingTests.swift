@@ -13,30 +13,30 @@ import FoundationSwagger
 class SwiftMethodSwizzlingTests: MethodSwizzlingTestCase {
 
     func testSwizzlingSwiftClassMethods() {
-        setUpAssociation(classType: .swift, methodType: .`class`)
+        setUpSurrogate(classType: .swift, methodType: .`class`)
 
         //  Swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Shouldn't swizzle when swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
 
         //  Shouldn't unswizzle when unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
     }
 
     func testSwizzlingSwiftClassMethodsWithContext() {
         //  Swizzled
-        setUpAssociation(classType: .swift, methodType: .`class`)
+        setUpSurrogate(classType: .swift, methodType: .`class`)
 
-        association.withAlternateImplementation() {
+        surrogate.withAlternateImplementation() {
             executedContext = true
             validateMethodsAreSwizzled()
         }
@@ -46,9 +46,9 @@ class SwiftMethodSwizzlingTests: MethodSwizzlingTestCase {
         executedContext = false
 
         //  Unswizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
 
-        association.withOriginalImplementation() {
+        surrogate.withOriginalImplementation() {
             executedContext = true
             validateMethodsAreNotSwizzled()
 
@@ -57,34 +57,34 @@ class SwiftMethodSwizzlingTests: MethodSwizzlingTestCase {
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
         validateMethodsAreSwizzled()
 
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
     }
 
     func testSwizzlingSwiftInstanceMethods() {
-        setUpAssociation(classType: .swift, methodType: .instance)
+        setUpSurrogate(classType: .swift, methodType: .instance)
 
         //  Swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Shouldn't swizzle when swizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
         validateMethodsAreSwizzled()
 
         //  Unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
 
         //  Shouldn't unswizzle when unswizzled
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
         validateMethodsAreNotSwizzled()
     }
 
     func testSwizzlingSwiftInstanceMethodsWithContext() {
         //  Swizzled
-        setUpAssociation(classType: .swift, methodType: .instance)
+        setUpSurrogate(classType: .swift, methodType: .instance)
 
-        association.withAlternateImplementation() {
+        surrogate.withAlternateImplementation() {
             executedContext = true
             validateMethodsAreSwizzled()
         }
@@ -94,9 +94,9 @@ class SwiftMethodSwizzlingTests: MethodSwizzlingTestCase {
         executedContext = false
 
         //  Unswizzled
-        association.useAlternateImplementation()
+        surrogate.useAlternateImplementation()
 
-        association.withOriginalImplementation() {
+        surrogate.withOriginalImplementation() {
             executedContext = true
             validateMethodsAreNotSwizzled()
         }
@@ -104,7 +104,7 @@ class SwiftMethodSwizzlingTests: MethodSwizzlingTestCase {
         XCTAssertTrue(executedContext, "The context should be executed while the methods are swizzled")
         validateMethodsAreSwizzled()
         
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
     }
 
 }

@@ -1,5 +1,5 @@
 //
-//  MethodAssociation.swift
+//  MethodSurrogate.swift
 //  FoundationSwagger
 //
 //  Created by Sam Odom on 10/24/16.
@@ -8,14 +8,14 @@
 
 import Foundation
 
+/// Enumerated type representing the two basic types of methods that a class can define.
+public enum MethodType {
+    case `class`, instance
+}
+
+
 /// An association of two swappable (swizzlable) methods of a class
-public class MethodAssociation {
-
-    /// Enumerated type representing the two basic types of methods on a class.
-    public enum MethodType {
-        case `class`, instance
-    }
-
+public class MethodSurrogate {
 
     /// The class implementing the class or instance methods designated
     /// by the original and alternate selectors.
@@ -36,7 +36,7 @@ public class MethodAssociation {
     public let alternateSelector: Selector
 
 
-    /// Creates a method association for the provided class and methods
+    /// Creates a method surrogate for the provided class and methods
     /// - parameter forClass: The class implementing both the original and alternate methods.
     /// - parameter ofType: The type of method: class or instance.
     /// - parameter originalSelector: The selector designating the original method to replace.

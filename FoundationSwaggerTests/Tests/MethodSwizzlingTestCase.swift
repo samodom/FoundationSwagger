@@ -16,7 +16,7 @@ class MethodSwizzlingTestCase: XCTestCase {
         case objectiveC, swift
     }
 
-    var association: MethodAssociation!
+    var surrogate: MethodSurrogate!
 
     var originalMethod: Method!
     var originalImplementation: IMP!
@@ -33,7 +33,7 @@ class MethodSwizzlingTestCase: XCTestCase {
     var executedContext = false
 
     override func tearDown() {
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
 
         super.tearDown()
     }
@@ -41,53 +41,53 @@ class MethodSwizzlingTestCase: XCTestCase {
     //  MARK: - Mixed implementation
 
     func testMixedAndNestedSwizzlingSafety() {
-        setUpAssociation(classType: .objectiveC, methodType: .instance)
+        setUpSurrogate(classType: .objectiveC, methodType: .instance)
 
         //  Nested unswizzled ignored
-        association.withOriginalImplementation {
+        surrogate.withOriginalImplementation {
             XCTFail("This code should not execute")
         }
         validateMethodsAreNotSwizzled()
 
         //  Nested swizzled ignored
-        association.useAlternateImplementation()
-        association.withAlternateImplementation() {
+        surrogate.useAlternateImplementation()
+        surrogate.withAlternateImplementation() {
             XCTFail("This code should not execute")
         }
         validateMethodsAreSwizzled()
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
 
         //  Nested unswizzled not ignored
-        association.useAlternateImplementation()
-        association.withOriginalImplementation {
+        surrogate.useAlternateImplementation()
+        surrogate.withOriginalImplementation {
             validateMethodsAreNotSwizzled()
         }
-        association.useOriginalImplementation()
+        surrogate.useOriginalImplementation()
     }
 
 
     //  Common helpers
 
-    func setUpAssociation(classType: ClassType, methodType: MethodAssociation.MethodType) {
+    func setUpSurrogate(classType: ClassType, methodType: MethodType) {
         switch (classType, methodType) {
         case (.objectiveC, .`class`):
-            association = objectiveCClassMethodAssociation()
+            surrogate = objectiveCClassMethodSurrogate()
 
         case (.objectiveC, .instance):
-            association = objectiveCInstanceMethodAssociation()
+            surrogate = objectiveCInstanceMethodSurrogate()
 
         case (.swift, .`class`):
-            association = swiftClassMethodAssociation()
+            surrogate = swiftClassMethodSurrogate()
 
         case (.swift, .instance):
-            association = swiftInstanceMethodAssociation()
+            surrogate = swiftInstanceMethodSurrogate()
         }
 
         loadMethodValues()
     }
 
     private func loadMethodValues() {
-        switch association.owningClass.className() {
+        switch surrogate.owningClass.className() {
         case SampleObjectiveCClass.className():
             sampleObject = SampleObjectiveCClass()
 
@@ -105,8 +105,8 @@ class MethodSwizzlingTestCase: XCTestCase {
         alternateImplementation = method_getImplementation(alternateMethod)
     }
 
-    func objectiveCClassMethodAssociation() -> MethodAssociation {
-        return MethodAssociation(
+    func objectiveCClassMethodSurrogate() -> MethodSurrogate {
+        return MethodSurrogate(
             forClass: SampleObjectiveCClass.self,
             ofType: .class,
             originalSelector: #selector(SampleObjectiveCClass.sampleClassMethod),
@@ -114,8 +114,8 @@ class MethodSwizzlingTestCase: XCTestCase {
         )
     }
 
-    func objectiveCInstanceMethodAssociation() -> MethodAssociation {
-        return MethodAssociation(
+    func objectiveCInstanceMethodSurrogate() -> MethodSurrogate {
+        return MethodSurrogate(
             forClass: SampleObjectiveCClass.self,
             ofType: .instance,
             originalSelector: #selector(SampleObjectiveCClass.sampleInstanceMethod),
@@ -123,8 +123,8 @@ class MethodSwizzlingTestCase: XCTestCase {
         )
     }
 
-    func swiftClassMethodAssociation() -> MethodAssociation {
-        return MethodAssociation(
+    func swiftClassMethodSurrogate() -> MethodSurrogate {
+        return MethodSurrogate(
             forClass: SampleSwiftClass.self,
             ofType: .class,
             originalSelector: #selector(SampleSwiftClass.sampleClassMethod),
@@ -132,8 +132,8 @@ class MethodSwizzlingTestCase: XCTestCase {
         )
     }
 
-    func swiftInstanceMethodAssociation() -> MethodAssociation {
-        return MethodAssociation(
+    func swiftInstanceMethodSurrogate() -> MethodSurrogate {
+        return MethodSurrogate(
             forClass: SampleSwiftClass.self,
             ofType: .instance,
             originalSelector: #selector(SampleSwiftClass.sampleInstanceMethod),
