@@ -15,24 +15,29 @@ class FileManagerPermissionsTests: XCTestCase {
     let fileManager = FileManager.default
     let allPermissionsMasks = FilePermissionsMask(0) ... MaximumFilePermissionsMask
 
-    let sampleFilePath: String = {
-        let url = NSURL(string: "sample", relativeTo: DocumentsDirectoryURL)! as URL
-        return url.path
-    }()
-
-    let nonexistentFilePath: String = {
-        let url = NSURL(string: "nothing", relativeTo: DocumentsDirectoryURL)! as URL
-        return url.path
-    }()
+    var sampleDirectoryPath: String!
+    var sampleFilePath: String!
+    var nonexistentFilePath: String!
 
 
     override func setUp() {
         super.setUp()
 
-        if !fileManager.fileExists(atPath: sampleFilePath) {
-            fileManager.createFile(atPath: sampleFilePath, contents: nil, attributes: nil)
-        }
+        sampleDirectoryPath = DocumentsDirectoryURL.appendingPathComponent("sampleDirectory").path
+        sampleFilePath = DocumentsDirectoryURL.appendingPathComponent("sampleFile").path
+        nonexistentFilePath = DocumentsDirectoryURL.appendingPathComponent("nothing").path
 
+        try? fileManager.createDirectory(
+            atPath: sampleDirectoryPath,
+            withIntermediateDirectories: false,
+            attributes: nil
+        )
+
+        fileManager.createFile(atPath: sampleFilePath, contents: nil, attributes: nil)
+
+        var isDirectory = ObjCBool(false)
+        assert(fileManager.fileExists(atPath: sampleDirectoryPath, isDirectory: &isDirectory))
+        assert(isDirectory.boolValue)
         assert(fileManager.fileExists(atPath: sampleFilePath))
         assert(!fileManager.fileExists(atPath: nonexistentFilePath))
     }
@@ -81,6 +86,30 @@ class FileManagerPermissionsTests: XCTestCase {
             catch {
                 fatalError("Unexpected error encountered retrieving permissions")
             }
+        }
+    }
+
+    func testRetrievingPermissionsForExistingFiles() {
+        [sampleFilePath!, sampleDirectoryPath!].forEach { path in
+            let expectedMask: FilePermissionsMask
+            do {
+                let attributes = try fileManager.attributesOfItem(atPath: path)
+                expectedMask = attributes[FileAttributeKey.posixPermissions]! as! FilePermissionsMask
+            }
+            catch {
+                fatalError("Unable to retrieve expected file permissions")
+            }
+
+            let retrievedMask: FilePermissionsMask
+            do {
+                let permissions = try fileManager.permissionsOfItem(atPath: path)!
+                retrievedMask = permissions.mask
+            }
+            catch {
+                return XCTFail("Unable to retrieve permissions: \(error)")
+            }
+
+            XCTAssertEqual(retrievedMask, expectedMask, "The wrong permissions were retrieved")
         }
     }
 
