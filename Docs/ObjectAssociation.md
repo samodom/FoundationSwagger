@@ -3,20 +3,31 @@ Object Association
 
 ## Protocol
 
-In order to use object instance methods instead of functions for object association, the `ObjectAssociating` protocol has been defined to provide a simple interface.  Simply extend your class to declare conformance to the protocol.  Keys are unsafe raw pointers to anything.
+In order to use instance and class methods instead of free functions for object association, the `AssociatingObject` and `AssociatingClass` protocols provide a simple interface.  Simply extend your class to declare conformance to on or both of the protocols.  Keys are unsafe raw pointers to anything.
 
 ```swift
 typealias ObjectAssociationKey = UnsafeRawPointer
 
-protocol ObjectAssociating {
+protocol AssociatingObject: class {
     func associate(
         _: Any,
         with: ObjectAssociationKey,
-        usingPolicy: objc_AssociationPolicy
+        usingPolicy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC
     )
     func association(for: ObjectAssociationKey) -> Any?
     func removeAssociation(for: ObjectAssociationKey)
     func removeAllAssociations()
+}
+
+protocol AssociatingClass: class {
+    static func associate(
+        _: Any,
+        with: ObjectAssociationKey,
+        usingPolicy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+    )
+    static func association(for: ObjectAssociationKey) -> Any?
+    static func removeAssociation(for: ObjectAssociationKey)
+    static func removeAllAssociations()
 }
 ```
 
@@ -25,20 +36,40 @@ When no policy is provided, the association will be non-atomically retained matc
 
 ### Sample usage:
 
+#### Object
+
 ```swift
-extension MyClass: ObjectAssociating {}
+extension MyClass: AssociatingObject {}
 
 let MyKey = ObjectAssociationKey("Key String")
 
 let myObject = MyClass()
 let myData = Thing()
 
-myObject.associate(myData, with: MyKey, usingPolicy: .OBJC_ASSOCIATION_RETAIN)
+myObject.associate(myData, with: MyKey)
 
 let thing = myObject.association(for: MyKey) as? Thing
 
 myObject.removeAssociation(for: MyKey)
 //  or myObject.removeAllAssociations()
+```
+
+#### Class
+
+```swift
+extension MyClass: AssociatingClass {}
+
+let MyKey = ObjectAssociationKey("Key String")
+
+let myClass = MyClass.self
+let myData = Thing()
+
+myClass.associate(myData, with: MyKey)
+
+let thing = myClass.association(for: MyKey) as? Thing
+
+myClass.removeAssociation(for: MyKey)
+//  or myClass.removeAllAssociations()
 ```
 
 
