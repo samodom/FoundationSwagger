@@ -29,21 +29,24 @@ class DateTests: XCTestCase {
     func testSubtractingDateFromItself() {
         let interval = now - now
         expectedInterval = 0.0
-        XCTAssertEqual(interval, expectedInterval, "There should be a 0.0 second interval between a date and itself")
+        XCTAssertEqual(interval, expectedInterval,
+                       "There should be a 0.0 second interval between a date and itself")
     }
 
     func testSubtractingEarlierDateFromLaterDate() {
         makeOtherDates()
         let interval = later - earlier
         expectedInterval = later.timeIntervalSince(earlier)
-        XCTAssertEqual(interval, expectedInterval, "The subtraction operator should produce the time interval between the two dates")
+        XCTAssertEqual(interval, expectedInterval,
+                       "The subtraction operator should produce the time interval between the two dates")
     }
 
     func testSubtractingLaterDateFromEarlierDate() {
         makeOtherDates()
         let interval = earlier - later
         expectedInterval = earlier.timeIntervalSince(later)
-        XCTAssertEqual(interval, expectedInterval, "The subtraction operator should produce the time interval between the two dates")
+        XCTAssertEqual(interval, expectedInterval,
+                       "The subtraction operator should produce the time interval between the two dates")
     }
 
 }

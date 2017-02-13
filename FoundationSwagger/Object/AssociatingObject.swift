@@ -1,5 +1,5 @@
 //
-//  ObjectAssociation.swift
+//  AssociatingObject.swift
 //  FoundationSwagger
 //
 //  Created by Sam Odom on 2/7/15.
@@ -9,14 +9,14 @@
 import Foundation
 
 /// Common protocol for object association with pure Swift classes or `NSObject` (and its subclasses).
-public protocol ObjectAssociating: class {}
+public protocol AssociatingObject: class {}
 
 
 /// Type alias for object association keys
 public typealias ObjectAssociationKey = UnsafeRawPointer
 
 
-public extension ObjectAssociating {
+public extension AssociatingObject {
 
     /// Creates an association between the implementing and provided objects using the specified key and policy.
     /// - parameter value: The object or value to associate with `self`.
@@ -55,4 +55,4 @@ public extension ObjectAssociating {
 }
 
 /// Makes all Objective-C objects object associating
-extension NSObject: ObjectAssociating {}
+extension NSObject: AssociatingObject {}

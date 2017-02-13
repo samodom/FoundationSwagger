@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A048B891E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A048B881E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift */; };
+		0A114AD01E52642400B907ED /* AssociatingObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A114ACF1E52642400B907ED /* AssociatingObjectTests.swift */; };
+		0A114AD21E52651800B907ED /* AssociatingClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A114AD11E52651800B907ED /* AssociatingClassTests.swift */; };
+		0A114AD41E52680F00B907ED /* AssociatingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A114AD31E52680F00B907ED /* AssociatingClass.swift */; };
 		0A1161C81E4D16B600CD6DD8 /* ClassPermissionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1161C71E4D16B600CD6DD8 /* ClassPermissionsTests.swift */; };
 		0A1161CA1E4D592300CD6DD8 /* FileManagerPermissionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1161C91E4D592300CD6DD8 /* FileManagerPermissionsTests.swift */; };
 		0A1161CC1E4D59F400CD6DD8 /* FilePermissionsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1161CB1E4D59F400CD6DD8 /* FilePermissionsConstants.swift */; };
@@ -22,13 +26,14 @@
 		0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCBFE1AACB54800484777 /* DateOperators.swift */; };
 		0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCC031AACDDA000484777 /* DateRangeTests.swift */; };
 		0A5BCC061AACDDBA00484777 /* DateRanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5BCC051AACDDBA00484777 /* DateRanges.swift */; };
-		0A7DC47B1DBED0E100BCFC56 /* MethodSwizzlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */; };
+		0A7DC47B1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC47A1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift */; };
 		0A7DC47F1DBED91A00BCFC56 /* MethodSurrogateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC47E1DBED91A00BCFC56 /* MethodSurrogateTests.swift */; };
 		0A7DC4811DBEDAA200BCFC56 /* MethodSurrogate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC4801DBEDAA200BCFC56 /* MethodSurrogate.swift */; };
 		0A7DC4831DBEE68300BCFC56 /* MethodSwizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DC4821DBEE68300BCFC56 /* MethodSwizzling.swift */; };
-		0A90C86E1A86D2E70047FE16 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */; };
-		0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */; };
+		0A90C86E1A86D2E70047FE16 /* AssociatingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C86D1A86D2E70047FE16 /* AssociatingObject.swift */; };
+		0A90C8711A86D3120047FE16 /* ObjectAssociationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90C8701A86D3120047FE16 /* ObjectAssociationTestCase.swift */; };
 		0AB47CBE1DC537DE00B5C86A /* SampleType.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB47CBD1DC537DE00B5C86A /* SampleType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0ABBD3E21E1B33C700F6F194 /* MethodSwizzlingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A048B861E134FF300CF003F /* MethodSwizzlingTestCase.swift */; };
 		0ABD48CD1DE2C17B005DD470 /* TypedObjectAssociationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD48CC1DE2C17B005DD470 /* TypedObjectAssociationTests.swift */; };
 		0ABD48CF1DE3B07C005DD470 /* TypedAssociationAccessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD48CE1DE3B07C005DD470 /* TypedAssociationAccessors.swift */; };
 		0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB6281DC3180700B50A55 /* CodeSource.swift */; };
@@ -59,6 +64,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A048B861E134FF300CF003F /* MethodSwizzlingTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzlingTestCase.swift; sourceTree = "<group>"; };
+		0A048B881E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectiveCMethodSwizzlingTests.swift; sourceTree = "<group>"; };
+		0A114ACF1E52642400B907ED /* AssociatingObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatingObjectTests.swift; sourceTree = "<group>"; };
+		0A114AD11E52651800B907ED /* AssociatingClassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatingClassTests.swift; sourceTree = "<group>"; };
+		0A114AD31E52680F00B907ED /* AssociatingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatingClass.swift; sourceTree = "<group>"; };
 		0A1161C71E4D16B600CD6DD8 /* ClassPermissionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassPermissionsTests.swift; sourceTree = "<group>"; };
 		0A1161C91E4D592300CD6DD8 /* FileManagerPermissionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerPermissionsTests.swift; sourceTree = "<group>"; };
 		0A1161CB1E4D59F400CD6DD8 /* FilePermissionsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePermissionsConstants.swift; sourceTree = "<group>"; };
@@ -78,12 +88,12 @@
 		0A5BCBFE1AACB54800484777 /* DateOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateOperators.swift; sourceTree = "<group>"; };
 		0A5BCC031AACDDA000484777 /* DateRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeTests.swift; sourceTree = "<group>"; };
 		0A5BCC051AACDDBA00484777 /* DateRanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRanges.swift; sourceTree = "<group>"; };
-		0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzlingTests.swift; sourceTree = "<group>"; };
+		0A7DC47A1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMethodSwizzlingTests.swift; sourceTree = "<group>"; };
 		0A7DC47E1DBED91A00BCFC56 /* MethodSurrogateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSurrogateTests.swift; sourceTree = "<group>"; };
 		0A7DC4801DBEDAA200BCFC56 /* MethodSurrogate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSurrogate.swift; sourceTree = "<group>"; };
 		0A7DC4821DBEE68300BCFC56 /* MethodSwizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSwizzling.swift; sourceTree = "<group>"; };
-		0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociation.swift; sourceTree = "<group>"; };
-		0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociationTests.swift; sourceTree = "<group>"; };
+		0A90C86D1A86D2E70047FE16 /* AssociatingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatingObject.swift; sourceTree = "<group>"; };
+		0A90C8701A86D3120047FE16 /* ObjectAssociationTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociationTestCase.swift; sourceTree = "<group>"; };
 		0AB47CBD1DC537DE00B5C86A /* SampleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleType.h; sourceTree = "<group>"; };
 		0ABD48CC1DE2C17B005DD470 /* TypedObjectAssociationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypedObjectAssociationTests.swift; sourceTree = "<group>"; };
 		0ABD48CE1DE3B07C005DD470 /* TypedAssociationAccessors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypedAssociationAccessors.swift; sourceTree = "<group>"; };
@@ -162,10 +172,10 @@
 			children = (
 				0A5BCBFD1AACB53800484777 /* Date */,
 				0A3784D21A100D280003C7F3 /* File */,
-				0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */,
 				0A7DC4771DBDD8E800BCFC56 /* MethodSwizzling */,
 				0A90C86C1A86D2CC0047FE16 /* Object */,
 				0A3BB9BD19EB78010075B32A /* Supporting Files */,
+				0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */,
 			);
 			path = FoundationSwagger;
 			sourceTree = "<group>";
@@ -175,7 +185,7 @@
 			children = (
 				0A3BB9BE19EB78010075B32A /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		0A3BB9C919EB78010075B32A /* FoundationSwaggerTests */ = {
@@ -193,12 +203,14 @@
 			children = (
 				0A3BB9CB19EB78010075B32A /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		0A3BB9D619EB78500075B32A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				0A114AD11E52651800B907ED /* AssociatingClassTests.swift */,
+				0A114ACF1E52642400B907ED /* AssociatingObjectTests.swift */,
 				0A1161C71E4D16B600CD6DD8 /* ClassPermissionsTests.swift */,
 				0A5BCC031AACDDA000484777 /* DateRangeTests.swift */,
 				0A5BCBFB1AACB3B200484777 /* DateTests.swift */,
@@ -206,8 +218,10 @@
 				0A1161C91E4D592300CD6DD8 /* FileManagerPermissionsTests.swift */,
 				0A563D621E4BFC4500D7C5E1 /* FilePermissionsTests.swift */,
 				0A7DC47E1DBED91A00BCFC56 /* MethodSurrogateTests.swift */,
-				0A7DC47A1DBED0E100BCFC56 /* MethodSwizzlingTests.swift */,
-				0A90C8701A86D3120047FE16 /* ObjectAssociationTests.swift */,
+				0A048B861E134FF300CF003F /* MethodSwizzlingTestCase.swift */,
+				0A90C8701A86D3120047FE16 /* ObjectAssociationTestCase.swift */,
+				0A048B881E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift */,
+				0A7DC47A1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift */,
 				0ABD48CC1DE2C17B005DD470 /* TypedObjectAssociationTests.swift */,
 			);
 			path = Tests;
@@ -234,7 +248,8 @@
 		0A90C86C1A86D2CC0047FE16 /* Object */ = {
 			isa = PBXGroup;
 			children = (
-				0A90C86D1A86D2E70047FE16 /* ObjectAssociation.swift */,
+				0A114AD31E52680F00B907ED /* AssociatingClass.swift */,
+				0A90C86D1A86D2E70047FE16 /* AssociatingObject.swift */,
 				0ABD48CE1DE3B07C005DD470 /* TypedAssociationAccessors.swift */,
 			);
 			path = Object;
@@ -263,9 +278,9 @@
 		0AEDD6A31DC52E3E005D042C /* SampleTypes */ = {
 			isa = PBXGroup;
 			children = (
-				0AEDD6A41DC52E3E005D042C /* SampleTypes.h */,
 				0AEDD6AA1DC52EA8005D042C /* Supporing Files */,
 				0AEDD6AB1DC52F05005D042C /* Types */,
+				0AEDD6A41DC52E3E005D042C /* SampleTypes.h */,
 			);
 			path = SampleTypes;
 			sourceTree = "<group>";
@@ -275,7 +290,7 @@
 			children = (
 				0AEDD6A51DC52E3E005D042C /* Info.plist */,
 			);
-			name = "Supporing Files";
+			path = "Supporing Files";
 			sourceTree = "<group>";
 		};
 		0AEDD6AB1DC52F05005D042C /* Types */ = {
@@ -440,11 +455,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A90C86E1A86D2E70047FE16 /* ObjectAssociation.swift in Sources */,
+				0A90C86E1A86D2E70047FE16 /* AssociatingObject.swift in Sources */,
 				0A563D671E4C233200D7C5E1 /* ClassPermissions.swift in Sources */,
 				0A5BCC061AACDDBA00484777 /* DateRanges.swift in Sources */,
 				0A7DC4811DBEDAA200BCFC56 /* MethodSurrogate.swift in Sources */,
 				0A1161CE1E4E520300CD6DD8 /* FileManagerPermissions.swift in Sources */,
+				0A114AD41E52680F00B907ED /* AssociatingClass.swift in Sources */,
 				0A5BCBFF1AACB54800484777 /* DateOperators.swift in Sources */,
 				0A563D651E4BFFCE00D7C5E1 /* FilePermissions.swift in Sources */,
 				0A7DC4831DBEE68300BCFC56 /* MethodSwizzling.swift in Sources */,
@@ -460,15 +476,19 @@
 				0A3784D11A100B1D0003C7F3 /* FileExtensionsTests.swift in Sources */,
 				0A1161CA1E4D592300CD6DD8 /* FileManagerPermissionsTests.swift in Sources */,
 				0AF8C3DB1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift in Sources */,
+				0A048B891E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift in Sources */,
 				0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */,
+				0ABBD3E21E1B33C700F6F194 /* MethodSwizzlingTestCase.swift in Sources */,
+				0A114AD01E52642400B907ED /* AssociatingObjectTests.swift in Sources */,
+				0A7DC47B1DBED0E100BCFC56 /* SwiftMethodSwizzlingTests.swift in Sources */,
 				0A1161C81E4D16B600CD6DD8 /* ClassPermissionsTests.swift in Sources */,
-				0A7DC47B1DBED0E100BCFC56 /* MethodSwizzlingTests.swift in Sources */,
 				0A1161CC1E4D59F400CD6DD8 /* FilePermissionsConstants.swift in Sources */,
 				0A5BCC041AACDDA000484777 /* DateRangeTests.swift in Sources */,
 				0ABD48CD1DE2C17B005DD470 /* TypedObjectAssociationTests.swift in Sources */,
 				0AEDD6B51DC52FE5005D042C /* MethodSwizzlingHelpers.swift in Sources */,
 				0A1161D01E4E576000CD6DD8 /* FileManagerStubs.swift in Sources */,
-				0A90C8711A86D3120047FE16 /* ObjectAssociationTests.swift in Sources */,
+				0A114AD21E52651800B907ED /* AssociatingClassTests.swift in Sources */,
+				0A90C8711A86D3120047FE16 /* ObjectAssociationTestCase.swift in Sources */,
 				0A563D631E4BFC4500D7C5E1 /* FilePermissionsTests.swift in Sources */,
 				0A5BCBFC1AACB3B200484777 /* DateTests.swift in Sources */,
 				0A7DC47F1DBED91A00BCFC56 /* MethodSurrogateTests.swift in Sources */,
@@ -606,7 +626,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
-				INFOPLIST_FILE = FoundationSwagger/Info.plist;
+				INFOPLIST_FILE = "FoundationSwagger/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samodom.$(PRODUCT_NAME:rfc1034identifier)";
@@ -624,7 +644,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
-				INFOPLIST_FILE = FoundationSwagger/Info.plist;
+				INFOPLIST_FILE = "FoundationSwagger/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samodom.$(PRODUCT_NAME:rfc1034identifier)";
@@ -646,7 +666,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FoundationSwaggerTests/Info.plist;
+				INFOPLIST_FILE = "FoundationSwaggerTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samodom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -663,7 +683,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FoundationSwaggerTests/Info.plist;
+				INFOPLIST_FILE = "FoundationSwaggerTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.samodom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -687,7 +707,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = SampleTypes/Info.plist;
+				INFOPLIST_FILE = "SampleTypes/Supporing Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -714,7 +734,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = SampleTypes/Info.plist;
+				INFOPLIST_FILE = "SampleTypes/Supporing Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
