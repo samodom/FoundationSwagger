@@ -38,6 +38,11 @@
                BlueprintName = "FoundationSwaggerTests"
                ReferencedContainer = "container:FoundationSwagger.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "ObjectAssociationTestCase">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

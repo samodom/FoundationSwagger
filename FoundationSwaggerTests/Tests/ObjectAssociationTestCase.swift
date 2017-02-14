@@ -7,15 +7,7 @@
 //
 
 import XCTest
-import FoundationSwagger
 import SampleTypes
-
-
-fileprivate let SampleKeyString1 = NSUUID().uuidString.cString(using: .utf8)!
-let SampleKey1 = ObjectAssociationKey(SampleKeyString1)
-
-fileprivate let SampleKeyString2 = NSUUID().uuidString.cString(using: .utf8)!
-let SampleKey2 = ObjectAssociationKey(SampleKeyString2)
 
 
 typealias AnyIsEqual = (Any, Any) -> Bool
@@ -61,6 +53,7 @@ class ObjectAssociationTestCase: XCTestCase {
 
     var associations: [AssociationTestPair]!
     var nonObjectAssociations: [AssociationTestPair]!
+
     var objectAssociations: [InitializerTestPair] = [
         (
             create: { SampleObjectiveCClass(42) },
@@ -73,6 +66,7 @@ class ObjectAssociationTestCase: XCTestCase {
     ]
 
     weak var weakReference: AnyObject?
+
 
     override func setUp() {
         super.setUp()

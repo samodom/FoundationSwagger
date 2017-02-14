@@ -1,6 +1,19 @@
 FoundationSwagger Changelog
 ===========================
 
+### v0.2.12 (February 13, 2017)
+ - Removed default-value typed association accessors
+ - Added class-level typed association accessors
+
+### v0.2.11 (February 13, 2017)
+ - Adding type-level object associations
+
+### v0.2.10
+ - Extended file permissions support
+
+### v0.2.9
+ - Added file permissions types
+
 ### v0.2.8 (January 24, 2017)
  - Exposed `MethodType` enumerated type
 
