@@ -7,6 +7,7 @@
 //
 
 
+/// Well-known name for an empty-input function that doesn't return anything
 public typealias NullaryVoidClosure = () -> Void
 
 
