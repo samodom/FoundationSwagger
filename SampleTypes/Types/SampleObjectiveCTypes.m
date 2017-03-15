@@ -12,6 +12,9 @@
 NSInteger const OriginalMethodReturnValue = 14;
 NSInteger const AlternateMethodReturnValue = 42;
 
+NSString * const OriginalPropertyValue = @"Tony Stewart";
+NSString * const AlternatePropertyValue = @"Kyle Larson";
+
 
 //  MARK: - Sample Objective-C structure equatability
 
@@ -27,11 +30,12 @@ BOOL SampleObjectiveCStructuresEqual(SampleObjectiveCStructure lhs, SampleObject
     return NSStringFromClass(self);
 }
 
+
 //  MARK: - Lifecycle
 
-- (instancetype)init:(NSInteger)value {
-    if (self = [self init]) {
-        _value = value;
+- (instancetype)init {
+    if (self = [super init]) {
+        _instanceProperty = OriginalPropertyValue;
     }
 
     return self;
@@ -39,7 +43,8 @@ BOOL SampleObjectiveCStructuresEqual(SampleObjectiveCStructure lhs, SampleObject
 
 
 - (id)copy {
-    SampleObjectiveCClass *copyOfObject = [[SampleObjectiveCClass alloc] init:self.value];
+    SampleObjectiveCClass *copyOfObject = [[SampleObjectiveCClass alloc] init];
+    copyOfObject->_instanceProperty = self.instanceProperty;
     return copyOfObject;
 }
 
@@ -64,7 +69,7 @@ BOOL SampleObjectiveCStructuresEqual(SampleObjectiveCStructure lhs, SampleObject
     }
 
     SampleObjectiveCClass *other = object;
-    return self.value == other.value;
+    return self.instanceProperty == other.instanceProperty;
 }
 
 

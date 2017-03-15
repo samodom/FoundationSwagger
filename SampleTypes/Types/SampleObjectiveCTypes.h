@@ -16,6 +16,9 @@
 FOUNDATION_EXPORT NSInteger const OriginalMethodReturnValue;
 FOUNDATION_EXPORT NSInteger const AlternateMethodReturnValue;
 
+FOUNDATION_EXPORT NSString * _Nonnull const OriginalPropertyValue;
+FOUNDATION_EXPORT NSString * _Nonnull const AlternatePropertyValue;
+
 
 //  MARK: - C Structure
 
@@ -38,8 +41,8 @@ typedef enum SampleObjectiveCEnumeration: NSUInteger {
 
 @interface SampleObjectiveCClass: NSObject<SampleType>
 
-@property (readonly) NSInteger value;
+@property (readonly) NSString * _Nonnull instanceProperty;
 
-- (nonnull instancetype)init:(NSInteger)value;
+- (nonnull instancetype)init;
 
 @end

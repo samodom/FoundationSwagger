@@ -13,8 +13,8 @@ import FoundationSwagger
 class AssociatingObjectTypedAccessorTests: XCTestCase {
 
     let associatingObjects: [AssociatingObject] = [
-        SampleObjectiveCClass(14),
-        SampleSwiftClass(14)
+        SampleObjectiveCClass(),
+        SampleSwiftClass()
     ]
 
     let key = SampleKey1

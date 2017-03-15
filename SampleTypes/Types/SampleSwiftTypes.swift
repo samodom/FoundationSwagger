@@ -42,7 +42,7 @@ public func ==(lhs: SampleSwiftEnumeration, rhs: SampleSwiftEnumeration) -> Bool
 
 public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, AssociatingClass, SampleType {
 
-    public let value: Int
+    public var instanceProperty: String
 
     public class func className() -> String {
         return NSStringFromClass(SampleSwiftClass.self)
@@ -52,11 +52,7 @@ public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, Associat
     //  MARK: - Lifecycle
 
     public init() {
-        value = 0
-    }
-
-    public init(_ value: Int) {
-        self.value = value
+        instanceProperty = OriginalPropertyValue
     }
 
     @objc public func copy() -> AnyObject {
@@ -64,7 +60,9 @@ public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, Associat
     }
 
     @objc public func copy(with zone: NSZone?) -> Any {
-        return SampleSwiftClass(value)
+        let new = SampleSwiftClass()
+        new.instanceProperty = instanceProperty
+        return new
     }
 
 
@@ -88,6 +86,7 @@ public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, Associat
 
 }
 
+
 public func ==(lhs: SampleSwiftClass, rhs: SampleSwiftClass) -> Bool {
-    return lhs.value == rhs.value
+    return lhs.instanceProperty == rhs.instanceProperty
 }

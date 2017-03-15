@@ -9,7 +9,7 @@
 import XCTest
 
 class ObjectiveCMethodSwizzlingTests: MethodSwizzlingTestCase {
-    
+
     func testSwizzlingObjectiveCClassMethods() {
         setUpSurrogate(classType: .objectiveC, methodType: .`class`)
 

@@ -26,7 +26,7 @@ typealias InitializerTestPair = (
 class ObjectAssociationTestCase: XCTestCase {
 
     let objectiveCObjectAssociation: AssociationTestPair = (
-        association: SampleObjectiveCClass(42),
+        association: SampleObjectiveCClass(),
         isEqual: { $0 as! SampleObjectiveCClass == $1 as! SampleObjectiveCClass }
     )
     let objectiveCStructAssociation: AssociationTestPair = (
@@ -38,7 +38,7 @@ class ObjectAssociationTestCase: XCTestCase {
         isEqual: { $0 as! SampleObjectiveCEnumeration == $1 as! SampleObjectiveCEnumeration }
     )
     let swiftObjectAssociation: AssociationTestPair = (
-        association: SampleSwiftClass(42),
+        association: SampleSwiftClass(),
         isEqual: { $0 as! SampleSwiftClass == $1 as! SampleSwiftClass }
     )
     let swiftStructAssociation: AssociationTestPair = (
@@ -55,9 +55,9 @@ class ObjectAssociationTestCase: XCTestCase {
     var nonObjectAssociations: [AssociationTestPair]!
 
     var objectAssociations: [InitializerTestPair] = [
-        (create: { SampleObjectiveCClass(42) },
+        (create: { SampleObjectiveCClass() },
          isEqual: { $0 as! SampleObjectiveCClass == $1 as! SampleObjectiveCClass } ),
-        (create: { SampleSwiftClass(42) },
+        (create: { SampleSwiftClass() },
          isEqual: { $0 as! SampleSwiftClass == $1 as! SampleSwiftClass } )
     ]
 
