@@ -25,27 +25,27 @@ typealias InitializerTestPair = (
 
 class ObjectAssociationTestCase: XCTestCase {
 
-    let association1: AssociationTestPair = (
+    let objectiveCObjectAssociation: AssociationTestPair = (
         association: SampleObjectiveCClass(42),
         isEqual: { $0 as! SampleObjectiveCClass == $1 as! SampleObjectiveCClass }
     )
-    let association2: AssociationTestPair = (
+    let objectiveCStructAssociation: AssociationTestPair = (
         association: SampleObjectiveCStructure(value: 14),
         isEqual: { SampleObjectiveCStructuresEqual($0 as! SampleObjectiveCStructure, $1 as! SampleObjectiveCStructure) }
     )
-    let association3: AssociationTestPair = (
+    let objectiveCEnumAssociation: AssociationTestPair = (
         association: SampleObjectiveCEnumerationAlpha,
         isEqual: { $0 as! SampleObjectiveCEnumeration == $1 as! SampleObjectiveCEnumeration }
     )
-    let association4: AssociationTestPair = (
+    let swiftObjectAssociation: AssociationTestPair = (
         association: SampleSwiftClass(42),
         isEqual: { $0 as! SampleSwiftClass == $1 as! SampleSwiftClass }
     )
-    let association5: AssociationTestPair = (
+    let swiftStructAssociation: AssociationTestPair = (
         association: SampleSwiftStructure(value: 14),
         isEqual: { $0 as! SampleSwiftStructure == $1 as! SampleSwiftStructure }
     )
-    let association6: AssociationTestPair = (
+    let swiftEnumAssociation: AssociationTestPair = (
         association: SampleSwiftEnumeration.only(14),
         isEqual: { $0 as! SampleSwiftEnumeration == $1 as! SampleSwiftEnumeration }
     )
@@ -55,14 +55,10 @@ class ObjectAssociationTestCase: XCTestCase {
     var nonObjectAssociations: [AssociationTestPair]!
 
     var objectAssociations: [InitializerTestPair] = [
-        (
-            create: { SampleObjectiveCClass(42) },
-            isEqual: { $0 as! SampleObjectiveCClass == $1 as! SampleObjectiveCClass }
-        ),
-        (
-            create: { SampleSwiftClass(42) },
-            isEqual: { $0 as! SampleSwiftClass == $1 as! SampleSwiftClass }
-        )
+        (create: { SampleObjectiveCClass(42) },
+         isEqual: { $0 as! SampleObjectiveCClass == $1 as! SampleObjectiveCClass } ),
+        (create: { SampleSwiftClass(42) },
+         isEqual: { $0 as! SampleSwiftClass == $1 as! SampleSwiftClass } )
     ]
 
     weak var weakReference: AnyObject?
@@ -72,18 +68,14 @@ class ObjectAssociationTestCase: XCTestCase {
         super.setUp()
 
         associations = [
-            association1, association2, association3,
-            association4, association5, association6
+            objectiveCObjectAssociation, objectiveCStructAssociation, objectiveCEnumAssociation,
+            swiftObjectAssociation, swiftStructAssociation, swiftEnumAssociation
         ]
 
         nonObjectAssociations = [
-            association2, association3,
-            association5, association6
+            objectiveCStructAssociation, objectiveCEnumAssociation,
+            swiftStructAssociation, swiftEnumAssociation
         ]
-
-        assert(nonObjectAssociations.count == 4)
-        assert(objectAssociations.count == 2)
-        assert(associations.count == 6)
     }
 
 }
