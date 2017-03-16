@@ -42,7 +42,25 @@ public func ==(lhs: SampleSwiftEnumeration, rhs: SampleSwiftEnumeration) -> Bool
 
 public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, AssociatingClass, SampleType {
 
-    public var instanceProperty: String
+    private final var _instanceProperty = OriginalPropertyValue
+    dynamic public var instanceProperty: String {
+        get {
+            return _instanceProperty
+        }
+        set {
+            _instanceProperty = newValue
+        }
+    }
+
+    private static var _classProperty = OriginalPropertyValue
+    dynamic public class var classProperty: String {
+        get {
+            return _classProperty
+        }
+        set {
+            _classProperty = newValue
+        }
+    }
 
     public class func className() -> String {
         return NSStringFromClass(SampleSwiftClass.self)
@@ -82,6 +100,25 @@ public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, Associat
 
     @objc public func otherInstanceMethod() -> Int {
         return AlternateMethodReturnValue
+    }
+
+
+    //  MARK: - Property alternates
+
+    dynamic public class func otherClassPropertyGetter() -> String {
+        return AlternatePropertyValue
+    }
+
+    dynamic public class func otherClassPropertySetter(_ newValue: String) {
+        _classProperty = newValue + newValue
+    }
+
+    dynamic public func otherInstancePropertyGetter() -> String {
+        return AlternatePropertyValue
+    }
+
+    dynamic public func otherInstancePropertySetter(_ newValue: String) {
+        _instanceProperty = newValue + newValue
     }
 
 }

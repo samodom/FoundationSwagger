@@ -7,8 +7,23 @@
 //
 
 import XCTest
+import SampleTypes
+import FoundationSwagger
+
 
 class ObjectiveCMethodSwizzlingTests: MethodSwizzlingTestCase {
+
+    override func setUp() {
+        super.setUp()
+
+        SampleObjectiveCClass.classProperty = OriginalPropertyValue
+    }
+
+    override func tearDown() {
+        SampleObjectiveCClass.classProperty = OriginalPropertyValue
+
+        super.tearDown()
+    }
 
     func testSwizzlingObjectiveCClassMethods() {
         setUpSurrogate(classType: .objectiveC, methodType: .`class`)
@@ -105,6 +120,82 @@ class ObjectiveCMethodSwizzlingTests: MethodSwizzlingTestCase {
         validateMethodsAreSwizzled()
         
         surrogate.useOriginalImplementation()
+    }
+
+    func testSwizzlingObjectiveCClassPropertyAccessor() {
+        surrogate = MethodSurrogate(
+            forClass: SampleObjectiveCClass.self,
+            ofType: .class,
+            originalSelector: #selector(getter: SampleObjectiveCClass.classProperty),
+            alternateSelector: #selector(SampleObjectiveCClass.otherClassPropertyGetter)
+        )
+
+        surrogate.useAlternateImplementation()
+        XCTAssertEqual(SampleObjectiveCClass.classProperty, AlternatePropertyValue,
+                       "The property's accessor should be replaced with an alternate method")
+
+        surrogate.useOriginalImplementation()
+        XCTAssertEqual(SampleObjectiveCClass.classProperty, OriginalPropertyValue,
+                       "The property's accessor should be restored to the original method")
+    }
+
+    func testSwizzlingObjectiveCClassPropertyMutator() {
+        surrogate = MethodSurrogate(
+            forClass: SampleObjectiveCClass.self,
+            ofType: .class,
+            originalSelector: #selector(setter: SampleObjectiveCClass.classProperty),
+            alternateSelector: #selector(SampleObjectiveCClass.otherClassPropertySetter)
+        )
+
+        surrogate.useAlternateImplementation()
+        SampleObjectiveCClass.classProperty = AlternatePropertyValue
+        XCTAssertEqual(SampleObjectiveCClass.classProperty, AlternatePropertyValue + AlternatePropertyValue,
+                       "The property's mutator should be replaced with an alternate method")
+
+        surrogate.useOriginalImplementation()
+        SampleObjectiveCClass.classProperty = OriginalPropertyValue
+        XCTAssertEqual(SampleObjectiveCClass.classProperty, OriginalPropertyValue,
+                       "The property's mutator should be restored to the original method")
+    }
+
+    func testSwizzlingObjectiveCInstancePropertyAccessor() {
+        let sample = SampleObjectiveCClass()
+
+        surrogate = MethodSurrogate(
+            forClass: SampleObjectiveCClass.self,
+            ofType: .instance,
+            originalSelector: #selector(getter: SampleObjectiveCClass.instanceProperty),
+            alternateSelector: #selector(SampleObjectiveCClass.otherInstancePropertyGetter)
+        )
+
+        surrogate.useAlternateImplementation()
+        XCTAssertEqual(sample.instanceProperty, AlternatePropertyValue,
+                       "The property's accessor should be replaced with an alternate method")
+
+        surrogate.useOriginalImplementation()
+        XCTAssertEqual(sample.instanceProperty, OriginalPropertyValue,
+                       "The property's accessor should be restored to the original method")
+    }
+
+    func testSwizzlingObjectiveCInstancePropertyMutator() {
+        let sample = SampleObjectiveCClass()
+
+        surrogate = MethodSurrogate(
+            forClass: SampleObjectiveCClass.self,
+            ofType: .instance,
+            originalSelector: #selector(setter: SampleObjectiveCClass.instanceProperty),
+            alternateSelector: #selector(SampleObjectiveCClass.otherInstancePropertySetter)
+        )
+
+        surrogate.useAlternateImplementation()
+        sample.instanceProperty = AlternatePropertyValue
+        XCTAssertEqual(sample.instanceProperty, AlternatePropertyValue + AlternatePropertyValue,
+                       "The property's mutator should be replaced with an alternate method")
+
+        surrogate.useOriginalImplementation()
+        sample.instanceProperty = OriginalPropertyValue
+        XCTAssertEqual(sample.instanceProperty, OriginalPropertyValue,
+                       "The property's mutator should be restored to the original method")
     }
 
 }

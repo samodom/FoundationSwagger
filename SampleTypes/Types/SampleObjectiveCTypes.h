@@ -41,8 +41,15 @@ typedef enum SampleObjectiveCEnumeration: NSUInteger {
 
 @interface SampleObjectiveCClass: NSObject<SampleType>
 
-@property (readonly) NSString * _Nonnull instanceProperty;
+@property (class) NSString * _Nonnull classProperty;
+@property NSString * _Nonnull instanceProperty;
 
 - (nonnull instancetype)init;
+
++ (NSString * _Nonnull)otherClassPropertyGetter;
++ (void)otherClassPropertySetter:(NSString * _Nonnull)newValue;
+
+- (NSString * _Nonnull)otherInstancePropertyGetter;
+- (void)otherInstancePropertySetter:(NSString * _Nonnull)newValue;
 
 @end
