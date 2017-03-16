@@ -18,6 +18,8 @@ class MethodSurrogate {
 }
 ```
 
+Selector pairs may represent swappable accessors or mutators.
+
 
 ## Swizzling
 

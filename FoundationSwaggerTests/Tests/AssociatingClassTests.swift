@@ -33,8 +33,6 @@ class AssociatingClassTests: ObjectAssociationTestCase {
 }
 
 
-//  MARK: - Retrieving associations
-
 extension AssociatingClassTests {
 
     func testRetrievingAssociations() {
