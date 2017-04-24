@@ -34,6 +34,19 @@ protocol AssociatingClass: class {
 When no policy is provided, the association will be non-atomically retained matching the Swift default for variable declaration and assignment.  Using the assignment policy with a value type will lead to undefined behavior.  Use a retention or copy policy instead.
 
 
+### Unique association keys
+
+In order to allocate memory with unique content that can be used as an object association key, the `UUIDKeyString` function is provided.  Keys can then be created by a simple wrapping call to the `ObjectAssociationKey` initializer.
+
+> Example:
+>
+> ```swift
+> private let myKeyString = UUIDKeyString()
+> let myKey = ObjectAssociationKey(myKeyString)
+> ```
+
+
+
 ### Sample usage:
 
 #### Object

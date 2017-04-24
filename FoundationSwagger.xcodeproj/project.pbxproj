@@ -20,6 +20,8 @@
 		0A3784D41A100D3A0003C7F3 /* FileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3784D31A100D3A0003C7F3 /* FileExtensions.swift */; };
 		0A3BB9C019EB78010075B32A /* FoundationSwagger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A3BB9BF19EB78010075B32A /* FoundationSwagger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A4261F71E527C390029F70D /* ObjectAssociationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4261F61E527C390029F70D /* ObjectAssociationConstants.swift */; };
+		0A5032161EAE82CD0038CC7D /* UniqueAssociationKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5032151EAE82CD0038CC7D /* UniqueAssociationKeyTests.swift */; };
+		0A5032181EAE83BA0038CC7D /* UniqueKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5032171EAE83BA0038CC7D /* UniqueKey.swift */; };
 		0A563D631E4BFC4500D7C5E1 /* FilePermissionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A563D621E4BFC4500D7C5E1 /* FilePermissionsTests.swift */; };
 		0A563D651E4BFFCE00D7C5E1 /* FilePermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A563D641E4BFFCE00D7C5E1 /* FilePermissions.swift */; };
 		0A563D671E4C233200D7C5E1 /* ClassPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A563D661E4C233200D7C5E1 /* ClassPermissions.swift */; };
@@ -84,6 +86,8 @@
 		0A3BB9C519EB78010075B32A /* FoundationSwaggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoundationSwaggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A3BB9CB19EB78010075B32A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A4261F61E527C390029F70D /* ObjectAssociationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociationConstants.swift; sourceTree = "<group>"; };
+		0A5032151EAE82CD0038CC7D /* UniqueAssociationKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniqueAssociationKeyTests.swift; sourceTree = "<group>"; };
+		0A5032171EAE83BA0038CC7D /* UniqueKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniqueKey.swift; sourceTree = "<group>"; };
 		0A563D621E4BFC4500D7C5E1 /* FilePermissionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePermissionsTests.swift; sourceTree = "<group>"; };
 		0A563D641E4BFFCE00D7C5E1 /* FilePermissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePermissions.swift; sourceTree = "<group>"; };
 		0A563D661E4C233200D7C5E1 /* ClassPermissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassPermissions.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 		0A3BB9D619EB78500075B32A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				0A5032151EAE82CD0038CC7D /* UniqueAssociationKeyTests.swift */,
 				0A114AD11E52651800B907ED /* AssociatingClassTests.swift */,
 				0AA456F81E5280320067783B /* AssociatingClassTypedAccessorTests.swift */,
 				0A114ACF1E52642400B907ED /* AssociatingObjectTests.swift */,
@@ -256,6 +261,7 @@
 				0A114AD31E52680F00B907ED /* AssociatingClass.swift */,
 				0A90C86D1A86D2E70047FE16 /* AssociatingObject.swift */,
 				0ABD48CE1DE3B07C005DD470 /* TypedAssociationAccessors.swift */,
+				0A5032171EAE83BA0038CC7D /* UniqueKey.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 			files = (
 				0A90C86E1A86D2E70047FE16 /* AssociatingObject.swift in Sources */,
 				0A563D671E4C233200D7C5E1 /* ClassPermissions.swift in Sources */,
+				0A5032181EAE83BA0038CC7D /* UniqueKey.swift in Sources */,
 				0A5BCC061AACDDBA00484777 /* DateRanges.swift in Sources */,
 				0A7DC4811DBEDAA200BCFC56 /* MethodSurrogate.swift in Sources */,
 				0A1161CE1E4E520300CD6DD8 /* FileManagerPermissions.swift in Sources */,
@@ -483,6 +490,7 @@
 				0A1161CA1E4D592300CD6DD8 /* FileManagerPermissionsTests.swift in Sources */,
 				0AF8C3DB1DD0207200DEDF1C /* MethodSwizzlingAssertions.swift in Sources */,
 				0A048B891E1B2C3800CF003F /* ObjectiveCMethodSwizzlingTests.swift in Sources */,
+				0A5032161EAE82CD0038CC7D /* UniqueAssociationKeyTests.swift in Sources */,
 				0ABFB6291DC3180700B50A55 /* CodeSource.swift in Sources */,
 				0ABBD3E21E1B33C700F6F194 /* MethodSwizzlingTestCase.swift in Sources */,
 				0A114AD01E52642400B907ED /* AssociatingObjectTests.swift in Sources */,
