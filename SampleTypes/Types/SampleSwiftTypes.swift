@@ -42,7 +42,25 @@ public func ==(lhs: SampleSwiftEnumeration, rhs: SampleSwiftEnumeration) -> Bool
 
 public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, AssociatingClass, SampleType {
 
-    public let value: Int
+    private final var _instanceProperty = OriginalPropertyValue
+    dynamic public var instanceProperty: String {
+        get {
+            return _instanceProperty
+        }
+        set {
+            _instanceProperty = newValue
+        }
+    }
+
+    private static var _classProperty = OriginalPropertyValue
+    dynamic public class var classProperty: String {
+        get {
+            return _classProperty
+        }
+        set {
+            _classProperty = newValue
+        }
+    }
 
     public class func className() -> String {
         return NSStringFromClass(SampleSwiftClass.self)
@@ -52,11 +70,7 @@ public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, Associat
     //  MARK: - Lifecycle
 
     public init() {
-        value = 0
-    }
-
-    public init(_ value: Int) {
-        self.value = value
+        instanceProperty = OriginalPropertyValue
     }
 
     @objc public func copy() -> AnyObject {
@@ -64,7 +78,9 @@ public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, Associat
     }
 
     @objc public func copy(with zone: NSZone?) -> Any {
-        return SampleSwiftClass(value)
+        let new = SampleSwiftClass()
+        new.instanceProperty = instanceProperty
+        return new
     }
 
 
@@ -86,8 +102,28 @@ public class SampleSwiftClass: Equatable, NSCopying, AssociatingObject, Associat
         return AlternateMethodReturnValue
     }
 
+
+    //  MARK: - Property alternates
+
+    dynamic public class func otherClassPropertyGetter() -> String {
+        return AlternatePropertyValue
+    }
+
+    dynamic public class func otherClassPropertySetter(_ newValue: String) {
+        _classProperty = newValue + newValue
+    }
+
+    dynamic public func otherInstancePropertyGetter() -> String {
+        return AlternatePropertyValue
+    }
+
+    dynamic public func otherInstancePropertySetter(_ newValue: String) {
+        _instanceProperty = newValue + newValue
+    }
+
 }
 
+
 public func ==(lhs: SampleSwiftClass, rhs: SampleSwiftClass) -> Bool {
-    return lhs.value == rhs.value
+    return lhs.instanceProperty == rhs.instanceProperty
 }

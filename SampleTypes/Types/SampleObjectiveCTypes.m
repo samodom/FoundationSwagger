@@ -12,6 +12,9 @@
 NSInteger const OriginalMethodReturnValue = 14;
 NSInteger const AlternateMethodReturnValue = 42;
 
+NSString * const OriginalPropertyValue = @"Tony Stewart";
+NSString * const AlternatePropertyValue = @"Kyle Larson";
+
 
 //  MARK: - Sample Objective-C structure equatability
 
@@ -22,16 +25,34 @@ BOOL SampleObjectiveCStructuresEqual(SampleObjectiveCStructure lhs, SampleObject
 
 @implementation SampleObjectiveCClass
 
-
 + (NSString *)className {
     return NSStringFromClass(self);
 }
 
+
+static NSString * _Nonnull _classProperty;
+
++ (NSString * _Nonnull)classProperty {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (!_classProperty) {
+            _classProperty = OriginalPropertyValue;
+        }
+    });
+
+    return _classProperty;
+}
+
++ (void)setClassProperty:(NSString * _Nonnull)newValue {
+    _classProperty = newValue;
+}
+
+
 //  MARK: - Lifecycle
 
-- (instancetype)init:(NSInteger)value {
-    if (self = [self init]) {
-        _value = value;
+- (instancetype)init {
+    if (self = [super init]) {
+        _instanceProperty = OriginalPropertyValue;
     }
 
     return self;
@@ -39,7 +60,8 @@ BOOL SampleObjectiveCStructuresEqual(SampleObjectiveCStructure lhs, SampleObject
 
 
 - (id)copy {
-    SampleObjectiveCClass *copyOfObject = [[SampleObjectiveCClass alloc] init:self.value];
+    SampleObjectiveCClass *copyOfObject = [[SampleObjectiveCClass alloc] init];
+    copyOfObject->_instanceProperty = self.instanceProperty;
     return copyOfObject;
 }
 
@@ -64,7 +86,7 @@ BOOL SampleObjectiveCStructuresEqual(SampleObjectiveCStructure lhs, SampleObject
     }
 
     SampleObjectiveCClass *other = object;
-    return self.value == other.value;
+    return self.instanceProperty == other.instanceProperty;
 }
 
 
@@ -85,6 +107,26 @@ BOOL SampleObjectiveCStructuresEqual(SampleObjectiveCStructure lhs, SampleObject
 
 - (NSInteger)otherInstanceMethod {
     return AlternateMethodReturnValue;
+}
+
+
+//  MARK: - Property alternates
+
++ (NSString * _Nonnull)otherClassPropertyGetter {
+    return AlternatePropertyValue;
+}
+
++ (void)otherClassPropertySetter:(NSString * _Nonnull)newValue {
+    _classProperty = [newValue stringByAppendingString:newValue];
+}
+
+
+- (NSString * _Nonnull)otherInstancePropertyGetter {
+    return AlternatePropertyValue;
+}
+
+- (void)otherInstancePropertySetter:(NSString * _Nonnull)newValue {
+    _instanceProperty = [newValue stringByAppendingString:newValue];
 }
 
 

@@ -1,6 +1,12 @@
 FoundationSwagger Changelog
 ===========================
 
+### v0.2.14 (April 24, 2017)
+ - Added unique key string creation function
+
+### v0.2.13 (February 14, 2017)
+ - Added missing implementation of class-level typed accessors
+
 ### v0.2.12 (February 13, 2017)
  - Removed default-value typed association accessors
  - Added class-level typed association accessors

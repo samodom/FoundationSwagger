@@ -50,5 +50,5 @@ public extension AssociatingClass {
 
 }
 
-/// Makes all Objective-C objects object associating
+/// Makes NSObject and all of its subclasses object associating
 extension NSObject: AssociatingClass {}

@@ -14,8 +14,8 @@ import SampleTypes
 class AssociatingObjectTests: ObjectAssociationTestCase {
 
     let associatingObjects: [AssociatingObject] = [
-        SampleObjectiveCClass(14),
-        SampleSwiftClass(14)
+        SampleObjectiveCClass(),
+        SampleSwiftClass()
     ]
 
     override func setUp() {
@@ -32,8 +32,6 @@ class AssociatingObjectTests: ObjectAssociationTestCase {
 
 }
 
-
-//  MARK: - Retrieving associations
 
 extension AssociatingObjectTests {
 
