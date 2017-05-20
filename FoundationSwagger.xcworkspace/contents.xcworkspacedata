@@ -4,11 +4,4 @@
    <FileRef
       location = "group:FoundationSwagger.xcodeproj">
    </FileRef>
-   <Group
-      location = "group:Playgrounds"
-      name = "Playgrounds">
-      <FileRef
-         location = "group:MethodSwizzling.playground">
-      </FileRef>
-   </Group>
 </Workspace>
