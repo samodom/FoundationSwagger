@@ -43,7 +43,8 @@ extension MethodSwizzlingTestCase {
     }
 
     var mismatchedImplementationFailureKey: String {
-        let expectedOrigin = isTestingSwizzledImplementations ? !selectorOriginUnderTest : selectorOriginUnderTest
+        let expectedOrigin = isTestingSwizzledImplementations ?
+            !selectorOriginUnderTest : selectorOriginUnderTest
         return "The \(selectorOriginUnderTest) selector should now be associated with the \(expectedOrigin) method implementation"
     }
 

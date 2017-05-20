@@ -8,7 +8,8 @@
 
 import Foundation
 
-/// Overloaded subtraction operator for calculating the time interval between two dates, assuming the same time zone.
+/// Overloaded subtraction operator for calculating the time interval between two dates,
+/// assuming the same time zone.
 /// - parameter lhs: Date from which to subtract another date.
 /// - parameter rhs: Date to subtract from the first date.
 /// - returns: The time interval produced by calling `lhs.timeIntervalSinceDate(rhs)`.

@@ -19,7 +19,8 @@ public extension AssociatingObject {
 
     /// Typed method for associated signed integer values.
     /// - parameter for: The key for the association to retrieve.
-    /// - returns: The associated signed integer value or `nil` if no such signed integer association exists.
+    /// - returns: The associated signed integer value or `nil` if no such signed integer
+    ///   association exists.
     public func integerAssociation(for key: ObjectAssociationKey) -> Int? {
         return association(for: key) as? Int
     }
@@ -27,7 +28,8 @@ public extension AssociatingObject {
 
     /// Typed method for associated unsigned integer values.
     /// - parameter for: The key for the association to retrieve.
-    /// - returns: The associated unsigned integer value or `nil` if no such unsigned integer association exists.
+    /// - returns: The associated unsigned integer value or `nil` if no such unsigned integer
+    ///   association exists.
     public func unsignedIntegerAssociation(for key: ObjectAssociationKey) -> UInt? {
         return association(for: key) as? UInt
     }
@@ -88,7 +90,8 @@ public extension AssociatingClass {
 
     /// Typed method for associated signed integer values.
     /// - parameter for: The key for the association to retrieve.
-    /// - returns: The associated signed integer value or `nil` if no such signed integer association exists.
+    /// - returns: The associated signed integer value or `nil` if no such signed integer
+    ///   association exists.
     public static func integerAssociation(for key: ObjectAssociationKey) -> Int? {
         return association(for: key) as? Int
     }
@@ -96,7 +99,8 @@ public extension AssociatingClass {
 
     /// Typed method for associated unsigned integer values.
     /// - parameter for: The key for the association to retrieve.
-    /// - returns: The associated unsigned integer value or `nil` if no such unsigned integer association exists.
+    /// - returns: The associated unsigned integer value or `nil` if no such unsigned integer
+    ///   association exists.
     public static func unsignedIntegerAssociation(for key: ObjectAssociationKey) -> UInt? {
         return association(for: key) as? UInt
     }
