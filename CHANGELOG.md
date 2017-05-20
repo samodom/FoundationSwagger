@@ -1,6 +1,9 @@
 FoundationSwagger Changelog
 ===========================
 
+### v0.2.15 (May 20, 2017)
+ - Adding support for Carthage
+
 ### v0.2.14 (April 24, 2017)
  - Added unique key string creation function
 

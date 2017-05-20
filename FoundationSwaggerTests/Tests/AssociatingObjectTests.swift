@@ -8,7 +8,6 @@
 
 import XCTest
 import FoundationSwagger
-import SampleTypes
 
 
 class AssociatingObjectTests: ObjectAssociationTestCase {

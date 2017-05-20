@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import SampleTypes
 import FoundationSwagger
 
 class MethodSwizzlingTestCase: XCTestCase {

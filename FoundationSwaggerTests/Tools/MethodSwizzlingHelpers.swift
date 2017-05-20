@@ -6,8 +6,7 @@
 //  Copyright © 2016 Swagger Soft. All rights reserved.
 //
 
-@testable import FoundationSwagger
-import SampleTypes
+import FoundationSwagger
 
 //  MARK: - Running sample method
 

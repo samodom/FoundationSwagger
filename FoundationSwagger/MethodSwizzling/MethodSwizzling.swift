@@ -23,7 +23,8 @@ public extension MethodSurrogate {
 
     /// Swizzles the original and alternate methods of the surrogate so that the
     /// alternate method is used when the original selector is called.
-    /// - parameter context: Closure to execute while the alternate method implementation is being used.
+    /// - parameter context: Closure to execute while the alternate method implementation
+    ///   is being used.
     public func withAlternateImplementation(context: NullaryVoidClosure) {
         guard !isSwizzled else { return }
         useAlternateImplementation()
@@ -42,7 +43,8 @@ public extension MethodSurrogate {
 
     /// Swizzles the original and alternate methods of the surrogate so that the
     /// original method is used when the original selector is called.
-    /// - parameter context: Closure to execute while the original method implementation is being used.
+    /// - parameter context: Closure to execute while the original method implementation
+    ///   is being used.
     public func withOriginalImplementation(context: NullaryVoidClosure) {
         guard isSwizzled else { return }
         useOriginalImplementation()
