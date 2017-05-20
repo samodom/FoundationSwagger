@@ -8,7 +8,7 @@
 
 import XCTest
 import FoundationSwagger
-import SampleTypes
+
 
 class MethodSurrogateTests: XCTestCase {
 

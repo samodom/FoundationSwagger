@@ -8,7 +8,8 @@
 
 import Foundation
 
-/// Common protocol for object association with pure Swift classes or `NSObject` (and its subclasses).
+/// Common protocol for object association with pure Swift classes or `NSObject`
+/// (and its subclasses).
 public protocol AssociatingObject: class {}
 
 
@@ -18,7 +19,8 @@ public typealias ObjectAssociationKey = UnsafeRawPointer
 
 public extension AssociatingObject {
 
-    /// Creates an association between the implementing and provided objects using the specified key and policy.
+    /// Creates an association between the implementing and provided objects using the specified
+    /// key and policy.
     /// - parameter value: The object or value to associate with `self`.
     /// - parameter key: The identifying key to use for the association.
     /// - parameter policy: The association policy to use for the association.
@@ -34,7 +36,8 @@ public extension AssociatingObject {
 
     /// Retrieves the object associated with `self` using the specified key, if any.
     /// - parameter for: The key identifying the association to retrieve.
-    /// - returns: The object or value associated with `self` using the specified key, if such an association exist.
+    /// - returns: The object or value associated with `self` using the specified key, 
+    ///   if such an association exist.
     public func association(for key: ObjectAssociationKey) -> Any? {
         return objc_getAssociatedObject(self, key)
     }
