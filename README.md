@@ -15,7 +15,7 @@ FoundationSwagger
 
 ***Extensions for Foundation on iOS***
 
- - [File Permissions](FilePermissions.md)
+ - [File Permissions](Docs/FilePermissions.md)
  - [Object Association](Docs/ObjectAssociation.md)
  - [Date](Docs/Date.md)
  - [Method Swizzling](Docs/MethodSwizzling.md)
