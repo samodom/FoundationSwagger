@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Swagger Soft. All rights reserved.
 //
 
-import Foundation
-
 public extension Date {
 
     /// Produces a date range representing the range of all time.

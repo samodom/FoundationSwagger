@@ -6,8 +6,6 @@
 //  Copyright © 2016 Swagger Soft. All rights reserved.
 //
 
-import Foundation
-
 /// Enumerated type representing the two basic types of methods that a class can define.
 public enum MethodType {
     case `class`, instance

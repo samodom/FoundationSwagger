@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Swagger Soft. All rights reserved.
 //
 
-import Foundation
-
 /// Common protocol for object association with pure Swift classes or `NSObject`
 /// (and its subclasses).
 public protocol AssociatingObject: class {}
