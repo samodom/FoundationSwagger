@@ -23,9 +23,9 @@ class FileManagerPermissionsTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        sampleDirectoryPath = DocumentsDirectoryURL.appendingPathComponent("sampleDirectory").path
-        sampleFilePath = DocumentsDirectoryURL.appendingPathComponent("sampleFile").path
-        nonexistentFilePath = DocumentsDirectoryURL.appendingPathComponent("nothing").path
+        sampleDirectoryPath = SampleDirectory.appendingPathComponent("sampleDirectory").path
+        sampleFilePath = SampleDirectory.appendingPathComponent("sampleFile").path
+        nonexistentFilePath = SampleDirectory.appendingPathComponent("nothing").path
 
         try? fileManager.createDirectory(
             atPath: sampleDirectoryPath,
@@ -170,3 +170,17 @@ class FileManagerPermissionsTests: XCTestCase {
     }
 
 }
+
+private let SampleDirectory: URL = {
+    let paths = NSSearchPathForDirectoriesInDomains(
+        .cachesDirectory,
+        .userDomainMask,
+        true
+    )
+
+    guard !paths.isEmpty else {
+        fatalError("Unable to find directory")
+    }
+
+    return URL(fileURLWithPath: paths.first!, isDirectory: true)
+}()

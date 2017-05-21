@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Swagger Soft. All rights reserved.
 //
 
-import Foundation
-
 /// Overloaded subtraction operator for calculating the time interval between two dates,
 /// assuming the same time zone.
 /// - parameter lhs: Date from which to subtract another date.

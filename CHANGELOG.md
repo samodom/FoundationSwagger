@@ -1,8 +1,17 @@
 FoundationSwagger Changelog
 ===========================
 
+## Version 3
+
+### v0.3.0 (May 20, 2017)
+ - Expanding platform support to include all four Apple platforms: iOS, macOS, tvOS and watchOS
+ - Removed document directory path and URL constants
+
+
+## Version 2
+
 ### v0.2.15 (May 20, 2017)
- - Adding support for Carthage
+ - Added support for Carthage
 
 ### v0.2.14 (April 24, 2017)
  - Added unique key string creation function
