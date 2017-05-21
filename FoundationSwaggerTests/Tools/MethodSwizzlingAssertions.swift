@@ -6,9 +6,7 @@
 //  Copyright © 2016 Swagger Soft. All rights reserved.
 //
 
-import Foundation
 @testable import FoundationSwagger
-
 
 //  MARK: - High-level testing methods and setup
 

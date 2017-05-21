@@ -4,6 +4,7 @@ FoundationSwagger Changelog
 ## Version 3
 
 ### v0.3.0 (May 20, 2017)
+ - Expanding platform support to include all four Apple platforms: iOS, macOS, tvOS and watchOS
  - Removed document directory path and URL constants
 
 

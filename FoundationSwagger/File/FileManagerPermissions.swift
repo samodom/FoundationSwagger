@@ -6,8 +6,6 @@
 //  Copyright © 2017 Swagger Soft. All rights reserved.
 //
 
-import Foundation
-
 public extension FileManager {
 
     /// Retrieves the file permissions of the file or directory at the provided path, if it exists.
