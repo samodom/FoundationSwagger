@@ -1,5 +1,4 @@
-FoundationSwagger
-=================
+# FoundationSwagger - DEPRECATED
 
 ![](https://img.shields.io/badge/_iOS-8+-lightgrey.svg?style=flat-square)
 ![](https://img.shields.io/badge/_macOS-10.9+-lightgrey.svg?style=flat-square)
